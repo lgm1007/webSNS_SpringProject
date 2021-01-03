@@ -1,0 +1,833 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #fafafa;
+}
+li {list-style:none;}
+a {text-decoration:none;}
+a:link {text-decoration:none; color:initial;}
+a:visited {text-decoration:none; color:initial;}
+a:hover {text-decoration:none; color:initial;}
+
+#all_tag_wrap {
+    width:100%;
+    height:auto;
+}
+
+/* 헤더 */
+#header {
+    width: 100%;
+    border: 0.5px solid #e8e8e8;
+    position: fixed;
+    text-align: center;
+    background-color: white;
+    z-index:2;
+}
+.headbar_div {
+    width:80%;
+    overflow:hidden;
+    height:75px;
+    margin:0 auto;
+}
+.headbar li {float:left;}
+.headbar .head_logo {
+    margin:20px auto 20px auto;
+}
+.headbar_div .head_input { margin-top:20px; }
+#keyword {
+    top: 40%;
+    left: 43%;
+    padding: 0.5% 5% ;
+    border-radius: 4px;
+}
+.headbar .head_icon {
+    float: right;
+    margin: 2.4% auto 2.4% auto;
+}
+
+.icon_like, .icon_me, .icon_pic { margin-left:15px; }
+
+/* 본문 */
+#container {
+    width: 100%;
+    background-color: #fafafa;
+    text-align: center;
+}
+.cont_wrap {
+    width: 88.6%;
+    height: auto;
+    margin: 0 auto 0 auto;
+    position: relative;
+    top: 130px;
+}
+.content {
+    width: 650px;
+    height: 680px;
+    border: 0.5px solid #e8e8e8;
+    border-radius:3px;
+    background-color:white;
+    margin-bottom:15px;
+}
+.bd_content {
+    width: 650px;
+    height: 680px;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 3px;
+    background-color: white;
+    margin-bottom: 15px;
+    margin-left: 30px;
+}
+.content_head {
+    width: 100%;
+    height: 7%;
+    text-align: left;
+}
+.content_nick {
+    cursor: pointer;
+    font-family: sans-serif;
+    border-style: none;
+    background: none;
+    font-weight: bold;
+    color: black;
+    font-size: 12px;
+    margin-top:4px;
+    margin-left: 1%;
+}
+.content_realname {
+    font-weight: lighter;
+    font-size: 12px;
+    color: #999999;
+    margin-left:3%;
+}
+.content_pic {
+    width: 100%;
+    height: auto;
+    border-top:0.5px solid #e8e8e8;
+    border-bottom: 0.5px solid #e8e8e8;
+}
+.pic_wrap {
+    width: 650px;
+    height:500px;
+    border-left:0.5px solid #e8e8e8;
+    border-right:0.5px solid #e8e8e8;
+}
+.pic_wrap img {
+    width:649px;
+    height:498px;
+    object-fit:contain;
+}
+.content_lnc {
+    width: 100%;
+    height: 4%;
+    margin: 2% 0px 0px 0px;
+    float: left;
+    text-align:left;
+}
+.content_lnc button {
+    cursor: pointer;
+    margin-left:1%;
+    border-style:none;
+    background:none;
+}
+/*5.24 추가*/
+.content_cont {
+    width:100%;
+    height:40px;
+    text-align:left;
+}
+.content_cont .cont_in{
+    font-size: 13px;
+    font-weight:normal;
+    color:black;
+    margin-left:7px;
+    margin-right:7px;
+}
+
+/*5.16 추가*/
+.comm_text {
+    width:599px;
+    height:30px;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    border-bottom:0.5px solid #a9a9a9;
+    margin-top:9px;
+    margin-left:2px;
+}
+.comm_post_btn {
+    border-style:none;
+    background:none;
+    font-size:1.05em;
+    font-weight:bold;
+    color:#266ede;
+    margin-top:9px;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
+}
+.comm_post_btn:hover {
+    color:#103672;
+}
+
+.cont_wrap .side_fixed {
+    position: fixed;
+    top: 17%;
+    right: 13%;
+    text-align: left;
+}
+.side_fixed .side_name_div {
+    margin-left:7%;
+}
+.side_name_div .p_nicname {
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom:5px;
+}
+.side_name_div .p_realname {
+    font-weight:lighter;
+    font-size:11px;
+    color:#999999;
+}
+.side_myFollow {
+    background-color:white;
+    border:0.5px solid #e8e8e8;
+    border-radius:3px;
+    width:300px;
+    height:200px;
+    padding:9px;
+}
+.p_info_follow {
+    color:#999999;
+    margin-left:3%;
+    margin-bottom:10px;
+}
+.p_follow {
+    cursor: pointer;
+    color: black;
+    border-style: none;
+    background: none;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 1%;
+    margin-bottom: 7px;
+}
+ .post_head_name {
+     width:600px;
+}
+
+/*왼쪽:글, 오른쪽:댓글창*/
+.comm_table {
+    width: 1000px;
+    height: auto;
+}
+
+.left_post, .right_post {
+    width: 50%;
+}
+
+.comm_wrapTag {
+    position: relative;
+    top: 130px;
+}
+
+.comm_container {
+    width: 650px;
+    height: 680px;
+    background-color: white;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 4px;
+    margin-bottom: 2%;
+    margin-left: 10%;
+    overflow: scroll;
+}
+
+.comm_small_container {
+    margin-top: 10px;
+}
+
+.comt {
+    margin: 4px 0;
+}
+
+.btn, .btn-primary, .btn-lg {
+	border: 0.5px solid #e8e8e8;
+	background-color: #fafafa;
+	color: black;
+	font-weight: bold;
+	font-size: 1.15em;
+	padding: 5px 25px 5px 25px;
+}
+
+.btn:hover, .btn-primary:hover, .btn-lg:hover {
+	border: 0.5px solid #000;
+	background-color: #fafafa;
+	color: black;
+	font-weight: bold;
+	font-size: 1.15em;
+}
+
+.btn:focus, .btn-primary:focus, .btn-lg:focus {
+	border: 0.5px solid #000;
+	background-color: #fafafa;
+	color: black;
+	font-weight: bold;
+	font-size: 1.15em;
+}
+
+
+.btn-pencil{
+    border-style:none;
+    background:none;
+    width:auto;
+    height:auto;
+    padding:5px 5px;
+ }
+
+ .btn-pencil:hover {
+    background:none;
+ }
+
+.comm_delete {
+	cursor: pointer;
+	margin-left: 20px;
+	border-style: none;
+	background: none;
+	font-size:10px;
+	color: black;
+}
+
+.comm_delete:hover{
+	color: red;
+}
+
+    /* 유저페이지 프로필 DIV */
+    #profile {
+    width: 100%;
+    background-color: #fafafa;
+    text-align: center;
+    border: 0.5px solid #e8e8e8;
+}
+
+#profile_wrap {
+    width: 1000px;
+    margin: 0 auto 0 auto;
+    height: 350px;
+}
+
+    #profile_wrap .profilePicture {
+        float: left;
+        position: relative;
+        top: 37%;
+        margin-left: 8%;
+    }
+
+.profileComment {
+    position: relative;
+    top: 40%;
+}
+
+.profileComment_top {
+    float: left;
+    position: relative;
+    margin-left: 12%;
+}
+
+    .profileComment_top .profile_id {
+        font-size: 1.3em;
+        float: left;
+        margin-bottom: 15px;
+    }
+
+    .profileComment_top .profile_set {
+        float: right;
+        margin-left: 20px;
+    }
+
+.logout_btn {
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 4px;
+    margin-left: 20px;
+    margin-right: 10px;
+    padding: 5px 10px 5px 10px;
+    transition: all 200ms;
+}
+
+.logout_btn:hover {
+    border: 0.5px solid #000000;
+}
+
+.wrap_pro_list {
+    position: relative;
+    left: -25%;
+}
+
+.fl_ufl_formtag {
+    margin-left: 100%;
+}
+
+.list_of_fol li {
+    float: left;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.btn_follower, .btn_follow {
+    border-style: none;
+	background: none;
+	font-weight: bold;
+	color: black;
+	font-size: 1.2em;
+}
+
+.btn_follow:hover, .btn_follower:hover {
+	text-decoration-line: underline;
+}
+
+.btn_follow:focus, .btn_follower:focus {
+	text-decoration-line: underline;
+}
+
+.btn_follow {
+	margin-left: 330px;
+}
+
+.numberFollow, .numberFollower {
+    margin-right: 7%;
+}
+
+.profile_name {
+    font-weight: bold;
+    float: left;
+    margin-left: 12%;
+    font-size: 14px;
+    padding-left:10px;
+    padding-right:15px;
+    padding-top:4px;
+}
+.profileComment_top .other_profile_id {
+    font-size: 1.3em;
+    float: left;
+    margin-bottom: 15px;
+    margin-right: 25px;
+}
+
+.wrap_btn {
+    float: left;
+}
+
+#fl_btn, #ufl_btn {
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 0.5px solid #e8e8e8;
+    background-color: #fafafa;
+    border-radius: 4px;
+    padding: 5px 0 5px 0;
+    width: 100px;
+}
+
+    #fl_btn:hover, #ufl_btn:hover {
+        border: 0.5px solid #000000;
+    }
+
+#ufl_btn {
+    display: none;
+}
+
+.wrap_other_pro_list {
+    position: relative;
+    left: -30%;
+}
+/*프로필 아래 포스팅 글*/
+#userPostContainer {
+    width: 100%;
+    text-align: center;
+}
+
+#userPost {
+    width: 900px;
+    margin: 0 auto 0 auto;
+    overflow: hidden;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.mypost {
+    border-style: none;
+    background: none;
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    float: left;
+    cursor: pointer;
+}
+.mypost img {
+     width: 250px;
+     height: 250px;
+ }
+
+/* Search_Page */
+#div_wrap {
+    width: 100%;
+    background-color: #fafafa;
+}
+
+#div_wrap .sch_div {
+     width: 50%;
+     height: 1500px;
+     margin: 0 auto 0 auto;
+     overflow-y: auto;
+     display: block;
+     background-color: white;
+     padding-top: 7%;
+     border-left: 0.5px solid #e8e8e8;
+     border-right: 0.5px solid #e8e8e8;
+}
+
+.sch_usercont {
+    margin-bottom: 8px;
+    border-bottom: 0.5px solid #e8e8e8;
+    position: relative;
+}
+
+.text_wrap {
+    float: left;
+    margin-left: 2%;
+}
+
+.mem_table {
+    margin-bottom: 10px;
+}
+
+.srh_user_frm {
+    width: 350px;
+}
+
+.sch_user_id {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #000;
+    border-style: none;
+    background: none;
+    margin-left: 80px;
+}
+
+.sch_user_name {
+    font-size: 1.1em;
+    color: #999999;
+    margin-left: 86px;
+}
+
+.btn_wrap {
+    margin-left: 100px;
+}
+
+#ufl_btn, #fl_btn {
+    border-style: none;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
+    display: inline-block;
+    margin: 20px auto;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 5px 0;
+    width: 100px;
+    color: white;
+    font-weight: bold;
+    background-color: #3897f0;
+    cursor: pointer;
+}
+
+#fl_btn:hover, #ufl_btn:hover {
+    box-shadow: 0px 0px 0px 40px #163c60 inset;
+}
+
+#ufl_btn {
+    display: none;
+}
+
+/* 글쓰기 폼 */
+#write_div_wrap {
+    width: 100%;
+    height: 1000px;
+    background-color: #fafafa;
+}
+
+#form_wrap {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 50%;
+    top: 10%;
+    border: 0.5px solid #e8e8e8;
+    background-color: white;
+}
+
+.formtag {
+    position: relative;
+    top: 25%;
+    left: 10%;
+    font-size: 1.2em;
+}
+
+.inf_pic_wrap {
+    width: 200px;
+}
+
+.inf_pic {
+    margin-bottom: 20px;
+}
+
+.inf_content {
+    margin-bottom: -3%;
+}
+
+.add_btn, .del_btn {
+    cursor: pointer;
+    border-style: none;
+    background: none;
+    width: 80px;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+    .add_btn:hover, .del_btn:hover {
+        border: 0.5px solid #000000;
+    }
+
+#fileArea {
+    margin-bottom: 7px;
+}
+
+.upfile {
+    margin-left: 5px;
+}
+
+    .upfile::-webkit-file-upload-button {
+        background-color: #fafafa;
+        font-size: 1.1em;
+        font-weight: bold;
+        border-style: none;
+        border: 0.5px solid #e8e8e8;
+        border-radius: 4px;
+        padding: 4px 10px 4px 10px;
+        cursor: pointer;
+    }
+
+        .upfile::-webkit-file-upload-button:hover {
+            border: 0.5px solid #000000;
+        }
+
+.upfile_info {
+    margin-top: 5px;
+    margin-bottom: 5%;
+    font-size: 12px;
+    color: #808080;
+}
+
+.textarea {
+    margin-left: 10%;
+    border: 1px solid #e8e8e8;
+    color: #808080;
+}
+
+.btns {
+    margin-top: 5%;
+    background-color: #fafafa;
+    font-size: 16px;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 4px;
+    border: 0.5px solid #e8e8e8;
+    padding: 4px 10px 4px 10px;
+    cursor: pointer;
+}
+
+    .btns:hover {
+        border: 0.5px solid #000000;
+    }
+
+.btn_delete {
+    margin-top: 125px;
+    margin-left: 70px;
+}
+
+/* 유저 프로필 편집 페이지 */
+.user_update_formtag {
+    position: relative;
+    top: 5%;
+    left: 20%;
+    font-size: 1.2em;
+}
+
+#userEditform_wrap {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 83%;
+    top: 10%;
+    border: 0.5px solid #e8e8e8;
+    background-color: white;
+}
+
+.update_etc_check_btn, .update_pw_check_btn {
+    background-color: #fafafa;
+    font-size: 16px;
+    font-weight: bold;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.update_etc_check_btn:hover, .update_pw_check_btn:hover {
+    border: 0.5px solid #f00 ;
+}
+
+.update_etc_check_btn:focus, .update_pw_check_btn:focus {
+    border: 0.5px solid #f00 ;
+}
+
+.user_update_btns {
+    padding-left: 10%;
+}
+
+.modify_inf {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 3%;
+    margin-left: 15%;
+}
+
+.modify_inf2{
+    font-size: 1.1em;
+    font-weight: lighter;
+    margin-left: 11%;
+    margin-bottom: 5%;
+}
+
+.update_name {
+    margin-left: 10%;
+    width: 200px;
+    height: 30px;
+}
+
+.tel {
+    color: #908d8d;
+    font-size: 11px;
+    height: 30px;
+}
+
+.go_out {
+    margin-top: 2%;
+    background-color: #fafafa;
+    font-size: 16px;
+    font-weight: bold;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+    .go_out:hover {
+        border: 0.5px solid #000000;
+    }
+
+/* 회원탈퇴 페이지 */
+#goout_form_wrap {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 25%;
+    top: 10%;
+    border: 0.5px solid #e8e8e8;
+    background-color: white;
+}
+
+.goout_formtag {
+    position: relative;
+    top: 10%;
+    left: 20%;
+    font-size: 1.2em;
+}
+
+/*Modal Body 내용 추가*/
+.modal_btnlist_wrap {
+	width: 100%;
+	height: 35px;
+}
+
+.modal_btn_ul li {
+	float: left;
+}
+
+.fl_table_modal {
+	margin-bottom: 10px;
+}
+
+.modal_fl_frm {
+	width: 350px;
+}
+
+.fl_id_submit {
+	border-style: none;
+	background: none;
+	color: black;
+	font-weight: bold;
+	font-size: 1.1em;
+	margin-left: 27px;
+}
+
+.modal_frm_realname {
+	font-size: 1.1em;
+	color: #999999;
+	margin-left: 33px;
+}
+
+.fl_ufl_btn_wrap {
+	margin-left: 55px;
+}
+
+.modal_ufl_btn, .modal_fl_btn {
+	color: white;
+	border-style: none;
+	background: none;
+	font-weight: bold;
+	-webkit-transition: all 200ms;
+	-moz-transition: all 200ms;
+	-ms-transition: all 200ms;
+	-o-transition: all 200ms;
+	transition: all 200ms;
+	display: inline-block;
+	background-color: #3897f0;
+	border-radius: 4px;
+	padding: 5px 0;
+	width: 70px;
+	cursor: pointer;
+}
+
+.modal_ufl_btn:hover, .modal_fl_btn:hover {
+	box-shadow: 0px 0px 0px 40px #163c60 inset;
+}
+
+.modal_ufl_btn {
+	display: none;
+}

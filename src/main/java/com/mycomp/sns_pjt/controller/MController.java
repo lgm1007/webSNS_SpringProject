@@ -12,7 +12,7 @@ import com.mycomp.sns_pjt.command.Command;
 import com.mycomp.sns_pjt.command.LoginCheck;
 import com.mycomp.sns_pjt.command.MDeleteCommand;
 import com.mycomp.sns_pjt.command.MInsertCommand;
-import com.mycomp.sns_pjt.command.MSelectCommand;
+import com.mycomp.sns_pjt.command.MSearchCommand;
 
 @Controller
 public class MController {
@@ -41,7 +41,7 @@ public class MController {
 	public String select(HttpServletRequest request, Model model) {
 		
 		model.addAttribute("request", request);
-		command = new MSelectCommand();
+		command = new MSearchCommand();
 		command.execute(model);
 		
 		return "search_page";

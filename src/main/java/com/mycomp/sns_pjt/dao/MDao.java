@@ -45,7 +45,7 @@ public class MDao {
 				int tel2 = rs.getInt("tel2");
 				int tel3 = rs.getInt("tel3");
 				
-				MDto mDto = new MDto(id, name);
+				MDto mDto = new MDto(id, pw, name, tel1, tel2 ,tel3);
 				mDtos.add(mDto);
 			}
 		} catch (Exception e) {
