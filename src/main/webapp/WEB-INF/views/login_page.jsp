@@ -9,6 +9,7 @@
 <head>
 <meta charset="utf-8">
 <title>Welcome to SOL</title>
+<link href="/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
 <link href="/resources/style_login.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
@@ -16,14 +17,14 @@
         <ul class="ul_cont">
             <li>
                 <div class="background">
-                    <img src="img/background_page.png" style="max-width: 100%; height: 100%;"/>
+                    <img src="/resources/img/background_page.png" style="max-width: 100%; height: 100%;"/>
                 </div>
             </li>
             <li>
                 <div class="log_in_cont">
                     <div class="log_in_box">
                         <img class="logo" src="img/sol_logo_128pix.png" alt="logo" /><br />
-                        <form action="login_check.jsp" method="post" id="login_form">
+                        <form action="login" method="post" id="login_form">
                             <input type="text" name="id" placeholder="아이디" /><br />
                             <input type="password" name="pw" placeholder="비밀번호" /><br />
                             <input type="submit" class="login_btn" value="로그인" />

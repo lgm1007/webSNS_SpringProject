@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mycomp.sns_pjt.command.Command;
+import com.mycomp.sns_pjt.command.JoinCheck;
 import com.mycomp.sns_pjt.command.LoginCheck;
 import com.mycomp.sns_pjt.command.MDeleteCommand;
 import com.mycomp.sns_pjt.command.MInsertCommand;
@@ -33,7 +34,41 @@ public class MController {
 		LoginCheck loginCheck = new LoginCheck();
 		loginCheck.check(model, session);
 		
-		return "home_page";
+		if(session.getAttribute("id") != null) { 
+			return "home_page"; 
+		} else {
+			
+			model.addAttribute("warn", "아이디 또는 비밀번호가 틀렸습니다");
+			model.addAttribute("url", "login_page.jsp");
+			return "action/login_fail";
+			
+		}
+	}
+	
+	// 회원가입 화면
+	@RequestMapping("/join_page")
+	public String join_page() {
+		return "join_page";
+	}
+	
+	// 회원가입 기능
+	@RequestMapping(value = "/join", method=RequestMethod.POST)
+	public String join(HttpServletRequest request, Model model, HttpSession session) {
+		
+		JoinCheck joinCheck = new JoinCheck();
+		boolean bool = joinCheck.check(request);
+		
+		if(bool == false) {
+			return "action/join_fail";
+		} else {
+			
+			model.addAttribute("request", request);
+			command = new MInsertCommand();
+			command.execute(model);
+			
+			return "redirect:home_page";
+			
+		}
 	}
 	
 	// 유저 검색
@@ -48,23 +83,6 @@ public class MController {
 		
 	}
 	
-	// 회원가입 페이지
-	@RequestMapping("/signup_page")
-	public String signup_page(Model model) {
-		return "signup_page";
-	}
-	
-	// 회원가입 기능
-	@RequestMapping(value = "/signup", method=RequestMethod.POST)
-	public String insert(HttpServletRequest request, Model model) {
-		
-		model.addAttribute("request", request);
-		command = new MInsertCommand();
-		command.execute(model);
-		
-		return "redirect:로그인 후 보드페이지로";
-		
-	}
 	
 	// 현재 유저 프로필 페이지
 	@RequestMapping("/profile_page")

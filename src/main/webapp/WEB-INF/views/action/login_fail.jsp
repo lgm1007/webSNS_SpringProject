@@ -5,18 +5,15 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>search Page</title>
+<title>Login Fail</title>
 </head>
 <body>
-	
-	<p>search 페이지 입니다.</p>
-	<c:forEach items="${memberSearch}" var="mDtos">
-		<p>${mDtos.id}</p>
-		<p>${mDtos.pw}</p>
-		<p>${mDtos.tel1}</p>
-		<p>${mDtos.tel2}</p>
-		<p>${mDtos.tel3}</p>
-	</c:forEach>
-	
+<!-- If Login Fail, Popup Alert & goto Url -->
+	<script type="text/javascript" charset="utf-8">
+		var warning = '${warn}';
+		var Url = '${url}';
+		alert(warning);
+		document.location.href = Url;
+	</script>
 </body>
 </html>

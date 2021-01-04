@@ -112,9 +112,9 @@ public class MDao {
 			ptst.setString(1, id);
 			ptst.setString(2, pw);
 			ptst.setString(3, name);
-			ptst.setInt(3, tel1);
-			ptst.setInt(4, tel2);
-			ptst.setInt(5, tel3);
+			ptst.setInt(4, tel1);
+			ptst.setInt(5, tel2);
+			ptst.setInt(6, tel3);
 			int r = ptst.executeUpdate();
 			
 		} catch(Exception e) {
