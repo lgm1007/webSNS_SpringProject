@@ -34,7 +34,7 @@
             margin-left: 2%;
         }
 
-        input[type=submit], input[type=reset] {
+        input[type=button], input[type=reset] {
             margin-top: 5%;
             background-color: #fafafa;
             font-size: 16px;
@@ -46,10 +46,11 @@
             cursor: pointer;
         }
 
-       input[type=submit]:hover, input[type=reset]:hover {
+       input[type=button]:hover, input[type=reset]:hover {
            border: 0.5px solid #000000;
        }
 </style>
+<script type="text/javascript" src="/resources/js/memjs.js" charset="utf-8"></script>
 </head>
 <body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
@@ -95,7 +96,7 @@
 
     <div id="write_div_wrap">
         <div id="userEditform_wrap">
-            <form class="user_update_formtag" action="#" method="post" name="formtag">
+            <form class="user_update_formtag" action="update_member" method="post" name="formtag">
                 <!--이름과 폰번호는 비어있으면 원래의 값으로 Update, 비밀번호는 필수입력하기-->
                 <h4 class="modify_inf">회원정보 변경</h4>
                 <p class="modify_inf2">변경할 항목을 작성해주세요</p>
@@ -114,8 +115,8 @@
                 </select>
                  - <input type="tel" id="edit_tel2" class="tel" name="tel2" value="휴대폰번호 2"/> - <input type="tel" id="edit_tel3" class="tel" name="tel3" value="휴대폰번호 3"/>
                 <br />
-                <input type="submit" value="수정" /> <input type="reset" value="취소" /> <br/><br />
-                <a href="#" class="go_out">탈퇴하기</a>
+                <input type="button" onclick="infoUpdate()" value="수정" /> <input type="reset" value="취소" /> <br/><br />
+                <a href="withdrawal_check.jsp" class="go_out">탈퇴하기</a>
             </form>
         </div>
     </div>

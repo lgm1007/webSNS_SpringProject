@@ -1,5 +1,7 @@
 package com.mycomp.sns_pjt.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,7 @@ import com.mycomp.sns_pjt.command.LoginCheck;
 import com.mycomp.sns_pjt.command.MDeleteCommand;
 import com.mycomp.sns_pjt.command.MInsertCommand;
 import com.mycomp.sns_pjt.command.MSearchCommand;
+import com.mycomp.sns_pjt.command.MUpdateCommand;
 
 @Controller
 public class MController {
@@ -34,7 +37,7 @@ public class MController {
 		LoginCheck loginCheck = new LoginCheck();
 		loginCheck.check(model, session);
 		
-		if(session.getAttribute("id") != null) { 
+		if(session.getAttribute("sid") != null) { 
 			return "home_page"; 
 		} else {
 			
@@ -66,6 +69,9 @@ public class MController {
 			command = new MInsertCommand();
 			command.execute(model);
 			
+			session.setAttribute("sid", request.getParameter("id"));
+			session.setAttribute("sname", request.getParameter("name"));
+			
 			return "redirect:home_page";
 			
 		}
@@ -83,7 +89,6 @@ public class MController {
 		
 	}
 	
-	
 	// 현재 유저 프로필 페이지
 	@RequestMapping("/profile_page")
 	public String profile_page(Model model) {
@@ -96,6 +101,21 @@ public class MController {
 		return "setting_page";
 	}
 	
+	@RequestMapping(value = "/update_member", method=RequestMethod.POST)
+	public String update_member(HttpServletRequest request, Model model, HttpSession session) {
+		
+		model.addAttribute("request", request);
+		model.addAttribute("session", session);
+		command = new MUpdateCommand();
+		command.execute(model);
+		
+		Map<String, Object> map = model.asMap();
+		String updated_name = (String) map.get("update_name");
+		session.setAttribute("sname", updated_name);
+		
+		return "redirect:profile_page";
+		
+	}
 	
 	// 회원탈퇴 전 확인페이지
 	@RequestMapping("/withdrawal_check")

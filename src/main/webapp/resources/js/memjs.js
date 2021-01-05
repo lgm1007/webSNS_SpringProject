@@ -14,7 +14,7 @@ function infoConfirm() {
     }
 
     else if (document.reg_frm.pw.value != document.reg_frm.pw_chk.value) {
-        alert("비밀번호가 다릅니다.");
+        alert("비밀번호가 일치하지 않습니다.");
         reg_frm.pw.focus();
         return;
     }
@@ -29,4 +29,15 @@ function infoConfirm() {
     	document.reg_frm.submit();
     }
     
+}
+
+
+function infoUpdate() {
+	if (document.formtag.update_pw.value != document.formtag.update_pw_chk.value) {
+		alert("비밀번호가 일치하지 않습니다.");
+		formtag.update_pw.focus();
+		return;
+	} else {
+		document.formtag.submit();
+	}
 }

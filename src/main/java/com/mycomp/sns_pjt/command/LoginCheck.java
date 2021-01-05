@@ -29,8 +29,8 @@ public class LoginCheck {
 		// mDtos.size 값이 0 이하이면 아이디가 틀렸음, equals가 false이면 비밀번호가 틀렸음
 		if(mDtos.size() > 0) {
 			if(mDtos.get(0).getPw().equals(pw)) {
-				session.setAttribute("uid", id);
-				session.setAttribute("uname", mDtos.get(0).getName());
+				session.setAttribute("sid", id);
+				session.setAttribute("sname", mDtos.get(0).getName());
 			}
 		}
 		

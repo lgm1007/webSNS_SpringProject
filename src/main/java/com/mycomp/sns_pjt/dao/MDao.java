@@ -129,7 +129,7 @@ public class MDao {
 		}
 	}
 	
-	public void mDelete (String id) {
+	public void mDelete(String id) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
 		
@@ -147,6 +147,33 @@ public class MDao {
 				if(ptst != null) ptst.close();
 				if(conn != null) conn.close();
 			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	public void mUpdate(String user_id, String upw, String uname, int utel1, int utel2, int utel3) {
+		Connection conn = null;
+		PreparedStatement ptst = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String updateQuery = "Update member Set pw=?, name=?, tel1=?, tel2=?, tel3=? Where id='"+user_id+"'";
+			ptst = conn.prepareStatement(updateQuery);
+			ptst.setString(1, upw);
+			ptst.setString(2, uname);
+			ptst.setInt(3, utel1);
+			ptst.setInt(4, utel2);
+			ptst.setInt(5, utel3);
+			int r = ptst.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ptst != null) ptst.close();
+				if(conn != null) conn.close();
+			}catch(Exception e2) {
 				e2.printStackTrace();
 			}
 		}
