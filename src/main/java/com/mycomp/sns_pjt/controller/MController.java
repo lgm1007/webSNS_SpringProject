@@ -25,8 +25,15 @@ public class MController {
 	
 	// 로그인 화면
 	@RequestMapping("/login_page")
-	public String login_page() {
-		return "login_page";
+	public String login_page(Model model, HttpSession session) {
+		
+		if(session.getAttribute("sid") == null) {
+			return "login_page";
+		} else {
+			model.addAttribute("warn", "현재 로그인 중입니다");
+			model.addAttribute("url", "home_page");
+			return "action/session_exist";
+		}
 	}
 	
 	// 로그인 처리
@@ -42,7 +49,7 @@ public class MController {
 		} else {
 			
 			model.addAttribute("warn", "아이디 또는 비밀번호가 틀렸습니다");
-			model.addAttribute("url", "login_page.jsp");
+			model.addAttribute("url", "login_page");
 			return "action/login_fail";
 			
 		}
@@ -62,6 +69,8 @@ public class MController {
 		boolean bool = joinCheck.check(request);
 		
 		if(bool == false) {
+			model.addAttribute("warn", "같은 아이디가 존재합니다");
+			model.addAttribute("url", "join_page");
 			return "action/join_fail";
 		} else {
 			
@@ -72,7 +81,7 @@ public class MController {
 			session.setAttribute("sid", request.getParameter("id"));
 			session.setAttribute("sname", request.getParameter("name"));
 			
-			return "redirect:home_page";
+			return "home_page";
 			
 		}
 	}
@@ -113,7 +122,7 @@ public class MController {
 		String updated_name = (String) map.get("update_name");
 		session.setAttribute("sname", updated_name);
 		
-		return "redirect:profile_page";
+		return "profile_page";
 		
 	}
 	

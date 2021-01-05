@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>User Setting Page</title>
-<link href="/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
-<link href="/resources/style_main.css" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/style_main.css" type="text/css" rel="stylesheet" />
 <style>
         input[type=text] {
             color: #908d8d;
@@ -50,12 +50,12 @@
            border: 0.5px solid #000000;
        }
 </style>
-<script type="text/javascript" src="/resources/js/memjs.js" charset="utf-8"></script>
+<script type="text/javascript" src="/sns_pjt/resources/js/memjs.js" charset="utf-8"></script>
 </head>
 <body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-    <script src="/resources/js/bootstrap.js"></script>
-    <script src="/resources/Search.js" type="text/javascript"></script>
+    <script src="/sns_pjt/resources/js/bootstrap.js"></script>
+    <script src="/sns_pjt/resources/Search.js" type="text/javascript"></script>
     <!-- Btn EventFunction -->
     <script>
         function edit_password() {
@@ -81,14 +81,14 @@
             <ul class="headbar">
                 <li class="head_logo"><a href="main_page.jsp"><img src="img/sol_logo_40px.png" alt="logo" /></a></li>
                 <li class="head_icon">
-                    <a href="#" class="icon_like"><img src="img/like.png" alt="like" /></a>
-                    <a href="User_Page.html" class="icon_me"><img src="img/me.png" alt="me" /></a>
-                    <a href="±Û¾²±âÀÔ·Â.html" class="icon_pic"><img src="img/pic.png" alt="pic" /></a>
+                    <a href="#" class="icon_like"><img src="/sns_pjt/resources/img/like.png" alt="like" /></a>
+                    <a href="User_Page.html" class="icon_me"><img src="/sns_pjt/resources/img/me.png" alt="me" /></a>
+                    <a href="ê¸€ì“°ê¸°ìž…ë ¥.html" class="icon_pic"><img src="/sns_pjt/resources/img/pic.png" alt="pic" /></a>
                 </li>
             </ul>
             <div class="head_input">
                 <form action="Search_Page.html" name="hd_frm" method="get">
-                    <input type="search" id="keyword" placeholder="°Ë»ö" onkeypress="if (event.keyCode == 13) { goSearch();}" style="text-align :center; font-size:13px; color:#cacaca; border:0.7px solid #cacaca;" />
+                    <input type="search" id="keyword" placeholder="ê²€ìƒ‰" onkeypress="if (event.keyCode == 13) { goSearch();}" style="text-align :center; font-size:13px; color:#cacaca; border:0.7px solid #cacaca;" />
                 </form>
             </div>
         </div>
@@ -97,15 +97,15 @@
     <div id="write_div_wrap">
         <div id="userEditform_wrap">
             <form class="user_update_formtag" action="update_member" method="post" name="formtag">
-                <!--ÀÌ¸§°ú Æù¹øÈ£´Â ºñ¾îÀÖÀ¸¸é ¿ø·¡ÀÇ °ªÀ¸·Î Update, ºñ¹Ð¹øÈ£´Â ÇÊ¼öÀÔ·ÂÇÏ±â-->
-                <h4 class="modify_inf">È¸¿øÁ¤º¸ º¯°æ</h4>
-                <p class="modify_inf2">º¯°æÇÒ Ç×¸ñÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä</p>
-                <div class="user_update_btns"><button type="button" class="update_etc_check_btn" onclick="edit_etc()">È¸¿øÁ¤º¸ º¯°æ</button>
-                <button type="button" class="update_pw_check_btn" onclick="edit_password()">ºñ¹Ð¹øÈ£ º¯°æ</button></div> <br/>
-                ÀÌ¸§: <input type="text" id="edit_name" class="update_name" name="update_name" value="±âÁ¸ ÀÌ¸§" /><br /><br />
-                ºñ¹Ð¹øÈ£: <input type="password" id="edit_pw" name="update_pw" readonly="true" value="±âÁ¸ ºñ¹Ð¹øÈ£" /><br/><br/>
-                ºñ¹Ð¹øÈ£È®ÀÎ: <input type="password" id="edit_pw2" name="update_pw_chk" readonly="true" value="±âÁ¸ ºñ¹Ð¹øÈ£" /><br /><br />
-                ÈÞ´ëÆù ¹øÈ£:
+                <!--ì´ë¦„ê³¼ í°ë²ˆí˜¸ëŠ” ë¹„ì–´ìžˆìœ¼ë©´ ì›ëž˜ì˜ ê°’ìœ¼ë¡œ Update, ë¹„ë°€ë²ˆí˜¸ëŠ” í•„ìˆ˜ìž…ë ¥í•˜ê¸°-->
+                <h4 class="modify_inf">íšŒì›ì •ë³´ ë³€ê²½</h4>
+                <p class="modify_inf2">ë³€ê²½í•  í•­ëª©ì„ ìž‘ì„±í•´ì£¼ì„¸ìš”</p>
+                <div class="user_update_btns"><button type="button" class="update_etc_check_btn" onclick="edit_etc()">íšŒì›ì •ë³´ ë³€ê²½</button>
+                <button type="button" class="update_pw_check_btn" onclick="edit_password()">ë¹„ë°€ë²ˆí˜¸ ë³€ê²½</button></div> <br/>
+                ì´ë¦„: <input type="text" id="edit_name" class="update_name" name="update_name" value="ê¸°ì¡´ ì´ë¦„" /><br /><br />
+                ë¹„ë°€ë²ˆí˜¸: <input type="password" id="edit_pw" name="update_pw" readonly="true" value="ê¸°ì¡´ ë¹„ë°€ë²ˆí˜¸" /><br/><br/>
+                ë¹„ë°€ë²ˆí˜¸í™•ì¸: <input type="password" id="edit_pw2" name="update_pw_chk" readonly="true" value="ê¸°ì¡´ ë¹„ë°€ë²ˆí˜¸" /><br /><br />
+                íœ´ëŒ€í° ë²ˆí˜¸:
                 <select name="tel1" id="edit_tel1" class="tel">
                     <option value="010" selected>010</option>
                     <option value="011">011</option>
@@ -113,10 +113,10 @@
                     <option value="017">017</option>
                     <option value="019">019</option>
                 </select>
-                 - <input type="tel" id="edit_tel2" class="tel" name="tel2" value="ÈÞ´ëÆù¹øÈ£ 2"/> - <input type="tel" id="edit_tel3" class="tel" name="tel3" value="ÈÞ´ëÆù¹øÈ£ 3"/>
+                 - <input type="tel" id="edit_tel2" class="tel" name="tel2" value="íœ´ëŒ€í°ë²ˆí˜¸ 2"/> - <input type="tel" id="edit_tel3" class="tel" name="tel3" value="íœ´ëŒ€í°ë²ˆí˜¸ 3"/>
                 <br />
-                <input type="button" onclick="infoUpdate()" value="¼öÁ¤" /> <input type="reset" value="Ãë¼Ò" /> <br/><br />
-                <a href="withdrawal_check.jsp" class="go_out">Å»ÅðÇÏ±â</a>
+                <input type="button" onclick="infoUpdate()" value="ìˆ˜ì •" /> <input type="reset" value="ì·¨ì†Œ" /> <br/><br />
+                <a href="withdrawal_check" class="go_out">íƒˆí‡´í•˜ê¸°</a>
             </form>
         </div>
     </div>

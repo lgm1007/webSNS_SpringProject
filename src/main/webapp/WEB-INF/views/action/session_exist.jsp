@@ -4,11 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Login Fail</title>
+<meta charset="UTF-8">
+<title>Session exist</title>
 </head>
 <body>
-<!-- If Login Fail, Popup Alert & goto Url -->
 	<script type="text/javascript" charset="utf-8">
 		var warning = '${warn}';
 		var Url = '${url}';

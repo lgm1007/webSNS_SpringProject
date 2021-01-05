@@ -37,7 +37,9 @@ function infoUpdate() {
 		alert("비밀번호가 일치하지 않습니다.");
 		formtag.update_pw.focus();
 		return;
-	} else {
+	} 
+	
+	else {
 		document.formtag.submit();
 	}
 }

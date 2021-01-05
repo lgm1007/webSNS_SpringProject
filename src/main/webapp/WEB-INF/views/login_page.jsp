@@ -1,36 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<% if(session.getAttribute("id") != null) { %>
-	<jsp:forward page="home_page.jsp"></jsp:forward>
-<% } %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Welcome to SOL</title>
-<link href="/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
-<link href="/resources/style_login.css" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/style_login.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+    <script src="/sns_pjt/resources/js/bootstrap.js"></script>
+    
 	<div id="container">
         <ul class="ul_cont">
             <li>
                 <div class="background">
-                    <img src="/resources/img/background_page.png" style="max-width: 100%; height: 100%;"/>
+                    <img src="/sns_pjt/resources/img/background_page.png" style="max-width: 100%; height: 100%;" alt="background"/>
                 </div>
             </li>
             <li>
                 <div class="log_in_cont">
                     <div class="log_in_box">
-                        <img class="logo" src="img/sol_logo_128pix.png" alt="logo" /><br />
+                        <img class="logo" src="/sns_pjt/resources/img/sol_logo_128pix.png" alt="logo" /><br />
                         <form action="login" method="post" id="login_form">
-                            <input type="text" name="id" placeholder="æ∆¿Ãµ" /><br />
-                            <input type="password" name="pw" placeholder="∫Òπ–π¯»£" /><br />
-                            <input type="submit" class="login_btn" value="∑Œ±◊¿Œ" />
+                            <input type="text" name="id" placeholder="ÏïÑÏù¥Îîî" /><br />
+                            <input type="password" name="pw" placeholder="ÎπÑÎ∞ÄÎ≤àÌò∏" /><br />
+                            <input type="submit" class="login_btn" value="Î°úÍ∑∏Ïù∏" />
                         </form>
                         <div class="btn_wrap">
-                            <a href="join_page.jsp" class="sign_btn">»∏ø¯∞°¿‘</a>
+                            <a href="join_page" class="sign_btn">ÌöåÏõêÍ∞ÄÏûÖ</a>
                         </div>
                     </div>
                 </div>

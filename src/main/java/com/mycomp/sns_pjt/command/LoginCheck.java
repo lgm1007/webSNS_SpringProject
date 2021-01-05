@@ -26,18 +26,18 @@ public class LoginCheck {
 		MDao mDao = new MDao();
 		ArrayList<MDto> mDtos = mDao.mSelect(id);
 		
-		// mDtos.size 값이 0 이하이면 아이디가 틀렸음, equals가 false이면 비밀번호가 틀렸음
+		// mDtos.size 값이 0 이하이면 존재하지 않는 아이디, equals가 false이면 비밀번호가 틀렸음
 		if(mDtos.size() > 0) {
 			if(mDtos.get(0).getPw().equals(pw)) {
 				session.setAttribute("sid", id);
 				session.setAttribute("sname", mDtos.get(0).getName());
+				
+				BDao bDao = new BDao();
+				ArrayList<BDto> bDtos = bDao.bSelect(id);
+				
+				model.addAttribute("boardList", bDtos);
 			}
 		}
-		
-		BDao bDao = new BDao();
-		ArrayList<BDto> bDtos = bDao.bSelect(id);
-		
-		model.addAttribute("boardList", bDtos);
 		
 	}
 	

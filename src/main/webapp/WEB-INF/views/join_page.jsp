@@ -1,38 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<% if(session.getAttribute("id") != null) { %>
-	<jsp:forward page="home_page.jsp"></jsp:forward>
-<% } %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Join SOL!</title>
-<link href="/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
-<link href="/resources/style_login.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="/resources/js/memjs.js" charset="utf-8"></script>
+<link href="/sns_pjt/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/style_login.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="/sns_pjt/resources/js/memjs.js" charset="utf-8"></script>
 </head>
 <body>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-    <script src="/resources/js/bootstrap.js"></script>
+    <script src="/sns_pjt/resources/js/bootstrap.js"></script>
     <div id="container">
         <ul class="ul_cont">
             <li>
                 <div class="background">
-                    <img src="/resources/img/background_page.png" style="width:659px; height:750px " />
+                    <img src="/sns_pjt/resources/img/background_page.png" style="width:659px; height:750px " />
                 </div>
             </li>
             <li>
                 <div class="create_cont">
                     <div class="create_box">
-                        <img class="logo" src="img/sol_logo_128pix.png" alt="logo" /><br />
+                        <img class="logo" src="/sns_pjt/resources/sol_logo_128pix.png" alt="logo" /><br />
                         
                         <form action="join" method="post" name="reg_frm" >
-                        	<input type="text" name="id" placeholder="¾ÆÀÌµð" /><br />
-                        	<input type="password" name="pw" placeholder="ºñ¹Ð¹øÈ£" /><br />
-                        	<input type="password" name="pw_chk" placeholder="ºñ¹Ð¹øÈ£È®ÀÎ" /><br />
-                        	<input type="text" name="name" placeholder="ÀÌ¸§" /><br />
+                        	<input type="text" name="id" placeholder="ì•„ì´ë””" /><br />
+                        	<input type="password" name="pw" placeholder="ë¹„ë°€ë²ˆí˜¸" /><br />
+                        	<input type="password" name="pw_chk" placeholder="ë¹„ë°€ë²ˆí˜¸í™•ì¸" /><br />
+                        	<input type="text" name="name" placeholder="ì´ë¦„" /><br />
                         	<select name="tel1">
                             	<option value="010" selected>010</option>
                             	<option value="011">011</option>
@@ -40,8 +38,8 @@
                             	<option value="017">017</option>
                             	<option value="019">019</option>
                          	</select> 
-                            - <input type="tel" name="tel2" placeholder="ÀüÈ­¹øÈ£2" /> - <input type="tel" name="tel3" placeholder="ÀüÈ­¹øÈ£3" /><br/>
-                        	<input type="button" onclick="infoConfirm()" class="join_btn" value="°¡ÀÔÇÏ±â" />
+                            - <input type="tel" name="tel2" placeholder="ì „í™”ë²ˆí˜¸2" /> - <input type="tel" name="tel3" placeholder="ì „í™”ë²ˆí˜¸3" /><br/>
+                        	<input type="button" onclick="infoConfirm()" class="join_btn" value="ê°€ìž…í•˜ê¸°" />
                         </form>
                     </div>
                 </div>
