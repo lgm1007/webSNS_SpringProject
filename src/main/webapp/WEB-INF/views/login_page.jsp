@@ -7,12 +7,9 @@
 <head>
 <meta charset="utf-8">
 <title>Welcome to SOL</title>
-<link href="/sns_pjt/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
 <link href="/sns_pjt/resources/style_login.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-    <script src="/sns_pjt/resources/js/bootstrap.js"></script>
     
 	<div id="container">
         <ul class="ul_cont">

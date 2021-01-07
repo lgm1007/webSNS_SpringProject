@@ -7,24 +7,22 @@
 <head>
 <meta charset="utf-8">
 <title>Join SOL!</title>
-<link href="/sns_pjt/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
 <link href="/sns_pjt/resources/style_login.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="/sns_pjt/resources/js/memjs.js" charset="utf-8"></script>
 </head>
 <body>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-    <script src="/sns_pjt/resources/js/bootstrap.js"></script>
+
     <div id="container">
         <ul class="ul_cont">
             <li>
                 <div class="background">
-                    <img src="/sns_pjt/resources/img/background_page.png" style="width:659px; height:750px " />
+                    <img src="/sns_pjt/resources/img/background_page.png" style="width:100%; height:100% " />
                 </div>
             </li>
             <li>
                 <div class="create_cont">
                     <div class="create_box">
-                        <img class="logo" src="/sns_pjt/resources/sol_logo_128pix.png" alt="logo" /><br />
+                        <img class="logo" src="/sns_pjt/resources/img/sol_logo_128pix.png" alt="logo" /><br />
                         
                         <form action="join" method="post" name="reg_frm" >
                         	<input type="text" name="id" placeholder="아이디" /><br />
