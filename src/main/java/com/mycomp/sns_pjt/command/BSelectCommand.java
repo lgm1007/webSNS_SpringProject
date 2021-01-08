@@ -5,7 +5,9 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import com.mycomp.sns_pjt.dao.BDao;
+import com.mycomp.sns_pjt.dao.IDao;
 import com.mycomp.sns_pjt.dto.BDto;
+import com.mycomp.sns_pjt.dto.IDto;
 
 public class BSelectCommand implements Command {
 

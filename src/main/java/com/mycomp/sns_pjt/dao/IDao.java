@@ -10,44 +10,44 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.mycomp.sns_pjt.dto.BDto;
-import com.mycomp.sns_pjt.dto.MDto;
+import com.mycomp.sns_pjt.dto.IDto;
 
-public class BDao {
+public class IDao {
 
 DataSource dataSource;
-	
-	public BDao() {
+
+	public IDao() {
 		try {
+			
 			Context context = new InitialContext();
 			dataSource = (DataSource)context.lookup("java:comp/env/jdbc/mysql");
 			
-		} catch (NamingException e) {
+		}catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public ArrayList<BDto> bSelect(String id) {
-		ArrayList<BDto> bDtos = new ArrayList<BDto>();
+	public ArrayList<IDto> iSelect(int bd_key) {
+		ArrayList<IDto> iDtos = new ArrayList<IDto>();
 		Connection conn = null;
 		PreparedStatement ptst = null;
 		ResultSet rs = null;
 		
 		try {
 			conn = dataSource.getConnection();
-			String selQuery = "SELECT * FROM board WHERE mem_id ='"+id+"'";
+			String selQuery = "SELECT * FROM images WHERE bd_key='"+bd_key+"'";
 			ptst = conn.prepareStatement(selQuery);
 			rs = ptst.executeQuery();
 			
 			while(rs.next()) {
-				int bd_key = rs.getInt("bd_key");
-				String mem_id = rs.getString("mem_id");
-				String bd_cont = rs.getString("bd_cont");
+				int bkey = rs.getInt("bd_key");
+				String fileName = rs.getString("fileName");
 				
-				BDto bDto = new BDto(bd_key, mem_id, bd_cont);
-				bDtos.add(bDto);
+				IDto iDto = new IDto(bkey, fileName);
+				iDtos.add(iDto);
 			}
-		} catch(Exception e) {
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -58,27 +58,28 @@ DataSource dataSource;
 				e2.printStackTrace();
 			}
 		}
-		return bDtos;
+		return iDtos;
 	}
 	
-	public void bInsert(String memid, String content) {
+	public void iInsert(int bdkey, String filename) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
 		
 		try {
 			conn = dataSource.getConnection();
-			String insertQuery = "INSERT INTO board(mem_id, bd_cont) VALUES (?, ?)";
+			String insertQuery = "INSERT INTO images VALUES (?, ?)";
 			ptst = conn.prepareStatement(insertQuery);
-			ptst.setString(1, memid);
-			ptst.setString(2, content);
+			ptst.setInt(1, bdkey);
+			ptst.setString(2, filename);
 			int r = ptst.executeUpdate();
-		} catch (Exception e) {
+			
+		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				if(ptst != null) ptst.close();
 				if(conn != null) conn.close();
-			} catch (Exception e2) {
+			} catch(Exception e2) {
 				e2.printStackTrace();
 			}
 		}

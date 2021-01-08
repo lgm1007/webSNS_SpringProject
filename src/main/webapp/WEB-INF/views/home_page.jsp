@@ -1,3 +1,7 @@
+<%@page import="com.mycomp.sns_pjt.dto.BDto"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.mycomp.sns_pjt.dto.IDto"%>
+<%@page import="com.mycomp.sns_pjt.dao.IDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -26,10 +30,21 @@
     <p><%= sid %></p>
     <p><%= sname %></p>
     </hr>
+    <a href="post_page" >글작성 페이지로</a>
+    </hr>
     <c:forEach items="${boardList}" var="bDtos">
-    	<p>${bDtos.bd_key}</p>
     	<p>${bDtos.mem_id}</p>
     	<p>${bDtos.bd_cont}</p>
+    	<%
+    		IDao iDao = new IDao();
+    		BDto bDto = (BDto)pageContext.findAttribute("bDtos");
+    		ArrayList<IDto> iDtos = iDao.iSelect(bDto.getBd_key());
+    		for (IDto iDto : iDtos) {
+    			pageContext.setAttribute("filename", iDto.getFileName());
+    	%>
+    	<img src="<spring:url value='/img/${filename}'/>" />
+    	<% } %>
+    	
     </c:forEach>
     
 </body>

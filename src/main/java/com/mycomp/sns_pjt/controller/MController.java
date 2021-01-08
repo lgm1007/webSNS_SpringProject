@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.mycomp.sns_pjt.command.BSelectCommand;
 import com.mycomp.sns_pjt.command.Command;
 import com.mycomp.sns_pjt.command.JoinCheck;
 import com.mycomp.sns_pjt.command.LoginCheck;
@@ -80,6 +81,10 @@ public class MController {
 			
 			session.setAttribute("sid", request.getParameter("id"));
 			session.setAttribute("sname", request.getParameter("name"));
+			
+			model.addAttribute("session", session);
+			command = new BSelectCommand();
+			command.execute(model);
 			
 			return "home_page";
 			
