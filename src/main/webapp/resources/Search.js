@@ -1,4 +1,4 @@
-// JavaScript source code 검색하기
+// JavaScript source code to Search
 
 function goSearch() {
   document.hd_frm.submit();
