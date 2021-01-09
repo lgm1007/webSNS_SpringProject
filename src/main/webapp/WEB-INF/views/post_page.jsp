@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Posting in SOL</title>
-<link href="/sns_pjt/resources/style_main.css" text="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/style_main.css" type="text/css" rel="stylesheet" />
 <style type="text/css">
 	input[type=submit], input[type=reset] {
             margin-top: 5%;
@@ -24,12 +25,11 @@
             border:0.5px solid #000000;
         }
 </style>
-<link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-	<script type="text/javascript" src="Search.js" charset="utf-8"></script>
 	<script src="/sns_pjt/resources/js/bootstrap.js"></script>
+	<script type="text/javascript" src="Search.js" charset="utf-8"></script>
 
   <!-- Header -->
 	<div id="header">
@@ -50,7 +50,7 @@
         </div>
     </div>
     <!-- Form wrap -->
-    <div id="div_wrap">
+    <div id="write_div_wrap">
         <div id="form_wrap">
             <form class="formtag" action="post_writing" method="post" name="formtag" enctype="multipart/form-data">
                 <table>
