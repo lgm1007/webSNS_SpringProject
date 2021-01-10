@@ -72,6 +72,31 @@ DataSource dataSource;
 			ptst.setString(1, memid);
 			ptst.setString(2, content);
 			int r = ptst.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ptst != null) ptst.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	public void bDelete (String memid, int bdkey) {
+		Connection conn = null;
+		PreparedStatement ptst = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String deleteQurey = "DELETE FROM board WHERE mem_id = ? AND bd_key = ?";
+			ptst = conn.prepareStatement(deleteQurey);
+			ptst.setString(1, memid);
+			ptst.setInt(2, bdkey);
+			int r = ptst.executeUpdate();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

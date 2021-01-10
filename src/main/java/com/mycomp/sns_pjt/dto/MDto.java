@@ -2,12 +2,12 @@ package com.mycomp.sns_pjt.dto;
 
 public class MDto {
 
-	String id;
-	String pw;
-	String name;
-	int tel1;
-	int tel2;
-	int tel3;
+	private String id;
+	private String pw;
+	private String name;
+	private int tel1;
+	private int tel2;
+	private int tel3;
 	
 	public MDto(String id, String pw, String name, int tel1, int tel2, int tel3) {
 		this.id = id;

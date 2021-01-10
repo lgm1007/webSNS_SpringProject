@@ -2,9 +2,9 @@ package com.mycomp.sns_pjt.dto;
 
 public class BDto {
 
-	int bd_key;
-	String mem_id;
-	String bd_cont;
+	private int bd_key;
+	private String mem_id;
+	private String bd_cont;
 	
 	public BDto(int bd_key, String mem_id, String bd_cont) {
 		this.bd_key = bd_key;
