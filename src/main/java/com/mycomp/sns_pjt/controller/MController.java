@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mycomp.sns_pjt.command.BSelectCommand;
 import com.mycomp.sns_pjt.command.Command;
-import com.mycomp.sns_pjt.command.JoinCheck;
-import com.mycomp.sns_pjt.command.LoginCheck;
+import com.mycomp.sns_pjt.command.MCheckClass;
 import com.mycomp.sns_pjt.command.MDeleteCommand;
 import com.mycomp.sns_pjt.command.MInsertCommand;
 import com.mycomp.sns_pjt.command.MSearchCommand;
 import com.mycomp.sns_pjt.command.MUpdateCommand;
-import com.mycomp.sns_pjt.command.WithdrawalCheck;
 
 @Controller
 public class MController {
@@ -43,8 +41,8 @@ public class MController {
 	public String login(HttpServletRequest request, Model model, HttpSession session) {
 		
 		model.addAttribute("request", request);
-		LoginCheck loginCheck = new LoginCheck();
-		loginCheck.check(model, session);
+		MCheckClass Checkin = new MCheckClass();
+		Checkin.loginCheck(model, session);
 		
 		if(session.getAttribute("sid") != null) { 
 			return "home_page"; 
@@ -67,8 +65,8 @@ public class MController {
 	@RequestMapping(value = "/join", method=RequestMethod.POST)
 	public String join(HttpServletRequest request, Model model, HttpSession session) {
 		
-		JoinCheck joinCheck = new JoinCheck();
-		boolean bool = joinCheck.check(request);
+		MCheckClass Checkin = new MCheckClass();
+		boolean bool = Checkin.joinCheck(request);
 		
 		if(bool == false) {
 			model.addAttribute("warn", "같은 아이디가 존재합니다");
@@ -143,8 +141,8 @@ public class MController {
 	public String delete(HttpServletRequest request, Model model, HttpSession session) {
 		
 		model.addAttribute("request", request);
-		WithdrawalCheck withdrawalCheck = new WithdrawalCheck();
-		boolean b = withdrawalCheck.withCheck(model, session);
+		MCheckClass Checkin = new MCheckClass();
+		boolean b = Checkin.withdrawalCheck(model, session);
 		
 		if(b) {
 			model.addAttribute("session", session);
