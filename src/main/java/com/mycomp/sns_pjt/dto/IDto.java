@@ -1,8 +1,8 @@
 package com.mycomp.sns_pjt.dto;
 
 public class IDto {
-	int bd_key;
-	String fileName;
+	private int bd_key;
+	private String fileName;
 	
 	public IDto(int bd_key, String fileName) {
 		this.bd_key = bd_key;
