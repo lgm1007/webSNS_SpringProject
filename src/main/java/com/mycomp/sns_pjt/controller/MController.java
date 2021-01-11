@@ -18,6 +18,7 @@ import com.mycomp.sns_pjt.command.MDeleteCommand;
 import com.mycomp.sns_pjt.command.MInsertCommand;
 import com.mycomp.sns_pjt.command.MSearchCommand;
 import com.mycomp.sns_pjt.command.MUpdateCommand;
+import com.mycomp.sns_pjt.command.WithdrawalCheck;
 
 @Controller
 public class MController {
@@ -138,14 +139,26 @@ public class MController {
 	}
 	
 	// 회원탈퇴 기능
-	@RequestMapping("/withdrawal")
-	public String delete(HttpServletRequest request, Model model) {
+	@RequestMapping(value = "/withdrawal", method=RequestMethod.POST)
+	public String delete(HttpServletRequest request, Model model, HttpSession session) {
 		
 		model.addAttribute("request", request);
-		command = new MDeleteCommand();
-		command.execute(model);
+		WithdrawalCheck withdrawalCheck = new WithdrawalCheck();
+		boolean b = withdrawalCheck.withCheck(model, session);
 		
-		return "redirect:로그인 페이지로";
+		if(b) {
+			model.addAttribute("session", session);
+			command = new MDeleteCommand();
+			command.execute(model);
+			
+			session.invalidate();
+			return "login_page";
+		}
+		else {
+			model.addAttribute("mes", "비밀번호가 다릅니다");
+			model.addAttribute("goback", "withdrawal_check");
+			return "action/withdrawal_fail";
+		}
 		
 	}
 	

@@ -3,6 +3,7 @@ package com.mycomp.sns_pjt.command;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
@@ -14,9 +15,9 @@ public class MDeleteCommand implements Command {
 	public void execute(Model model) {
 		
 		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		HttpSession session = (HttpSession) map.get("session");
 		
-		String id = request.getParameter("id");
+		String id = (String) session.getAttribute("sid");
 		
 		MDao mDao = new MDao();
 		mDao.mDelete(id);

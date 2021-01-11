@@ -6,12 +6,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Posting in SOL</title>
+<title>Withdrawal check</title>
 <link href="/sns_pjt/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
 <link href="/sns_pjt/resources/style_main.css" type="text/css" rel="stylesheet" />
 <style type="text/css">
-	input[type=submit], input[type=reset] {
-            margin-top: 5%;
+	    input[type=text] {
+            color: #908d8d;
+            font-size: 11px;
+        }
+
+        input[type=password] {
+            color: #908d8d;
+            font-size: 11px;
+            width: 300px;
+            height: 30px;
+            text-align: center;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type=submit], input[type=reset] {
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
             background-color: #fafafa;
             font-size: 16px;
             font-weight: bold;
@@ -21,8 +39,9 @@
             padding: 4px 10px 4px 10px;
             cursor: pointer;
         }
-        input[type=submit]:hover, input[type=reset]:hover {
-            border:0.5px solid #000000;
+        
+        input[type=submit]:hover, input[type=reset]:hover, .go_out:hover {
+        	border: 0.5px solid #000000;
         }
 </style>
 </head>
@@ -30,8 +49,8 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
 	<script src="/sns_pjt/resources/js/bootstrap.js"></script>
 	<script type="text/javascript" src="/sns_pjt/resources/Search.js" charset="utf-8"></script>
-
-  <!-- Header -->
+	
+	<!-- Header -->
 	<div id="header">
         <div class="headbar_div">
             <ul class="headbar">
@@ -49,27 +68,17 @@
             </div>
         </div>
     </div>
+    
     <!-- Form wrap -->
     <div id="write_div_wrap">
-        <div id="form_wrap">
-            <form class="formtag" action="post_writing" method="post" name="formtag" enctype="multipart/form-data">
-                <table>
-                    <tr>
-                        <td class="inf_pic_wrap" ><p class="inf_pic">사진</p></td>
-                    </tr>
-                </table>
-                <div id="fileArea">
-                    <input type="file" multiple="multiple" class="upfile" name="upladimg" accept="image/jpeg, image/png, image/gif" />
-                </div>
-                <p class="upfile_info">< 5MB이상 크기의 사진은 올릴 수 없습니다. ></p>
-                <p class="inf_content">내용</p>
-                <textarea cols="50" rows="4" class="textarea" placeholder="최대 200자까지 입력할 수 있습니다" name="content"></textarea>
-                <br />
-                <br />
-                <input type="submit" value="글쓰기" /> <input type="reset" value="취소" />
+        <div id="goout_form_wrap">
+            <form class="goout_formtag" action="withdrawal" method="post" name="formtag">
+                <h4><b>회원탈퇴를 위해 비밀번호를 확인합니다.</b></h4>
+                <input type="password" placeholder="비밀번호를 입력하세요" name="re_pw" /><br/>
+                <input type="password" placeholder="비밀번호를 재입력하세요" name="re_pw_chk" /><br/>
+                <input type="submit" value="입력" /> <input type="reset" value="취소" /> 
             </form>
         </div>
     </div>
-
 </body>
 </html>
