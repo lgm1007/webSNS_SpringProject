@@ -1,6 +1,9 @@
-<%@page import="com.mycomp.sns_pjt.dto.BDto"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="com.mycomp.sns_pjt.dto.FDto"%>
+<%@page import="com.mycomp.sns_pjt.dto.BDto"%>
 <%@page import="com.mycomp.sns_pjt.dto.IDto"%>
+<%@page import="com.mycomp.sns_pjt.dao.FDao"%>
+<%@page import="com.mycomp.sns_pjt.dao.BDao"%>
 <%@page import="com.mycomp.sns_pjt.dao.IDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -23,6 +26,11 @@
     <% 
     	String sid = (String)session.getAttribute("sid");
     	String sname = (String)session.getAttribute("sname");
+    	IDao iDao = new IDao();
+    	FDao fDao = new FDao();
+    	
+    	ArrayList<FDto> followDtos = fDao.selectFollow(sid);
+    	ArrayList<FDto> followerDtos = fDao.selectFollower(sid);
     %>
     <!-- Modal -->
     <div id="all_tag_wrap">
@@ -47,49 +55,51 @@
 							</ul>
 						</div>
 						<div id="modal_follower_lists">
-							<!--팔로워(나를 팔로우한 사람) 1명 값-->
+							<!--팔로워(나를 팔로우한 사람) 1명분-->
 							<table class="fl_table_modal">
-								<c:forEach items="${followerList}" var="followerDtos">
-								<!-- 팔로우/언팔로우버튼 ajax Script 1 -->
+							<%
+								for(FDto followerDto : followerDtos) {
+							%>
+								<!--팔로워리스트 팔로우/언팔로우버튼 동작 비동기 Script-->
 								<script type="text/javascript" charset="utf-8">
                             	var Followrequest = new XMLHttpRequest();
                             	var Unfollowrequest = new XMLHttpRequest();
                             	
-                            	function insertFollow'${followerDtos.follower}'() {
-                        			Followrequest.open("Post","./FollowRegisterServlet?follow="+ encodeURIComponent(document.getElementById("followID"'${followerDtos.follower}').value) +
-                        								 "&follower="+ encodeURIComponent(document.getElementById("followerID"'${followerDtos.follower}').value), true);
+                            	function insertFollow<%=followerDto.getFollower()%>() {
+                        			Followrequest.open("Post","./FollowRegisterServlet?follow="+ encodeURIComponent(document.getElementById("followID<%=followerDto.getFollower()%>").value) +
+                        								 "&follower="+ encodeURIComponent(document.getElementById("followerID<%=followerDto.getFollower()%>").value), true);
                         			
-                        			Followrequest.onreadystatechange = FollowProcess'${followerDtos.follower}';
+                        			Followrequest.onreadystatechange = FollowProcess<%=followerDto.getFollower()%>;
                         			Followrequest.send(null);
                         		}
-                            	function FollowProcess'${followerDtos.follower}'() {
+                            	function FollowProcess<%=followerDto.getFollower()%>() {
                             		if(Followrequest.readyState == 4 && Followrequest.status == 200) {
                         				var getWrite = Followrequest.responseText;
                         				if(getWrite == 0) {
                         					alert("팔로우를 실패하였습니다! (DB에러)");
                         				} 
                         				else {
-                        					document.getElementById("fl_btn"'${followerDtos.follower}').style.display = "none";
-                        	  				document.getElementById("ufl_btn"'${followerDtos.follower}').style.display = "block";
+                        					document.getElementById("fl_btn<%=followerDto.getFollower()%>").style.display = "none";
+                        	  				document.getElementById("ufl_btn<%=followerDto.getFollower()%>").style.display = "block";
                         				}
                         			}
                             	}
                             	
-                            	function doUnFollow'${followerDtos.follower}'() {
-                        			Unfollowrequest.open("Post","./UnfollowServlet?follow="+ encodeURIComponent(document.getElementById("unfollowID"'${followerDtos.follower}').value) +
-                        					 "&follower="+ encodeURIComponent(document.getElementById("unfollowerID"'${followerDtos.follower}').value), true);
-                        			Unfollowrequest.onreadystatechange = UnfollowProcess'${followerDtos.follower}';
+                            	function doUnFollow<%=followerDto.getFollower()%>() {
+                        			Unfollowrequest.open("Post","./UnfollowServlet?follow="+ encodeURIComponent(document.getElementById("unfollowID<%=followerDto.getFollower()%>").value) +
+                        					 "&follower="+ encodeURIComponent(document.getElementById("unfollowerID<%=followerDto.getFollower()%>").value), true);
+                        			Unfollowrequest.onreadystatechange = UnfollowProcess<%=followerDto.getFollower()%>;
                         			Unfollowrequest.send(null);
                         		}
-                            	function UnfollowProcess'${followerDtos.follower}'() {
+                            	function UnfollowProcess<%=followerDto.getFollower()%>() {
                             		if(Unfollowrequest.readyState == 4 && Unfollowrequest.status == 200) {
                         				var getWrite = Unfollowrequest.responseText;
                         				if(getWrite == 0) {
                         					alert("팔로우를 실패하였습니다! (DB에러)");
                         				}
                         				else {
-                        					document.getElementById("ufl_btn"'${followerDtos.follower}').style.display = "none";
-                        	 				document.getElementById("fl_btn"'${followerDtos.follower}').style.display = "block";
+                        					document.getElementById("ufl_btn<%=followerDto.getFollower()%>").style.display = "none";
+                        	 				document.getElementById("fl_btn<%=followerDto.getFollower()%>").style.display = "block";
                         				}
                         			}
                             	}
@@ -99,119 +109,97 @@
 									<td>
 										<form action="OtherUser_Page.jsp" method="post"
 											class="modal_fl_frm">
-											<input type="hidden" value="${followerDtos.follower}" name="otherUserID" /> 
-											<input name="otherUser" class="fl_id_submit" type="submit" value="<%=erList.get(follower_i)%>" />
+											<input type="hidden" value="<%=followerDto.getFollower()%>" name="otherUserID" /> 
+											<input name="otherUser" class="fl_id_submit" type="submit" value="<%=followerDto.getFollower()%>" />
 										</form>
-										<p class="modal_frm_realname"><%=rsForName.getString("name")%></p>
 									</td>
 									<td>
 										<div class="fl_ufl_btn_wrap">
-											<input type="hidden" id="followerID<%=follower_i%>" value="<%=sID%>" name="unfollower_session" /> 
-											<input type="hidden" id="followID<%=follower_i%>" value="<%=erList.get(follower_i)%>" name="unfollow_mem" />
-											<button type="button" class="modal_fl_btn" id="fl_btn<%=follower_i%>" onclick="insertFollow<%=follower_i%>()">팔로우</button>
+											<input type="hidden" id="followerID<%=followerDto.getFollower()%>" value="<%=sid%>" name="unfollower_session" /> 
+											<input type="hidden" id="followID<%=followerDto.getFollower()%>" value="<%=followerDto.getFollower()%>" name="unfollow_mem" />
+											<button type="button" class="modal_fl_btn" id="fl_btn<%=followerDto.getFollower()%>" onclick="insertFollow<%=followerDto.getFollower()%>()">팔로우</button>
 
-											<input type="hidden" id="unfollowerID<%=follower_i%>" value="<%=sID%>" name="unfollower_session" /> 
-											<input type="hidden" id="unfollowID<%=follower_i%>" value="<%=erList.get(follower_i)%>" name="unfollow_mem" />
-											<button type="button" class="modal_ufl_btn"
-												id="ufl_btn<%=follower_i%>"
-												onclick="doUnFollow<%=follower_i%>()">언팔로우</button>
+											<input type="hidden" id="unfollowerID<%=followerDto.getFollower()%>" value="<%=sid%>" name="unfollower_session" /> 
+											<input type="hidden" id="unfollowID<%=followerDto.getFollower()%>" value="<%=followerDto.getFollower()%>" name="unfollow_mem" />
+											<button type="button" class="modal_ufl_btn" id="ufl_btn<%=followerDto.getFollower()%>" onclick="doUnFollow<%=followerDto.getFollower()%>()">언팔로우</button>
 
 											<%
-												String isFollowerSQL = "select * from bfollow where follow='" + erList.get(follower_i)
-															+ "' and follower='" + sID + "'";
-													ResultSet isFollowerRS = Dbui.selectSQL(isFollowerSQL);
-													boolean b = isFollowerRS.next();
+												
+												boolean checkI = fDao.checkIFollowU(sid, followerDto.getFollower());
 											%>
 											<script type="text/javascript">
-    										/* 팔로우 되어있지 않으면 팔로우 버튼이 보이게 */
-    										if(<%=b%>==false) {
-           		 								document.getElementById("ufl_btn"'${followerDtos.follower}').style.display = "none";
-           		 								document.getElementById("fl_btn"'${followerDtos.follower}').style.display = "block";
+    										/* 내 팔로워가 팔로우 되어있지 않으면 팔로우 버튼이 보이게 */
+    										if(<%=checkI%>==false) {
+           		 								document.getElementById("ufl_btn<%=followerDto.getFollower()%>").style.display = "none";
+           		 								document.getElementById("fl_btn<%=followerDto.getFollower()%>").style.display = "block";
     										}
-    										/* 팔로우 되어있으면 언팔로우 버튼이 보이게 */
+    										/* 내 팔로워가 팔로우 되어있으면 언팔로우 버튼이 보이게 */
     										else {
-          		  								document.getElementById("fl_btn"'${followerDtos.follower}').style.display = "none";
-         		  								document.getElementById("ufl_btn"'${followerDtos.follower}').style.display = "block";
+          		  								document.getElementById("fl_btn<%=followerDto.getFollower()%>").style.display = "none";
+         		  								document.getElementById("ufl_btn<%=followerDto.getFollower()%>").style.display = "block";
     										}
    		 									</script>
-
 										</div>
 									</td>
 								</tr>
-								</c:forEach>
 								<%
+									}	//for 반복문 종료
 									//folow_i 가 0이라면 팔로워가 없을때 
-									
-									if (follower_i == 0) {
+									if (followerDtos.size() == 0) {
 								%>
 								<tr>
-									<h3>팔로워가 없습니다. ㅠㅠ</h3>
+									<h3>아직 팔로워가 없습니다.</h3>
 								</tr>
-								<%
-									}
-								%>
+								<% } %>
 							</table>
 						</div>
 
 						<div id="modal_follow_lists">
-							<!--팔로우(내가 팔로우한 사람) 1명 값-->
+							<!--팔로우(내가 팔로우한 사람) 1명분-->
 							<table class="fl_table_modal">
 								<%
-									//해당 유저의 팔로우(해당유저가 팔로우한 사람)
-									String chkFlowSql = "select * from bfollow where follower='" + sID + "'";
-									ArrayList<Follow> listOfFollow = dao.SelectFollow(chkFlowSql);
-
-									int follow_i = 0;
-									ArrayList<String> owList = new ArrayList<>();
-									//while문 수행 : 1명이라도 팔로워가 있다면
-									for (follow_i = 0; follow_i < listOfFollow.size(); follow_i++) {
-										DButil Dbui = new DButil();
-										Follow obj_follow = listOfFollow.get(follow_i);
-										owList.add(follow_i, obj_follow.getFollow());
-
-										ResultSet rsForName = Dbui.selectSQL("select * from member where id='" + owList.get(follow_i) + "'");
-										boolean b2 = rsForName.next();
+									for (FDto followDto : followDtos) {
 								%>
-								<!-- 팔로우/언팔로우버튼 ajax Script 2 -->
+								<!-- 팔로우리스트 팔로우/언팔로우버튼 동작 비동기 Script -->
 								<script type="text/javascript" charset="utf-8">
                             	var Followrequest2 = new XMLHttpRequest();
                             	var Unfollowrequest2 = new XMLHttpRequest();
                             	
-                            	function insertFollow2<%=follow_i%>() {
-                        			Followrequest2.open("Post","./FollowRegisterServlet?follow="+ encodeURIComponent(document.getElementById("followID2<%=follow_i%>").value) +
-                        								 "&follower="+ encodeURIComponent(document.getElementById("followerID2<%=follow_i%>").value), true);
+                            	function insertFollow2<%=followDto.getFollow()%>() {
+                        			Followrequest2.open("Post","./FollowRegisterServlet?follow="+ encodeURIComponent(document.getElementById("followID2<%=followDto.getFollow()%>").value) +
+                        								 "&follower="+ encodeURIComponent(document.getElementById("followerID2<%=followDto.getFollow()%>").value), true);
                         			
-                        			Followrequest2.onreadystatechange = FollowProcesss<%=follow_i%>;
+                        			Followrequest2.onreadystatechange = FollowProcesss<%=followDto.getFollow()%>;
                         			Followrequest2.send(null);
                         		}
-                            	function FollowProcesss<%=follow_i%>() {
+                            	function FollowProcesss<%=followDto.getFollow()%>() {
                             		if(Followrequest2.readyState == 4 && Followrequest2.status == 200) {
                         				var getWrite = Followrequest2.responseText;
                         				if(getWrite == 0) {
                         					alert("팔로우를 실패하였습니다! (DB에러)");
                         				} 
                         				else {
-                        					document.getElementById("fl_btn2<%=follow_i%>").style.display = "none";
-                        	  				document.getElementById("ufl_btn2<%=follow_i%>").style.display = "block";
+                        					document.getElementById("fl_btn2<%=followDto.getFollow()%>").style.display = "none";
+                        	  				document.getElementById("ufl_btn2<%=followDto.getFollow()%>").style.display = "block";
                         				}
                         			}
                             	}
                             	
-                            	function doUnFollow2<%=follow_i%>() {
-                        			Unfollowrequest2.open("Post","./UnfollowServlet?follow="+ encodeURIComponent(document.getElementById("unfollowID2<%=follow_i%>").value) +
-                        					 "&follower="+ encodeURIComponent(document.getElementById("unfollowerID2<%=follow_i%>").value), true);
-                        			Unfollowrequest2.onreadystatechange = UnfollowProcesss<%=follow_i%>;
+                            	function doUnFollow2<%=followDto.getFollow()%>() {
+                        			Unfollowrequest2.open("Post","./UnfollowServlet?follow="+ encodeURIComponent(document.getElementById("unfollowID2<%=followDto.getFollow()%>").value) +
+                        					 "&follower="+ encodeURIComponent(document.getElementById("unfollowerID2<%=followDto.getFollow()%>").value), true);
+                        			Unfollowrequest2.onreadystatechange = UnfollowProcesss<%=followDto.getFollow()%>;
                         			Unfollowrequest2.send(null);
                         		}
-                            	function UnfollowProcesss<%=follow_i%>() {
+                            	function UnfollowProcesss<%=followDto.getFollow()%>() {
                             		if(Unfollowrequest2.readyState == 4 && Unfollowrequest2.status == 200) {
                         				var getWrite = Unfollowrequest2.responseText;
                         				if(getWrite == 0) {
                         					alert("팔로우를 실패하였습니다! (DB에러)");
                         				}
                         				else {
-                        					document.getElementById("ufl_btn2<%=follow_i%>").style.display = "none";
-                        	 				document.getElementById("fl_btn2<%=follow_i%>").style.display = "block";
+                        					document.getElementById("ufl_btn2<%=followDto.getFollow()%>").style.display = "none";
+                        	 				document.getElementById("fl_btn2<%=followDto.getFollow()%>").style.display = "block";
                         				}
                         			}
                             	}
@@ -220,52 +208,47 @@
 									<td>
 										<form action="OtherUser_Page.jsp" method="post"
 											class="modal_fl_frm">
-											<input type="hidden" value="<%=owList.get(follow_i)%>" name="otherUserID" /> 
-											<input type="hidden" value="<%=rsForName.getString("name")%>" name="otherUserName" /> 
-											<input name="otherUser" class="fl_id_submit" type="submit" value="<%=owList.get(follow_i)%>" />
+											<input type="hidden" value="<%=followDto.getFollow()%>" name="otherUserID" /> 
+											<input name="otherUser" class="fl_id_submit" type="submit" value="<%=followDto.getFollow()%>" />
 										</form>
-										<p class="modal_frm_realname"><%=rsForName.getString("name")%></p>
 									</td>
 									<td>
 										<div class="fl_ufl_btn_wrap">
+											<input type="hidden" id="followerID2<%=followDto.getFollow()%>" value="<%=sid%>" name="unfollower_session" /> 
+											<input type="hidden" id="followID2<%=followDto.getFollow()%>" value="<%=followDto.getFollow()%>" name="unfollow_mem" />
+											<button type="button" class="modal_fl_btn" id="fl_btn2<%=followDto.getFollow()%>" onclick="insertFollow2<%=followDto.getFollow()%>()">팔로우</button>
 
-											<input type="hidden" id="followerID2<%=follow_i%>" value="<%=sID%>" name="unfollower_session" /> 
-											<input type="hidden" id="followID2<%=follow_i%>" value="<%=owList.get(follow_i)%>" name="unfollow_mem" />
-											<button type="button" class="modal_fl_btn" id="fl_btn2<%=follow_i%>" onclick="insertFollow2<%=follow_i%>()">팔로우</button>
-
-											<input type="hidden" id="unfollowerID2<%=follow_i%>" value="<%=sID%>" name="unfollower_session" /> 
-											<input type="hidden" id="unfollowID2<%=follow_i%>" value="<%=owList.get(follow_i)%>" name="unfollow_mem" />
-											<button type="button" class="modal_ufl_btn" id="ufl_btn2<%=follow_i%>" onclick="doUnFollow2<%=follow_i%>()">언팔로우</button>
+											<input type="hidden" id="unfollowerID2<%=followDto.getFollow()%>" value="<%=sid%>" name="unfollower_session" /> 
+											<input type="hidden" id="unfollowID2<%=followDto.getFollow()%>" value="<%=followDto.getFollow()%>" name="unfollow_mem" />
+											<button type="button" class="modal_ufl_btn" id="ufl_btn2<%=followDto.getFollow()%>" onclick="doUnFollow2<%=followDto.getFollow()%>()">언팔로우</button>
 
 											<%
-												String isFollowSQL = "select * from bfollow where follow='" + owList.get(follow_i) + "' and follower='"
-															+ sID + "'";
-													ResultSet isFollowRS = Dbui.selectSQL(isFollowSQL);
-													boolean bb = isFollowRS.next();
+												boolean bCheckU = fDao.checkUFollowMe(sid, followDto.getFollow());
 											%>
 											<script type="text/javascript">
-    									/* 팔로우 되어있지 않으면 팔로우 버튼이 보이게 */
-    									if(<%=bb%>==false) {
-           		 							document.getElementById("ufl_btn2<%=follow_i%>").style.display = "none";
-           		 							document.getElementById("fl_btn2<%=follow_i%>").style.display = "block";
-    									}
-    									/* 팔로우 되어있으면 언팔로우 버튼이 보이게 */
-    									else {
-          		  							document.getElementById("fl_btn2<%=follow_i%>").style.display = "none";
-         		  							document.getElementById("ufl_btn2<%=follow_i%>").style.display = "block";
-    									}
+    											/* 팔로우 되어있지 않으면 팔로우 버튼이 보이게 */
+    											if(<%=bCheckU%>==false) {
+           		 									document.getElementById("ufl_btn2<%=follow_i%>").style.display = "none";
+           		 									document.getElementById("fl_btn2<%=follow_i%>").style.display = "block";
+    											}
+    											/* 팔로우 되어있으면 언팔로우 버튼이 보이게 */
+    											else {
+          		  									document.getElementById("fl_btn2<%=follow_i%>").style.display = "none";
+         		  									document.getElementById("ufl_btn2<%=follow_i%>").style.display = "block";
+    											}
    		 								</script>
 										</div>
 									</td>
 								</tr>
 								<%
-									}
-									if (follow_i == 0) {
+									} // for 반복문 종료
+									
+									if (followDtos.size() == 0) {
 								%>
 								<tr>
-									<h3>팔로우가 없습니다. 팔로우를 찾아보세요!</h3>
+									<h3>팔로우가 없습니다. 새로운 사람들을 팔로우해보세요!</h3>
 								</tr>
-								<% }%>
+								<% } %>
 							</table>
 						</div>
 					</div>
@@ -285,7 +268,6 @@
     	<p>${bDtos.mem_id}</p>
     	<p>${bDtos.bd_cont}</p>
     	<%
-    		IDao iDao = new IDao();
     		BDto bDto = (BDto)pageContext.findAttribute("bDtos");
     		ArrayList<IDto> iDtos = iDao.iSelect(bDto.getBd_key());
     		for (IDto iDto : iDtos) {

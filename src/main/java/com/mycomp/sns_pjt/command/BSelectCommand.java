@@ -28,8 +28,6 @@ public class BSelectCommand implements Command {
 		ArrayList<FDto> followerDtos = fDao.selectFollower(sid);
 		
 		model.addAttribute("boardList", bDtos);
-		model.addAttribute("followList", followDtos);
-		model.addAttribute("followerList", followerDtos);
 		model.addAttribute("followCount", followDtos.size());
 		model.addAttribute("followerCount", followerDtos.size());
 		
