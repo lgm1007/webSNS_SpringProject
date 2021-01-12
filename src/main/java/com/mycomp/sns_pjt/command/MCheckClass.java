@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 
 import com.mycomp.sns_pjt.dao.BDao;
+import com.mycomp.sns_pjt.dao.FDao;
 import com.mycomp.sns_pjt.dao.MDao;
 import com.mycomp.sns_pjt.dto.BDto;
+import com.mycomp.sns_pjt.dto.FDto;
 import com.mycomp.sns_pjt.dto.MDto;
 
 public class MCheckClass {
@@ -25,6 +27,8 @@ public class MCheckClass {
 		
 		BDao bDao = new BDao();
 		MDao mDao = new MDao();
+		FDao fDao = new FDao();
+		
 		ArrayList<MDto> mDtos = mDao.mSelect(id);
 		
 		// mDtos.size 값이 0 이하이면 존재하지 않는 아이디, equals가 false이면 비밀번호가 틀렸음
@@ -34,8 +38,14 @@ public class MCheckClass {
 				session.setAttribute("sname", mDtos.get(0).getName());
 				
 				ArrayList<BDto> bDtos = bDao.bSelect(id);
+				ArrayList<FDto> followDtos = fDao.selectFollow(id);
+				ArrayList<FDto> followerDtos = fDao.selectFollower(id);
 				
 				model.addAttribute("boardList", bDtos);
+				model.addAttribute("followList", followDtos);
+				model.addAttribute("followerList", followerDtos);
+				model.addAttribute("followCount", followDtos.size());
+				model.addAttribute("followerCount", followerDtos.size());
 			}
 		}
 		

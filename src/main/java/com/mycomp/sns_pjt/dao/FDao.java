@@ -94,6 +94,60 @@ DataSource dataSource;
 		return fDtos;
 	}
 	
+	public boolean checkIFollowU(String userid, String otherid) {
+		boolean b = false;
+		Connection conn = null;
+		PreparedStatement ptst = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String selQuery = "SELECT * FROM bfollow WHERE follower = '"+userid+"' AND follow = '"+otherid+"'";
+			ptst = conn.prepareStatement(selQuery);
+			rs = ptst.executeQuery();
+			b = rs.next();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ptst != null) ptst.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return b;
+	}
+	
+	public boolean checkUFollowMe(String userid, String otherid) {
+		boolean b = false;
+		Connection conn = null;
+		PreparedStatement ptst = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String selQuery = "SELECT * FROM bfollow WHERE follower = '"+otherid+"' AND follow = '"+userid+"'";
+			ptst = conn.prepareStatement(selQuery);
+			rs = ptst.executeQuery();
+			b = rs.next();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ptst != null) ptst.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return b;
+	}
+	
 	public void fInsert(String follow, String follower) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
