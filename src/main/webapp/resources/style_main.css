@@ -1,4 +1,4 @@
-ï»¿body {
+body {
     padding: 0;
     margin: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -15,7 +15,7 @@ a:hover {text-decoration:none; color:initial;}
     height:auto;
 }
 
-/* í—¤ë” */
+/* Çì´õ */
 #header {
     width: 100%;
     border: 0.5px solid #e8e8e8;
@@ -48,7 +48,7 @@ a:hover {text-decoration:none; color:initial;}
 
 .icon_like, .icon_me, .icon_pic { margin-left:15px; }
 
-/* ë³¸ë¬¸ */
+/* º»¹® */
 #container {
     width: 100%;
     background-color: #fafafa;
@@ -130,10 +130,10 @@ a:hover {text-decoration:none; color:initial;}
     border-style:none;
     background:none;
 }
-/*5.24 ì¶”ê°€*/
+/*5.24 Ãß°¡*/
 .content_cont {
     width:100%;
-    height:40px;
+    height:80px;
     text-align:left;
 }
 .content_cont .cont_in{
@@ -144,7 +144,7 @@ a:hover {text-decoration:none; color:initial;}
     margin-right:7px;
 }
 
-/*5.16 ì¶”ê°€*/
+/*5.16 Ãß°¡*/
 .comm_text {
     width:599px;
     height:30px;
@@ -219,7 +219,7 @@ a:hover {text-decoration:none; color:initial;}
      width:600px;
 }
 
-/*ì™¼ìª½:ê¸€, ì˜¤ë¥¸ìª½:ëŒ“ê¸€ì°½*/
+/*¿ŞÂÊ:±Û, ¿À¸¥ÂÊ:´ñ±ÛÃ¢*/
 .comm_table {
     width: 1000px;
     height: auto;
@@ -268,6 +268,7 @@ a:hover {text-decoration:none; color:initial;}
 	color: black;
 	font-weight: bold;
 	font-size: 1.15em;
+	padding: 5px 25px 5px 25px;
 }
 
 .btn:focus, .btn-primary:focus, .btn-lg:focus {
@@ -304,7 +305,7 @@ a:hover {text-decoration:none; color:initial;}
 	color: red;
 }
 
-    /* ìœ ì €í˜ì´ì§€ í”„ë¡œí•„ DIV */
+    /* À¯ÀúÆäÀÌÁö ÇÁ·ÎÇÊ DIV */
     #profile {
     width: 100%;
     background-color: #fafafa;
@@ -444,7 +445,7 @@ a:hover {text-decoration:none; color:initial;}
     position: relative;
     left: -30%;
 }
-/*í”„ë¡œí•„ ì•„ë˜ í¬ìŠ¤íŒ… ê¸€*/
+/*ÇÁ·ÎÇÊ ¾Æ·¡ Æ÷½ºÆÃ ±Û*/
 #userPostContainer {
     width: 100%;
     text-align: center;
@@ -555,7 +556,7 @@ a:hover {text-decoration:none; color:initial;}
     display: none;
 }
 
-/* ê¸€ì“°ê¸° í¼ */
+/* ±Û¾²±â Æû */
 #write_div_wrap {
     width: 100%;
     height: 1000px;
@@ -668,7 +669,7 @@ a:hover {text-decoration:none; color:initial;}
     margin-left: 70px;
 }
 
-/* ìœ ì € í”„ë¡œí•„ í¸ì§‘ í˜ì´ì§€ */
+/* À¯Àú ÇÁ·ÎÇÊ ÆíÁı ÆäÀÌÁö */
 .user_update_formtag {
     position: relative;
     top: 5%;
@@ -750,7 +751,7 @@ a:hover {text-decoration:none; color:initial;}
         border: 0.5px solid #000000;
     }
 
-/* íšŒì›íƒˆí‡´ í˜ì´ì§€ */
+/* È¸¿øÅ»Åğ ÆäÀÌÁö */
 #goout_form_wrap {
     position: relative;
     margin-left: auto;
@@ -769,7 +770,7 @@ a:hover {text-decoration:none; color:initial;}
     font-size: 1.2em;
 }
 
-/*Modal Body ë‚´ìš© ì¶”ê°€*/
+/*Modal Body ³»¿ë Ãß°¡*/
 .modal_btnlist_wrap {
 	width: 100%;
 	height: 35px;

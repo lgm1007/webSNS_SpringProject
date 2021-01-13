@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.mycomp.sns_pjt.command.BIWriteClass;
 import com.mycomp.sns_pjt.command.BSelectCommand;
 import com.mycomp.sns_pjt.command.Command;
+import com.mycomp.sns_pjt.command.TimelineSelect;
 
 @Controller
 public class BController {
@@ -23,8 +24,8 @@ public class BController {
 		
 		if(session.getAttribute("sid") != null) {
 			model.addAttribute("session", session);
-			command = new BSelectCommand();
-			command.execute(model);
+			TimelineSelect timelineSelect = new TimelineSelect();
+			timelineSelect.timeLine(model);
 		
 			return "home_page";
 			

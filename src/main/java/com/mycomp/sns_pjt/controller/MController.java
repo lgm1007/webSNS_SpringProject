@@ -17,6 +17,7 @@ import com.mycomp.sns_pjt.command.MDeleteCommand;
 import com.mycomp.sns_pjt.command.MInsertCommand;
 import com.mycomp.sns_pjt.command.MSearchCommand;
 import com.mycomp.sns_pjt.command.MUpdateCommand;
+import com.mycomp.sns_pjt.command.TimelineSelect;
 
 @Controller
 public class MController {
@@ -82,8 +83,8 @@ public class MController {
 			session.setAttribute("sname", request.getParameter("name"));
 			
 			model.addAttribute("session", session);
-			command = new BSelectCommand();
-			command.execute(model);
+			TimelineSelect timelineSelect = new TimelineSelect();
+			timelineSelect.timeLine(model);
 			
 			return "home_page";
 			

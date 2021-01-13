@@ -11,6 +11,7 @@ import com.mycomp.sns_pjt.dto.BDto;
 import com.mycomp.sns_pjt.dto.FDto;
 import com.mycomp.sns_pjt.dto.IDto;
 
+// MyProfile 페이지 이동 시 command
 public class BSelectCommand implements Command {
 
 	@Override

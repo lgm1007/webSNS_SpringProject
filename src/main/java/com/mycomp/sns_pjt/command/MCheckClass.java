@@ -37,15 +37,10 @@ public class MCheckClass {
 				session.setAttribute("sid", id);
 				session.setAttribute("sname", mDtos.get(0).getName());
 				
-				ArrayList<BDto> bDtos = bDao.bSelect(id);
-				ArrayList<FDto> followDtos = fDao.selectFollow(id);
-				ArrayList<FDto> followerDtos = fDao.selectFollower(id);
+				ArrayList<BDto> bDtos = bDao.timelineSelect(id);
 				
 				model.addAttribute("boardList", bDtos);
-				model.addAttribute("followList", followDtos);
-				model.addAttribute("followerList", followerDtos);
-				model.addAttribute("followCount", followDtos.size());
-				model.addAttribute("followerCount", followerDtos.size());
+				
 			}
 		}
 		

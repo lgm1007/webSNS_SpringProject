@@ -59,6 +59,34 @@ public class LDao {
 		return lDtos;
 	}
 	
+	public boolean CheckThisBoardILike(String userid, int bdKey) {
+		boolean b = false;
+		Connection conn = null;
+		PreparedStatement ptst = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String selQuery = "SELECT * FROM blike WHERE bd_key = '"+bdKey+"' AND mem_id = '"+userid+"'";
+			ptst = conn.prepareStatement(selQuery);
+			rs = ptst.executeQuery();
+			
+			b = rs.next();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ptst != null) ptst.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return b;
+	}
+	
 	public int countLikeSelect(int bdKey) {
 		int count = 0;
 		Connection conn = null;
