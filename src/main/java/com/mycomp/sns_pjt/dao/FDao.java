@@ -148,9 +148,10 @@ DataSource dataSource;
 		return b;
 	}
 	
-	public void fInsert(String follow, String follower) {
+	public int fInsert(String follow, String follower) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
+		int i = 0;
 		
 		try {
 			conn = dataSource.getConnection();
@@ -158,7 +159,7 @@ DataSource dataSource;
 			ptst = conn.prepareStatement(insQuery);
 			ptst.setString(1, follow);
 			ptst.setString(2, follower);
-			int u = ptst.executeUpdate();
+			i = ptst.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -170,20 +171,22 @@ DataSource dataSource;
 				e2.printStackTrace();
 			}
 		}
+		return i;
 	}
 	
 	// non-follow
-	public void followDelete (String follow, String userid) {
+	public int followDelete (String follow, String follower) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
+		int i = 0;
 		
 		try {
 			conn = dataSource.getConnection();
 			String deleteQurey = "DELETE FROM bfollow WHERE follow = ? AND follower = ?";
 			ptst = conn.prepareStatement(deleteQurey);
 			ptst.setString(1, follow);
-			ptst.setString(2, userid);
-			int u = ptst.executeUpdate();
+			ptst.setString(2, follower);
+			i = ptst.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -195,6 +198,7 @@ DataSource dataSource;
 				e2.printStackTrace();
 			}
 		}
+		return i;
 	}
 
 }

@@ -244,7 +244,7 @@
 											<button type="button" class="modal_ufl_btn" id="ufl_btn2<%=followDto.getFollow()%>" onclick="doUnFollow2<%=followDto.getFollow()%>()">언팔로우</button>
 
 											<%
-												boolean bCheckU = fDao.checkUFollowMe(sid, followDto.getFollow());
+												boolean bCheckU = fDao.checkIFollowU(sid, followDto.getFollow());
 											%>
 											<script type="text/javascript">
     											/* 팔로우 되어있지 않으면 팔로우 버튼이 보이게 */
@@ -477,7 +477,7 @@
 						<p class="p_nicname"><%=sid%></p>
 						<p class="p_realname"><%=sname%></p>
 					</div>
-					<button type="button" class="btn btn-primary btn-lg"
+					<button type="button" class="btn btn-primary btn-lg modal_btn"
 					data-toggle="modal" data-target="#myModal"
 					onclick="view_follower()">팔로우 목록</button>
 				</div>

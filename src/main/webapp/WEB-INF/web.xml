@@ -30,6 +30,46 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>FollowRegister</servlet-name>
+		<servlet-class>com.mycomp.sns_pjt.ajaxServlet.FollowRegisterServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>FollowRegister</servlet-name>
+		<url-pattern>/FollowRegisterServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UnfollowRegister</servlet-name>
+		<servlet-class>com.mycomp.sns_pjt.ajaxServlet.UnfollowServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UnfollowRegister</servlet-name>
+		<url-pattern>/UnfollowServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>LikeBoard</servlet-name>
+		<servlet-class>com.mycomp.sns_pjt.ajaxServlet.LikeServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>LikeBoard</servlet-name>
+		<url-pattern>/LikeServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UnlikeBoard</servlet-name>
+		<servlet-class>com.mycomp.sns_pjt.ajaxServlet.UnlikeServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UnlikeBoard</servlet-name>
+		<url-pattern>/UnlikeServlet</url-pattern>
+	</servlet-mapping>
+	
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

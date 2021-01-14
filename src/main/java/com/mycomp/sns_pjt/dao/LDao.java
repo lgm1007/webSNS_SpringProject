@@ -117,9 +117,10 @@ public class LDao {
 		return count;
 	}
 	
-	public void lInsert(int bdKey, String userid) {
+	public int lInsert(int bdKey, String userid) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
+		int i = 0;
 		
 		try {
 			conn = dataSource.getConnection();
@@ -127,7 +128,7 @@ public class LDao {
 			ptst = conn.prepareStatement(insertQuery);
 			ptst.setInt(1, bdKey);
 			ptst.setString(2, userid);
-			int r = ptst.executeUpdate();
+			i = ptst.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -139,11 +140,13 @@ public class LDao {
 				e2.printStackTrace();
 			}
 		}
+		return i;
 	}
 	
-	public void lDelete (int bdKey, String userid) {
+	public int lDelete (int bdKey, String userid) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
+		int i = 0;
 		
 		try {
 			conn = dataSource.getConnection();
@@ -151,7 +154,7 @@ public class LDao {
 			ptst = conn.prepareStatement(deleteQurey);
 			ptst.setInt(1, bdKey);
 			ptst.setString(2, userid);
-			int r = ptst.executeUpdate();
+			i = ptst.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -163,6 +166,7 @@ public class LDao {
 				e2.printStackTrace();
 			}
 		}
+		return i;
 	}
 	
 }

@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mycomp.sns_pjt.command.BSelectCommand;
+import com.mycomp.sns_pjt.command.BProfileCommand;
 import com.mycomp.sns_pjt.command.Command;
 import com.mycomp.sns_pjt.command.MCheckClass;
 import com.mycomp.sns_pjt.command.MDeleteCommand;
