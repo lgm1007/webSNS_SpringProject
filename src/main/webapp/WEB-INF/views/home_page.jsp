@@ -41,7 +41,7 @@
     	<div id="header">
 	        <div class="headbar_div">
 	            <ul class="headbar">
-	                <li class="head_logo"><a href="main_page.jsp"><img src="/sns_pjt/resources/img/sol_logo_40px.png" alt="logo" /></a></li>
+	                <li class="head_logo"><a href="home_page"><img src="/sns_pjt/resources/img/sol_logo_40px.png" alt="logo" /></a></li>
 	                <li class="head_icon">
 	                    <a href="like_page" class="icon_like"><img src="/sns_pjt/resources/img/like.png" alt="like" /></a>
 	                    <a href="profile_page" class="icon_me"><img src="/sns_pjt/resources/img/me.PNG" alt="me" /></a>
@@ -135,18 +135,15 @@
 									</td>
 									<td>
 										<div class="fl_ufl_btn_wrap">
-											<input type="hidden" id="followerID<%=followerDto.getFollower()%>" value="<%=sid%>" name="unfollower_session" /> 
-											<input type="hidden" id="followID<%=followerDto.getFollower()%>" value="<%=followerDto.getFollower()%>" name="unfollow_mem" />
+											<input type="hidden" id="followerID<%=followerDto.getFollower()%>" value="<%=sid%>" name="follower_session" /> 
+											<input type="hidden" id="followID<%=followerDto.getFollower()%>" value="<%=followerDto.getFollower()%>" name="follow_mem" />
 											<button type="button" class="modal_fl_btn" id="fl_btn<%=followerDto.getFollower()%>" onclick="insertFollow<%=followerDto.getFollower()%>()">팔로우</button>
 
 											<input type="hidden" id="unfollowerID<%=followerDto.getFollower()%>" value="<%=sid%>" name="unfollower_session" /> 
 											<input type="hidden" id="unfollowID<%=followerDto.getFollower()%>" value="<%=followerDto.getFollower()%>" name="unfollow_mem" />
 											<button type="button" class="modal_ufl_btn" id="ufl_btn<%=followerDto.getFollower()%>" onclick="doUnFollow<%=followerDto.getFollower()%>()">언팔로우</button>
 
-											<%
-												
-												boolean checkI = fDao.checkIFollowU(sid, followerDto.getFollower());
-											%>
+											<% boolean checkI = fDao.checkIFollowU(sid, followerDto.getFollower()); %>
 											<script type="text/javascript">
     										/* 내 팔로워가 팔로우 되어있지 않으면 팔로우 버튼이 보이게 */
     										if(<%=checkI%>==false) {

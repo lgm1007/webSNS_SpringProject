@@ -17,7 +17,7 @@ public class MSearchCommand implements Command {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
-		String word = request.getParameter("word");
+		String word = request.getParameter("srch");
 		
 		MDao mDao = new MDao();
 		ArrayList<MDto> mDtos = mDao.mSearch(word);

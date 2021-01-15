@@ -1,4 +1,4 @@
-body {
+ï»¿body {
     padding: 0;
     margin: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -15,7 +15,7 @@ a:hover {text-decoration:none; color:initial;}
     height:auto;
 }
 
-/* Çì´õ */
+/* ï¿½ï¿½ï¿½ï¿½ */
 #header {
     width: 100%;
     border: 0.5px solid #e8e8e8;
@@ -48,7 +48,7 @@ a:hover {text-decoration:none; color:initial;}
 
 .icon_like, .icon_me, .icon_pic { margin-left:15px; }
 
-/* º»¹® */
+/* ï¿½ï¿½ï¿½ï¿½ */
 #container {
     width: 100%;
     background-color: #fafafa;
@@ -130,7 +130,7 @@ a:hover {text-decoration:none; color:initial;}
     border-style:none;
     background:none;
 }
-/*5.24 Ãß°¡*/
+/*5.24 ï¿½ß°ï¿½*/
 .content_cont {
     width:100%;
     height:80px;
@@ -144,7 +144,7 @@ a:hover {text-decoration:none; color:initial;}
     margin-right:7px;
 }
 
-/*5.16 Ãß°¡*/
+/*5.16 ï¿½ß°ï¿½*/
 .comm_text {
     width:599px;
     height:30px;
@@ -219,7 +219,7 @@ a:hover {text-decoration:none; color:initial;}
      width:600px;
 }
 
-/*¿ÞÂÊ:±Û, ¿À¸¥ÂÊ:´ñ±ÛÃ¢*/
+/*ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½Ã¢*/
 .comm_table {
     width: 1000px;
     height: auto;
@@ -311,7 +311,7 @@ a:hover {text-decoration:none; color:initial;}
 	color: red;
 }
 
-    /* À¯ÀúÆäÀÌÁö ÇÁ·ÎÇÊ DIV */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DIV */
     #profile {
     width: 100%;
     background-color: #fafafa;
@@ -451,7 +451,7 @@ a:hover {text-decoration:none; color:initial;}
     position: relative;
     left: -30%;
 }
-/*ÇÁ·ÎÇÊ ¾Æ·¡ Æ÷½ºÆÃ ±Û*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½*/
 #userPostContainer {
     width: 100%;
     text-align: center;
@@ -535,6 +535,29 @@ a:hover {text-decoration:none; color:initial;}
     margin-left: 100px;
 }
 
+.fl_btn, .ufl_btn {
+	border-style: none;
+	cursor: pointer;
+	-webkit-transition: all 200ms;
+	-moz-transition: all 200ms;
+	-ms-transition: all 200ms;
+	-o-transition: all 200ms;
+	transition: all 200ms;
+	display: inline-block;
+	margin: 20px auto;
+	text-decoration: none;
+	border-radius: 4px;
+	padding: 5px 0;
+	width: 70px;
+	color: white;
+	font-weight: bold;
+	background-color: #3897f0;
+}
+
+.fl_btn:hover, .ufl_btn:hover {
+	box-shadow: 0px 0px 0px 40px #163c60 inset;
+}
+
 #ufl_btn, #fl_btn {
     border-style: none;
     -webkit-transition: all 200ms;
@@ -562,7 +585,7 @@ a:hover {text-decoration:none; color:initial;}
     display: none;
 }
 
-/* ±Û¾²±â Æû */
+/* ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ */
 #write_div_wrap {
     width: 100%;
     height: 1000px;
@@ -675,7 +698,7 @@ a:hover {text-decoration:none; color:initial;}
     margin-left: 70px;
 }
 
-/* À¯Àú ÇÁ·ÎÇÊ ÆíÁý ÆäÀÌÁö */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 .user_update_formtag {
     position: relative;
     top: 5%;
@@ -757,7 +780,7 @@ a:hover {text-decoration:none; color:initial;}
         border: 0.5px solid #000000;
     }
 
-/* È¸¿øÅ»Åð ÆäÀÌÁö */
+/* È¸ï¿½ï¿½Å»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 #goout_form_wrap {
     position: relative;
     margin-left: auto;
@@ -776,7 +799,7 @@ a:hover {text-decoration:none; color:initial;}
     font-size: 1.2em;
 }
 
-/*Modal Body ³»¿ë Ãß°¡*/
+/*Modal Body ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½*/
 .modal_btnlist_wrap {
 	width: 100%;
 	height: 35px;

@@ -69,7 +69,7 @@ DataSource dataSource;
 		
 		try {
 			conn = dataSource.getConnection();
-			String selQuery = "SELECT * FROM board WHERE mem_id ='"+id+"' or mem_id in (SELECT follow FROM bfollow WHERE follower = '"+id+"') ORDER BY bd_key DESC";
+			String selQuery = "SELECT * FROM board WHERE mem_id in (SELECT follow FROM bfollow WHERE follower = '"+id+"') ORDER BY bd_key DESC";
 			ptst = conn.prepareStatement(selQuery);
 			rs = ptst.executeQuery();
 			
