@@ -7,8 +7,8 @@
 <head>
 <meta charset="utf-8">
 <title>User Setting Page</title>
-<link href="/sns_pjt/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
-<link href="/sns_pjt/resources/style_main.css" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/css/bootstrap.css?after" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/style_main.css?after" type="text/css" rel="stylesheet" />
 <style>
         input[type=text] {
             color: #908d8d;

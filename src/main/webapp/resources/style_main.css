@@ -286,33 +286,6 @@ a:hover {text-decoration:none; color:initial;}
 	display: inline-block;
 }
 
-.btn, .btn-primary, .btn-lg {
-	border: 0.5px solid #e8e8e8;
-	background-color: #fafafa;
-	color: black;
-	font-weight: bold;
-	font-size: 1.15em;
-	padding: 5px 25px 5px 25px;
-}
-
-.btn:hover, .btn-primary:hover, .btn-lg:hover {
-	border: 0.5px solid #000;
-	background-color: #fafafa;
-	color: black;
-	font-weight: bold;
-	font-size: 1.15em;
-	padding: 5px 25px 5px 25px;
-}
-
-.btn:focus, .btn-primary:focus, .btn-lg:focus {
-	border: 0.5px solid #000;
-	background-color: #fafafa;
-	color: black;
-	font-weight: bold;
-	font-size: 1.15em;
-	padding: 5px 25px 5px 25px;
-}
-
 .btn-pencil{
     border-style:none;
     background:none;

@@ -15,9 +15,9 @@
 <head>
 <meta charset="utf-8">
 <title>Welcome to SOL</title>
-<link href="/sns_pjt/resources/style_main.css" type="text/css" rel="stylesheet" />
-<link href="/sns_pjt/resources/slideshow.css" type="text/css" rel="stylesheet" />
-<link href="/sns_pjt/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/style_main.css?after" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/slideshow.css?after" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/css/bootstrap.css?after" type="text/css" rel="stylesheet" />
 </head>
 <body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -57,13 +57,11 @@
     	</div>
     	
     	<!-- Modal -->
-    	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
+    	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">×</span>
 						</button>
 						<h4 class="modal-title" id="myModalLabel">팔로우 목록</h4>
@@ -343,18 +341,20 @@
 							<p class="cont_in">${bDtos.bd_cont}</p>
 						</div>
 						<div class="content_lnc">
+							<input type="hidden" id="sessionID" value="<%=sid%>" />
+							<input type="hidden" id="bd_key<%=bDto.getBd_key()%>" value="<%=bDto.getBd_key()%>" />
 							<table>
 								<tr>
 									<td>
-										<button type="button" id="btnlike_empty${bDtos.bd_key}" class="content_like" onclick="insertLike<%=bDto.getBd_key()%>()">
+										<button type="button" id="btnlike_empty<%=bDto.getBd_key()%>" class="content_like" onclick="insertLike<%=bDto.getBd_key()%>()">
 											<img src="/sns_pjt/resources/img/like.png" />
 										</button>
-										<button type="button" id="btnlike_full${bDtos.bd_key}" class="content_like" onclick="deleteLike<%=bDto.getBd_key()%>()" style="display: none;">
+										<button type="button" id="btnlike_full<%=bDto.getBd_key()%>" class="content_like" onclick="deleteLike<%=bDto.getBd_key()%>()" style="display: none;">
 											<img src="/sns_pjt/resources/img/like_full.png" />
 										</button>
 									</td>
 									<td>
-										<b><b id="cnt_Lk${bDtos.bd_key}"><%=countLk%></b> 명이 이 글을 좋아합니다.</b>
+										<b><b id="cnt_Lk<%=bDto.getBd_key()%>"><%=countLk%></b> 명이 이 글을 좋아합니다.</b>
 									</td>
 									<td>
 										<form action="postedBoard" name="comm_btn_form" method="post">
@@ -367,26 +367,18 @@
 							</table>
 						</div>
 						<% boolean bLikeBd = lDao.CheckThisBoardILike(sid, bDto.getBd_key()); %>
-						<!-- 좋아요 되어있는 글인 경우 채워진 하트, 아닌 경우 안 채워진 하트 표시 -->
+						
+						<!-- 좋아요 비동기 스크립트 -->
 						<script type="text/javascript" charset="utf-8">
-							if(<%=bLikeBd%> == false) {
-								document.getElementById("btnlike_full${bDtos.bd_key}").style.display = "none";
-		    					document.getElementById("btnlike_empty${bDtos.bd_key}").style.display = "block";
-							}
-							else {
-								document.getElementById("btnlike_empty${bDtos.bd_key}").style.display = "none";
-		    	 				document.getElementById("btnlike_full${bDtos.bd_key}").style.display = "block";
-							}
-							
-							// 좋아요 비동기 구문
 							var likerequest = new XMLHttpRequest();
             				var Unlikerequest = new XMLHttpRequest();
+            				var countArray = [];
             				
             				countArray[<%=bDto.getBd_key()%>] = <%=countLk%>;
             				
             				function insertLike<%=bDto.getBd_key()%>() {
-            					likerequest.open("Post","./LikeServlet?mem_id="+ <%=sid%> + 
-										"&bd_key="+ <%=bDto.getBd_key()%> , true);
+            					likerequest.open("Post","./LikeServlet?mem_id="+ encodeURIComponent(document.getElementById("sessionID").value) + 
+										"&bd_key="+ encodeURIComponent(document.getElementById("bd_key<%=bDto.getBd_key()%>").value) , true);
 								likerequest.onreadystatechange = LikeProcess<%=bDto.getBd_key()%>;
 								likerequest.send(null);
             				}
@@ -399,16 +391,16 @@
                     				} else {
                     					var c = countArray[<%=bDto.getBd_key()%>] + 1;
                     					countArray[<%=bDto.getBd_key()%>] = c;
-                    					document.getElementById("cnt_Lk${bDtos.bd_key}").innerHTML = c;
-                    					document.getElementById("btnlike_empty${bDtos.bd_key}").style.display = "none";
-                    	 				document.getElementById("btnlike_full${bDtos.bd_key}").style.display = "block";
+                    					document.getElementById("cnt_Lk<%=bDto.getBd_key()%>").innerHTML = c;
+                    					document.getElementById("btnlike_empty<%=bDto.getBd_key()%>").style.display = "none";
+                    	 				document.getElementById("btnlike_full<%=bDto.getBd_key()%>").style.display = "block";
                     				}
                     			}
                     		}
             				
             				function deleteLike<%=bDto.getBd_key()%>() {
-                    			Unlikerequest.open("Post","./UnlikeServlet?mem_id="+ <%=sid%> + 
-                    									"&bd_key="+ <%=bDto.getBd_key()%> , true);
+                    			Unlikerequest.open("Post","./UnlikeServlet?mem_id="+ encodeURIComponent(document.getElementById("sessionID").value) + 
+                    									"&bd_key="+ encodeURIComponent(document.getElementById("bd_key<%=bDto.getBd_key()%>").value) , true);
                     			Unlikerequest.onreadystatechange = UnlikeProcess<%=bDto.getBd_key()%>;
                     			Unlikerequest.send(null);
                     		}
@@ -421,12 +413,23 @@
                     				} else {
                     					var c = countArray[<%=bDto.getBd_key()%>] - 1;
                     					countArray[<%=bDto.getBd_key()%>] = c;
-                    					document.getElementById("cnt_Lk${bDtos.bd_key}").innerHTML = c;
-                    					document.getElementById("btnlike_full${bDtos.bd_key}").style.display = "none";
-                    					document.getElementById("btnlike_empty${bDtos.bd_key}").style.display = "block";
+                    					document.getElementById("cnt_Lk<%=bDto.getBd_key()%>").innerHTML = c;
+                    					document.getElementById("btnlike_full<%=bDto.getBd_key()%>").style.display = "none";
+                    					document.getElementById("btnlike_empty<%=bDto.getBd_key()%>").style.display = "block";
                     				}
                     			}
                     		}
+						</script>
+						<!-- 좋아요 되어있는 글인 경우 채워진 하트, 아닌 경우 안 채워진 하트 표시 -->
+						<script type="text/javascript" charset="utf-8">
+							if(<%=bLikeBd%> == false) {
+								document.getElementById("btnlike_full<%=bDto.getBd_key()%>").style.display = "none";
+		    					document.getElementById("btnlike_empty<%=bDto.getBd_key()%>").style.display = "block";
+							}
+							else {
+								document.getElementById("btnlike_empty<%=bDto.getBd_key()%>").style.display = "none";
+		    	 				document.getElementById("btnlike_full<%=bDto.getBd_key()%>").style.display = "block";
+							}
 						</script>
 						<!-- 슬라이드 스크립트 -->
 						<script type="text/javascript">

@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Posting in SOL</title>
-<link href="/sns_pjt/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
-<link href="/sns_pjt/resources/style_main.css" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/css/bootstrap.css?after" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/style_main.css?after" type="text/css" rel="stylesheet" />
 <style type="text/css">
 	input[type=submit], input[type=reset] {
             margin-top: 5%;

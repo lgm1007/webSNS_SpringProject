@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
 <title>Join SOL!</title>
-<link href="/sns_pjt/resources/style_login.css" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/style_login.css?after" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="/sns_pjt/resources/js/memjs.js" charset="utf-8"></script>
 </head>
 <body>

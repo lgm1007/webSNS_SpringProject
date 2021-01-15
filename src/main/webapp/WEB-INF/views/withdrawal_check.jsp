@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Withdrawal check</title>
-<link href="/sns_pjt/resources/css/bootstrap.css" type="text/css" rel="stylesheet" />
-<link href="/sns_pjt/resources/style_main.css" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/css/bootstrap.css?after" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/style_main.css?after" type="text/css" rel="stylesheet" />
 <style type="text/css">
 	    input[type=text] {
             color: #908d8d;

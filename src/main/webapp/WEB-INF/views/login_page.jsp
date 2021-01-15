@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
 <title>Welcome to SOL</title>
-<link href="/sns_pjt/resources/style_login.css" type="text/css" rel="stylesheet" />
+<link href="/sns_pjt/resources/style_login.css?after" type="text/css" rel="stylesheet" />
 </head>
 <body>
     
