@@ -105,9 +105,20 @@ public class MController {
 	}
 	
 	// 현재 유저 프로필 페이지
-	@RequestMapping("/profile_page")
-	public String profile_page(Model model) {
-		return "profile_page";
+	@RequestMapping(value = "/profile_page")
+	public String profile_page(Model model, HttpSession session) {
+		
+		if(session.getAttribute("sid") != null) {
+			model.addAttribute("session", session);
+			command = new MyProfileCommand();
+			command.execute(model);
+			return "profile_page";
+			
+		} else {
+			model.addAttribute("warn", "유효한 세션이 없습니다");
+			model.addAttribute("url", "login_page");
+			return "action/no_session";
+		}
 	}
 	
 	// 회원정보 변경 페이지
@@ -158,7 +169,6 @@ public class MController {
 			model.addAttribute("goback", "withdrawal_check");
 			return "action/withdrawal_fail";
 		}
-		
 	}
 	
 	@RequestMapping(value="/others_page", method=RequestMethod.POST)
@@ -176,7 +186,6 @@ public class MController {
 			model.addAttribute("url", "login_page");
 			return "action/no_session";
 		}
-		
 	}
 	
 }

@@ -378,11 +378,20 @@ a:hover {text-decoration:none; color:initial;}
     margin-left: 100%;
 }
 
+.list_of_fol {
+	margin-bottom: 3%;
+	margin-left: 36%;
+}
+
 .list_of_fol li {
     float: left;
     padding: 5px;
     margin-bottom: 10px;
     margin-top: 5px;
+}
+
+.follower_btn_li {
+	margin-left: 29%;
 }
 
 .btn_follower, .btn_follow {
@@ -402,7 +411,7 @@ a:hover {text-decoration:none; color:initial;}
 }
 
 .btn_follow {
-	margin-left: 330px;
+	margin-left: 70px;
 }
 
 .numberFollow, .numberFollower {

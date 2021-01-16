@@ -150,13 +150,12 @@
    				<li>
    					<form action="posted_board" method="get">
    						<input type="hidden" name="bdKey" value="${bDtos.bd_key}" />
-   						<input type="hidden" name="memID" value="${bDtos.mem_id}" />
+   						<input type="hidden" name="memID" value="<%=sid%>" />
    						<button type="submit" class="mypost"><img src="<spring:url value='/img/${filename}'/>"></button>
    					</form>
    				</li>
    			</c:forEach>
    		</ul>
    	</div>
-   	
 </body>
 </html>

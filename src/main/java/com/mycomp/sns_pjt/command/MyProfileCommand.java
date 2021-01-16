@@ -6,10 +6,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import com.mycomp.sns_pjt.dao.BDao;
 import com.mycomp.sns_pjt.dao.FDao;
-import com.mycomp.sns_pjt.dao.IDao;
+
 import com.mycomp.sns_pjt.dto.BDto;
 import com.mycomp.sns_pjt.dto.FDto;
-import com.mycomp.sns_pjt.dto.IDto;
+
 
 // MyProfile 페이지 이동 시 command
 public class MyProfileCommand implements Command {
