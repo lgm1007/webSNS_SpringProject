@@ -10,7 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mycomp.sns_pjt.command.BProfileCommand;
+import com.mycomp.sns_pjt.command.MyProfileCommand;
+import com.mycomp.sns_pjt.command.OtherProfileCommand;
 import com.mycomp.sns_pjt.command.Command;
 import com.mycomp.sns_pjt.command.MCheckClass;
 import com.mycomp.sns_pjt.command.MDeleteCommand;
@@ -152,11 +153,28 @@ public class MController {
 			
 			session.invalidate();
 			return "login_page";
-		}
-		else {
+		} else {
 			model.addAttribute("mes", "비밀번호가 다릅니다");
 			model.addAttribute("goback", "withdrawal_check");
 			return "action/withdrawal_fail";
+		}
+		
+	}
+	
+	@RequestMapping(value="/others_page", method=RequestMethod.POST)
+	public String othersPage(HttpServletRequest request, Model model, HttpSession session) {
+		
+		if(session.getAttribute("sid") != null) {
+			model.addAttribute("request", request);
+			command = new OtherProfileCommand();
+			command.execute(model);
+			
+			return "others_page";
+			
+		} else {
+			model.addAttribute("warn", "유효한 세션이 없습니다");
+			model.addAttribute("url", "login_page");
+			return "action/no_session";
 		}
 		
 	}

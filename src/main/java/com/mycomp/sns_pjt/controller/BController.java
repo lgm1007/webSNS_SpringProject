@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mycomp.sns_pjt.command.BIWriteClass;
-import com.mycomp.sns_pjt.command.BProfileCommand;
+import com.mycomp.sns_pjt.command.MyProfileCommand;
 import com.mycomp.sns_pjt.command.Command;
 import com.mycomp.sns_pjt.command.TimelineSelect;
 

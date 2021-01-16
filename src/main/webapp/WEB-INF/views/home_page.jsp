@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Welcome to SOL</title>
 <link href="/sns_pjt/resources/style_main.css?after" type="text/css" rel="stylesheet" />
 <link href="/sns_pjt/resources/slideshow.css?after" type="text/css" rel="stylesheet" />
@@ -128,7 +128,7 @@
                             
 								<tr>
 									<td>
-										<form action="OtherUser_Page" method="post" class="modal_fl_frm">
+										<form action="others_page" method="post" class="modal_fl_frm">
 											<input type="hidden" value="<%=followerDto.getFollower()%>" name="otherUserID" /> 
 											<input name="otherUser" class="fl_id_submit" type="submit" value="<%=followerDto.getFollower()%>" />
 										</form>
@@ -223,7 +223,7 @@
                             </script>
 								<tr>
 									<td>
-										<form action="OtherUser_Page" method="post" class="modal_fl_frm">
+										<form action="others_page" method="post" class="modal_fl_frm">
 											<input type="hidden" value="<%=followDto.getFollow()%>" name="otherUserID" /> 
 											<input name="otherUser" class="fl_id_submit" type="submit" value="<%=followDto.getFollow()%>" />
 										</form>
@@ -283,7 +283,7 @@
 						<table class="content_head">
 							<tr>
 								<td class="post_head_name">
-									<form action="OtherUser_Page" method="post">
+									<form action="others_page" method="post">
 										<input type="hidden" name="otherUserID" value="${bDtos.mem_id}" /> 
 										<input type="submit" class="content_nick" value="${bDtos.mem_id}" style="padding-top: 11px;" />
 									</form>
@@ -354,7 +354,7 @@
 										<b><b id="cnt_Lk<%=bDto.getBd_key()%>"><%=countLk%></b> 명이 이 글을 좋아합니다.</b>
 									</td>
 									<td>
-										<form action="postedBoard" name="comm_btn_form" method="post">
+										<form action="posted_board" name="comm_btn_form" method="get">
 											<input type="hidden" name="bdKey" value="${bDtos.bd_key}" />
 											<input type="hidden" name="memID" value="${bDtos.mem_id }" />
 											<button type="submit" class="content_comm"><img src="/sns_pjt/resources/img/comm.png" /></button>

@@ -101,7 +101,7 @@
 					<table class="mem_table">
 						<tr>
 							<td>
-								<form action="OtherUser_Page" method="post" class="srh_user_frm">
+								<form action="others_page" method="post" class="srh_user_frm">
 									<input type="hidden" value="${mDtos.id}" name="otherUserID" />
 									<input type="submit" class="sch_user_id" value="${mDtos.id}" />
 								</form>

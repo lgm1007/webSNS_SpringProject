@@ -12,7 +12,7 @@ import com.mycomp.sns_pjt.dto.FDto;
 import com.mycomp.sns_pjt.dto.IDto;
 
 // MyProfile 페이지 이동 시 command
-public class BProfileCommand implements Command {
+public class MyProfileCommand implements Command {
 
 	@Override
 	public void execute(Model model) {
@@ -25,12 +25,12 @@ public class BProfileCommand implements Command {
 		BDao bDao = new BDao();
 		FDao fDao = new FDao();
 		ArrayList<BDto> bDtos = bDao.bSelect(sid);
-		ArrayList<FDto> followDtos = fDao.selectFollow(sid);
-		ArrayList<FDto> followerDtos = fDao.selectFollower(sid);
+		ArrayList<FDto> follows = fDao.selectFollow(sid);
+		ArrayList<FDto> followers = fDao.selectFollower(sid);
 		
 		model.addAttribute("boardList", bDtos);
-		model.addAttribute("followCount", followDtos.size());
-		model.addAttribute("followerCount", followerDtos.size());
+		model.addAttribute("followCount", follows.size());
+		model.addAttribute("followerCount", followers.size());
 		
 	}
 
