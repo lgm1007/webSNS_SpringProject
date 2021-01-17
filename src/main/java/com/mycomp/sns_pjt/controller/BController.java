@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mycomp.sns_pjt.command.BIWriteClass;
+import com.mycomp.sns_pjt.command.BoardPostedCommand;
 import com.mycomp.sns_pjt.command.MyProfileCommand;
 import com.mycomp.sns_pjt.command.Command;
 import com.mycomp.sns_pjt.command.TimelineSelect;
@@ -68,6 +69,24 @@ public class BController {
 			
 		} else {
 			
+			model.addAttribute("warn", "유효한 세션이 없습니다");
+			model.addAttribute("url", "login_page");
+			return "action/no_session";
+		}
+	}
+	
+	// 작성된 포스트 이동
+	@RequestMapping(value="/posted_board")
+	public String posted_board(HttpServletRequest request, Model model, HttpSession session) {
+		
+		if(session.getAttribute("sid") != null) {
+			model.addAttribute("request", request);
+			command = new BoardPostedCommand();
+			command.execute(model);
+			
+			return "posted_board";
+			
+		} else {
 			model.addAttribute("warn", "유효한 세션이 없습니다");
 			model.addAttribute("url", "login_page");
 			return "action/no_session";

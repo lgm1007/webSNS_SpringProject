@@ -83,6 +83,7 @@
 					<form action="posted_board" method="get">
 						<input type="hidden" name="bdKey" value="${bDtos.bd_key}"/>
                 		<input type="hidden" name="memID" value="<%=sid%>" />
+                		<button type="submit" class="mypost"><img src="<spring:url value='/img/${filename}'/>" /></button>
 					</form>
 				</li>
 			</c:forEach>
