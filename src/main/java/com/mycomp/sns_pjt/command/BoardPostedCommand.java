@@ -21,7 +21,7 @@ public class BoardPostedCommand implements Command {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
 		int bd_key = Integer.parseInt(request.getParameter("bdKey"));
-		String sid = request.getParameter("memID");
+		String memID = request.getParameter("memID");
 		
 		BDao bDao = new BDao();
 		CDao cDao = new CDao();
@@ -30,7 +30,9 @@ public class BoardPostedCommand implements Command {
 		ArrayList<CDto> cDtos = cDao.cSelect(bd_key);
 		
 		BDto bDto = bDtos.get(0);
-		model.addAttribute("thisBoard", bDto);
+		model.addAttribute("bdKey", bDto.getBd_key());
+		model.addAttribute("memID", memID);
+		model.addAttribute("bdCont", bDto.getBd_cont());
 		model.addAttribute("commList", cDtos);
 
 	}
