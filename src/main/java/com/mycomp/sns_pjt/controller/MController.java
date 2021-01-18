@@ -171,6 +171,7 @@ public class MController {
 		}
 	}
 	
+	// 로그아웃 전 확인
 	@RequestMapping("/logout")
 	public String logoutCheck(Model model) {
 		
@@ -180,12 +181,14 @@ public class MController {
 		return "action/logout_check";
 	}
 	
+	// 로그아웃 실행
 	@RequestMapping("/logout_execute")
 	public String logout(Model model, HttpSession session) {
 		session.invalidate();
 		return "login_page";
 	}
 	
+	// 다른 유저 프로필페이지 이동
 	@RequestMapping(value="/others_page", method=RequestMethod.POST)
 	public String othersPage(HttpServletRequest request, Model model, HttpSession session) {
 		

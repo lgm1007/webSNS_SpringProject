@@ -90,17 +90,18 @@ public class CDao {
 		return i;
 	}
 	
-	public int cDelete(int bdKey, String memid) {
+	public int cDelete(int bdKey, int commKey, String memid) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
 		int i = 0;
 		
 		try {
 			conn = dataSource.getConnection();
-			String deleteQuery = "DELETE FROM comm WHERE bd_key = ? AND mem_id = ?";
+			String deleteQuery = "DELETE FROM comm WHERE bd_key = ? AND comment_key = ? AND mem_id = ?";
 			ptst = conn.prepareStatement(deleteQuery);
 			ptst.setInt(1, bdKey);
-			ptst.setString(2, memid);
+			ptst.setInt(2, commKey);
+			ptst.setString(3, memid);
 			i = ptst.executeUpdate();
 			
 		} catch (Exception e) {

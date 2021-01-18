@@ -10,6 +10,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mycomp.sns_pjt.command.BIWriteClass;
 import com.mycomp.sns_pjt.command.BoardPostedCommand;
+import com.mycomp.sns_pjt.command.CDeleteCommand;
+import com.mycomp.sns_pjt.command.CWriteCommand;
 import com.mycomp.sns_pjt.command.MyProfileCommand;
 import com.mycomp.sns_pjt.command.Command;
 import com.mycomp.sns_pjt.command.TimelineSelect;
@@ -85,6 +87,47 @@ public class BController {
 			command.execute(model);
 			
 			return "posted_board";
+			
+		} else {
+			model.addAttribute("warn", "유효한 세션이 없습니다");
+			model.addAttribute("url", "login_page");
+			return "action/no_session";
+		}
+		
+	}
+	
+	// 댓글 작성하기
+	@RequestMapping(value = "/write_comment", method=RequestMethod.POST)
+	public String write_comment(HttpServletRequest request, Model model, HttpSession session) {
+		
+		model.addAttribute("request", request);
+		model.addAttribute("session", session);
+		
+		if(session.getAttribute("sid") != null) {
+			command = new CWriteCommand();
+			command.execute(model);
+			model.addAttribute("ok", "댓글을 작성했습니다");
+			return "action/comment_write";
+			
+		} else {
+			model.addAttribute("warn", "유효한 세션이 없습니다");
+			model.addAttribute("url", "login_page");
+			return "action/no_session";
+		}
+	}
+	
+	// 댓글 삭제하기 체크
+	@RequestMapping(value = "/delete_comment", method=RequestMethod.POST)
+	public String delete_comment_check(HttpServletRequest request, Model model, HttpSession session) {
+		
+		model.addAttribute("request", request);
+		model.addAttribute("session", session);
+		
+		if(session.getAttribute("sid") != null) {
+			command = new CDeleteCommand();
+			command.execute(model);
+			model.addAttribute("ok", "댓글을 삭제했습니다");
+			return "action/comment_delete";
 			
 		} else {
 			model.addAttribute("warn", "유효한 세션이 없습니다");
