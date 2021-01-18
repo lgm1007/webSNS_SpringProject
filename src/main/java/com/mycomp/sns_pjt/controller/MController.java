@@ -171,6 +171,21 @@ public class MController {
 		}
 	}
 	
+	@RequestMapping("/logout")
+	public String logoutCheck(Model model) {
+		
+		model.addAttribute("warn", "로그아웃 하겠습니까?");
+		model.addAttribute("urlTrue", "logout_execute");
+		model.addAttribute("urlFalse", "profile_page");
+		return "action/logout_check";
+	}
+	
+	@RequestMapping("/logout_execute")
+	public String logout(Model model, HttpSession session) {
+		session.invalidate();
+		return "login_page";
+	}
+	
 	@RequestMapping(value="/others_page", method=RequestMethod.POST)
 	public String othersPage(HttpServletRequest request, Model model, HttpSession session) {
 		
