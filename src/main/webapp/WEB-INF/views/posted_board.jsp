@@ -128,7 +128,7 @@
    											<button type="button" id="btnlike_empty" class="content_like" onclick="insertLike()">
    												<img src="/sns_pjt/resources/img/like.png" />
    											</button>
-   											<button type="button" id="btnlike_full" class="content_like" onclike="deleteLike()" style="display: none;">
+   											<button type="button" id="btnlike_full" class="content_like" onclick="deleteLike()" style="display: none;">
    												<img src="/sns_pjt/resources/img/like_full.png" />
    											</button>
    										</td>
@@ -149,6 +149,7 @@
 	   							var likerequest = new XMLHttpRequest();
 	            				var Unlikerequest = new XMLHttpRequest();
 	            				var countArray = [];
+	            				
 	            				countArray[<%=bdKey%>] = <%=countLike%>;
 	            				
 	            				function insertLike() {
