@@ -45,7 +45,7 @@ public class BIWriteClass {
 			String fileName = System.currentTimeMillis() + originFilename;
 			iDao.iInsert(bd_key, fileName);
 			
-			String saveFile = path + System.currentTimeMillis() + originFilename;
+			String saveFile = path + fileName;
 			
 			try {
 				mf.transferTo(new File(saveFile));

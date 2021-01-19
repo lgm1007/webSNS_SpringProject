@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.mycomp.sns_pjt.command.BDeleteCommand;
 import com.mycomp.sns_pjt.command.BIWriteClass;
+import com.mycomp.sns_pjt.command.BUpdateCommand;
 import com.mycomp.sns_pjt.command.BoardPostedCommand;
 import com.mycomp.sns_pjt.command.CDeleteCommand;
 import com.mycomp.sns_pjt.command.CWriteCommand;
@@ -93,6 +95,52 @@ public class BController {
 			model.addAttribute("url", "login_page");
 			return "action/no_session";
 		}
+		
+	}
+	
+	// 내 게시글 편집 페이지
+	@RequestMapping("/post_edit")
+	public String post_edit_page(HttpServletRequest request, Model model, HttpSession session) {
+		
+		if(session.getAttribute("sid") != null) {
+			int bdKey = Integer.parseInt(request.getParameter("bdEditKey"));
+			model.addAttribute("bdEditKey", bdKey);
+			
+			return "edit_page";
+			
+		} else {
+			model.addAttribute("warn", "유효한 세션이 없습니다");
+			model.addAttribute("url", "login_page");
+			return "action/no_session";
+		}
+	}
+	
+	// 게시글 편집하기
+	@RequestMapping(value="/edit_action", method=RequestMethod.POST)
+	public String edit_post(HttpServletRequest request, Model model, HttpSession session) {
+		
+		model.addAttribute("request", request);
+		
+		command = new BUpdateCommand();
+		command.execute(model);
+		model.addAttribute("ok", "게시글을 수정했습니다");
+		model.addAttribute("url", "profile_page");
+		return "action/edit_post_ok";
+	}
+	
+	// 게시글 삭제하기
+	@RequestMapping(value="/post_delete", method=RequestMethod.POST)
+	public String post_delete(HttpServletRequest request, Model model, HttpSession session) {
+		
+		model.addAttribute("request", request);
+		model.addAttribute("session", session);
+		
+		command = new BDeleteCommand();
+		command.execute(model);
+		model.addAttribute("ok", "게시글 삭제가 완료되었습니다");
+		model.addAttribute("url", "profile_page");
+		return "action/delete_post_ok";
+		
 		
 	}
 	

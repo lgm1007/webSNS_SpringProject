@@ -69,7 +69,7 @@
    										</form>
    									</td>
    									<td>
-   										<form action="post_edit" method="post">
+   										<form action="post_edit" method="get">
    											<input type="hidden" name="bdEditKey" value="${bdKey}" />
    											<button type="submit" id="edit_btn" class="btn btn-default btn-lg btn-pencil" style="display:none;">
    											<span class="glyphicon glyphicon-pencil" aria-hidden="true" /></button>

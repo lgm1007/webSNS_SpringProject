@@ -177,4 +177,28 @@ DataSource dataSource;
 		}
 	}
 	
+	public void bUpdate (int bdkey, String content) {
+		Connection conn = null;
+		PreparedStatement ptst = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String updateQurey = "UPDATE board SET bd_cont = ? WHERE bd_key = ?";
+			ptst = conn.prepareStatement(updateQurey);
+			ptst.setString(1, content);
+			ptst.setInt(2, bdkey);
+			int r = ptst.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ptst != null) ptst.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
 }
