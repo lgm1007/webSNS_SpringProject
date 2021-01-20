@@ -283,8 +283,9 @@
 						<table class="content_head">
 							<tr>
 								<td class="post_head_name">
+									<!-- 메인 페이지의 게시글 작성자, 검색에서 나오는 유저는 자신이 나오지 않으므로 바로 다른 유저의 프로필로 이동 -->
 									<form action="others_page" method="post">
-										<input type="hidden" name="otherUserID" value="${bDtos.mem_id}" /> 
+										<input type="hidden" name="userId" value="${bDtos.mem_id}" /> 
 										<input type="submit" class="content_nick" value="${bDtos.mem_id}" style="padding-top: 11px;" />
 									</form>
 								</td>

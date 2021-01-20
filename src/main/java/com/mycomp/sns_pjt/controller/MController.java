@@ -104,8 +104,29 @@ public class MController {
 		
 	}
 	
+	// 게시글 작성이가 세션(본인)인지 확인
+	@RequestMapping(value = "/areUSession", method=RequestMethod.POST)
+	public String checkUSession(HttpServletRequest request, Model model, HttpSession session) {
+		
+		String memID = request.getParameter("userId");
+		MCheckClass checkClass = new MCheckClass();
+		
+		boolean bool = checkClass.areUSession(memID, session);
+		
+		if(bool == true) {
+			return "profile_page";
+		} else {
+			model.addAttribute("request", request);
+			command = new OtherProfileCommand();
+			command.execute(model);
+			
+			return "others_page";
+		}
+		
+	}
+	
 	// 현재 유저 프로필 페이지
-	@RequestMapping(value = "/profile_page")
+	@RequestMapping("/profile_page")
 	public String profile_page(Model model, HttpSession session) {
 		
 		if(session.getAttribute("sid") != null) {

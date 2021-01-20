@@ -58,6 +58,7 @@
 	   					<table class="content_head">
 	   						<tr>
 	   							<td class="post_head_name">
+	   								<!-- 좋아요 표기를 한 게시글은 다른 사람의 글 또는 자신의 글일 수 있기 때문에 작성자가 세션인지 확인 -->
 	   								<form action="areUSession" method="post">
 	   									<input type="hidden" name="userId" value="${bDtos.mem_id}" />
 	   									<input type="submit" class="content_nick" value="${bDtos.mem_id}" style="padding-top: 11px;" />

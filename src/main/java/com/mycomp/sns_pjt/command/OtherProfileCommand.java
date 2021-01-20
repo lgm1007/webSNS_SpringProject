@@ -19,7 +19,7 @@ public class OtherProfileCommand implements Command {
 		
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		String uid = request.getParameter("otherUserID");
+		String uid = request.getParameter("userId");
 		
 		MDao mDao = new MDao();
 		BDao bDao = new BDao();

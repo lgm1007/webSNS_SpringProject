@@ -17,6 +17,7 @@ import com.mycomp.sns_pjt.dto.MDto;
 
 public class MCheckClass {
 
+	// Login Check
 	public void loginCheck(Model model, HttpSession session) {
 		
 		Map<String, Object> map = model.asMap();
@@ -46,6 +47,7 @@ public class MCheckClass {
 		
 	}
 	
+	// Join Check
 	public boolean joinCheck(HttpServletRequest request) {
 		
 		String create_id = request.getParameter("id");
@@ -61,6 +63,20 @@ public class MCheckClass {
 		
 	}
 	
+	// Check Member ID equals Session sid
+	public boolean areUSession(String memID, HttpSession session) {
+		
+		String sid = (String) session.getAttribute("sid");
+		
+		// 게시글 아이디와 세션 아이디가 같으면 True, 아니면 False 반환
+		if(sid.equals(memID)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// Withdrawal Check
 	public boolean withdrawalCheck(Model model, HttpSession session) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");

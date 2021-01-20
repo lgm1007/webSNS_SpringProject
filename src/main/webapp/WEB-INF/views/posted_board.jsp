@@ -63,6 +63,7 @@
    							<table class="content_head">
    								<tr>
    									<td class="post_head_name">
+   										<!-- 포스팅된 글을 보는 것은 다른 사람의 글과 자신의 글을 볼 수 있기 때문에 작성자가 세션인지 확인 -->
    										<form action="areUSession" method="post">
    											<input type="hidden" name="userId" value="${memID}" />
    											<input type="submit" class="content_nick" value="${memID}" style="padding-top: 11px;" />

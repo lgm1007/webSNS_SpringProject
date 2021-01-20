@@ -101,8 +101,9 @@
 					<table class="mem_table">
 						<tr>
 							<td>
+								<!-- 메인 페이지의 게시글 작성자, 검색에서 나오는 유저는 자신이 나오지 않으므로 바로 다른 유저의 프로필로 이동 -->
 								<form action="others_page" method="post" class="srh_user_frm">
-									<input type="hidden" value="${mDtos.id}" name="otherUserID" />
+									<input type="hidden" value="${mDtos.id}" name="userId" />
 									<input type="submit" class="sch_user_id" value="${mDtos.id}" />
 								</form>
 								<p class="sch_user_name">${mDtos.name}</p>
