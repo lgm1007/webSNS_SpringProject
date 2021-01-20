@@ -331,6 +331,7 @@
 							</div>
 							<%
 								}
+								// 해당 포스트의 좋아요 수
 								int countLk = lDao.countLikeSelect(bDto.getBd_key());
 							%>
 						</div>

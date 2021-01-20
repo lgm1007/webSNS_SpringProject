@@ -129,6 +129,40 @@ DataSource dataSource;
 		return bDtos;
 	}
 	
+	public ArrayList<BDto> likePageTL(String id) {
+		ArrayList<BDto> bDtos = new ArrayList<BDto>();
+		Connection conn = null;
+		PreparedStatement ptst = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String selQuery = "SELECT * FROM board WHERE bd_key in (SELECT bd_key FROM blike WHERE mem_id = '"+id+"') ORDER BY bd_key DESC";
+			ptst = conn.prepareStatement(selQuery);
+			rs = ptst.executeQuery();
+			
+			while(rs.next()) {
+				int bd_key = rs.getInt("bd_key");
+				String mem_id = rs.getString("mem_id");
+				String bd_cont = rs.getString("bd_cont");
+				
+				BDto bDto = new BDto(bd_key, mem_id, bd_cont);
+				bDtos.add(bDto);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ptst != null) ptst.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return bDtos;
+	}
+	
 	public void bInsert(String memid, String content) {
 		Connection conn = null;
 		PreparedStatement ptst = null;

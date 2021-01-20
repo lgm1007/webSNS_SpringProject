@@ -12,6 +12,7 @@ import com.mycomp.sns_pjt.dto.BDto;
 
 public class TimelineSelect {
 	
+	// 메인 페이지 타임라인
 	public void timeLine(Model model) {
 		
 		Map<String, Object> map = model.asMap();
@@ -22,6 +23,22 @@ public class TimelineSelect {
 		BDao bDao = new BDao();
 		
 		ArrayList<BDto> bDtos = bDao.timelineSelect(sid);
+		
+		model.addAttribute("boardList", bDtos);
+		
+	}
+	
+	// 좋아요 한 페이지 가져오기
+	public void likePageTimeLine(Model model) {
+		
+		Map<String, Object> map = model.asMap();
+		HttpSession session = (HttpSession) map.get("session");
+		
+		String sid = (String) session.getAttribute("sid");
+		
+		BDao bDao = new BDao();
+		
+		ArrayList<BDto> bDtos = bDao.likePageTL(sid);
 		
 		model.addAttribute("boardList", bDtos);
 		

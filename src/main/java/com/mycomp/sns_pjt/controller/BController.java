@@ -43,6 +43,24 @@ public class BController {
 		
 	}
 	
+	// 좋아요 한 게시물 보는 페이지
+	@RequestMapping(value = "/like_page")
+	public String like_page(Model model, HttpSession session) {
+		
+		if(session.getAttribute("sid") != null) {
+			model.addAttribute("session", session);
+			TimelineSelect timelineSelect = new TimelineSelect();
+			timelineSelect.likePageTimeLine(model);
+			
+			return "like_page";
+		} else {
+			
+			model.addAttribute("warn", "유효한 세션이 없습니다");
+			model.addAttribute("url", "login_page");
+			return "action/no_session";
+		}
+	}
+	
 	//포스트 작성 페이지 이동
 	@RequestMapping(value = "/post_page")
 	public String post_page(Model model, HttpSession session) {

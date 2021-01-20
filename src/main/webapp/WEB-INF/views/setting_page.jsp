@@ -82,13 +82,13 @@
             <ul class="headbar">
                 <li class="head_logo"><a href="home_page"><img src="img/sol_logo_40px.png" alt="logo" /></a></li>
                 <li class="head_icon">
-                    <a href="#" class="icon_like"><img src="/sns_pjt/resources/img/like.png" alt="like" /></a>
-                    <a href="User_Page.html" class="icon_me"><img src="/sns_pjt/resources/img/me.png" alt="me" /></a>
-                    <a href="글쓰기입력.html" class="icon_pic"><img src="/sns_pjt/resources/img/pic.png" alt="pic" /></a>
+                    <a href="like_page" class="icon_like"><img src="/sns_pjt/resources/img/like.png" alt="like" /></a>
+                    <a href="profile_page" class="icon_me"><img src="/sns_pjt/resources/img/me.png" alt="me" /></a>
+                    <a href="post_page" class="icon_pic"><img src="/sns_pjt/resources/img/pic.png" alt="pic" /></a>
                 </li>
             </ul>
             <div class="head_input">
-                <form action="Search_Page.html" name="hd_frm" method="get">
+                <form action="search_page" name="hd_frm" method="get">
                     <input type="search" id="keyword" placeholder="검색" onkeypress="if (event.keyCode == 13) { goSearch();}" style="text-align :center; font-size:13px; color:#cacaca; border:0.7px solid #cacaca;" />
                 </form>
             </div>
