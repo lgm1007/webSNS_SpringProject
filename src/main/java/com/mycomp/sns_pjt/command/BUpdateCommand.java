@@ -10,6 +10,7 @@ import com.mycomp.sns_pjt.dao.BDao;
 
 public class BUpdateCommand implements Command {
 
+	// 해당 bdKey의 글 내용 수정
 	@Override
 	public void execute(Model model) {
 		

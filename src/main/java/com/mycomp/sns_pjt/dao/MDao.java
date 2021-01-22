@@ -24,7 +24,7 @@ public class MDao {
 			e.printStackTrace();
 		}
 	}
-	
+	// 해당 유저에 관한 내용 반환
 	public ArrayList<MDto> mSelect(String word) {
 		ArrayList<MDto> mDtos = new ArrayList<MDto>();
 		Connection conn = null;
@@ -62,7 +62,7 @@ public class MDao {
 		
 		return mDtos;
 	}
-
+	// 해당 word가 포함된 아이디를 가진 유저들 검색
 	public ArrayList<MDto> mSearch(String word) {
 		ArrayList<MDto> mDtos = new ArrayList<MDto>();
 		Connection conn = null;
@@ -100,7 +100,7 @@ public class MDao {
 		
 		return mDtos;
 	}
-	
+	// 회원 가입 (Insert)
 	public void mInsert(String id, String pw, String name, int tel1, int tel2, int tel3) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
@@ -128,7 +128,7 @@ public class MDao {
 			}
 		}
 	}
-	
+	// 회원 탈퇴 (Delete)
 	public void mDelete(String id) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
@@ -151,7 +151,7 @@ public class MDao {
 			}
 		}
 	}
-	
+	// 회원 내용 수정 (비밀번호, 이름, 휴대폰번호)
 	public void mUpdate(String user_id, String upw, String uname, int utel1, int utel2, int utel3) {
 		Connection conn = null;
 		PreparedStatement ptst = null;

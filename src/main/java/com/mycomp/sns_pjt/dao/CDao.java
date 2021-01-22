@@ -25,7 +25,7 @@ public class CDao {
 			e.printStackTrace();
 		}
 	}
-	
+	// 해당 bdKey의 글에 작성된 댓글 가져오기
 	public ArrayList<CDto> cSelect(int bdKey) {
 		ArrayList<CDto> cDtos = new ArrayList<CDto>();
 		Connection conn = null;
@@ -62,7 +62,7 @@ public class CDao {
 		}
 		return cDtos;
 	}
-	
+	// 해당 bdKey의 글에 댓글 작성
 	public int cInsert(int bdKey, String memid, String comment) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
@@ -89,7 +89,7 @@ public class CDao {
 		}
 		return i;
 	}
-	
+	// 해당 bdKey의 해당 commKey의 댓글 삭제
 	public int cDelete(int bdKey, int commKey, String memid) {
 		Connection conn = null;
 		PreparedStatement ptst = null;

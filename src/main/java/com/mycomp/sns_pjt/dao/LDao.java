@@ -25,7 +25,7 @@ public class LDao {
 			e.printStackTrace();
 		}
 	}
-	
+	// 해당 유저가 좋아요를 누른 글의 목록 반환
 	public ArrayList<LDto> likeBoardSelect(String userid) {
 		ArrayList<LDto> lDtos = new ArrayList<LDto>();
 		Connection conn = null;
@@ -58,7 +58,7 @@ public class LDao {
 		}
 		return lDtos;
 	}
-	
+	// 해당 유저가 해당 bdKey의 글에 좋아요를 눌렀는지 확인
 	public boolean CheckThisBoardILike(String userid, int bdKey) {
 		boolean b = false;
 		Connection conn = null;
@@ -86,7 +86,7 @@ public class LDao {
 		}
 		return b;
 	}
-	
+	// 해당 bdKey의 글에 좋아요를 한 유저의 수 반환
 	public int countLikeSelect(int bdKey) {
 		int count = 0;
 		Connection conn = null;
@@ -116,7 +116,7 @@ public class LDao {
 		}
 		return count;
 	}
-	
+	// 좋아요 (Insert)
 	public int lInsert(int bdKey, String userid) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
@@ -142,7 +142,7 @@ public class LDao {
 		}
 		return i;
 	}
-	
+	// 좋아요 취소 (Delete)
 	public int lDelete (int bdKey, String userid) {
 		Connection conn = null;
 		PreparedStatement ptst = null;

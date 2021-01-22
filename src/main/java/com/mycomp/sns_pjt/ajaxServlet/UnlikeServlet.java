@@ -22,7 +22,7 @@ public class UnlikeServlet extends HttpServlet {
 		
 		response.getWriter().write(unlikeFunction(bd_key, mem_id) + "");
 	}
-	
+	// 좋아요 취소 (Like delete)
 	public int unlikeFunction(int bd_key, String mem_id) {
 		LDao lDao = new LDao();
 		int reI = lDao.lDelete(bd_key, mem_id);

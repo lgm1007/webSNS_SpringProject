@@ -22,7 +22,7 @@ public class UnfollowServlet extends HttpServlet {
 		
 		response.getWriter().write(unfollow(follow, follower) + "");
 	}
-	
+	// ¾ðÆÈ·Î¿ì (Follow delete)
 	public int unfollow(String follow, String follower) {
 		FDao fDao = new FDao();
 		int reI = fDao.followDelete(follow, follower);

@@ -22,7 +22,7 @@ public class FollowRegisterServlet extends HttpServlet {
 		
 		response.getWriter().write(registerFollow(follow, follower) + "");
 	}
-	
+	// ÆÈ·Î¿ì (Follow insert) 
 	public int registerFollow(String follow, String follower) {
 		FDao fDao = new FDao();
 		int reI = fDao.fInsert(follow, follower);

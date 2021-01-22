@@ -25,7 +25,7 @@ DataSource dataSource;
 			e.printStackTrace();
 		}
 	}
-	
+	// 해당 유저가 팔로우하고 있는 사람 목록 반환
 	public ArrayList<FDto> selectFollow(String userid) {
 		ArrayList<FDto> fDtos = new ArrayList<FDto>();
 		Connection conn = null;
@@ -59,7 +59,7 @@ DataSource dataSource;
 		}
 		return fDtos;
 	}
-	
+	// 해당 유저의 팔로워들 반환
 	public ArrayList<FDto> selectFollower(String userid) {
 		ArrayList<FDto> fDtos = new ArrayList<FDto>();
 		Connection conn = null;
@@ -93,7 +93,7 @@ DataSource dataSource;
 		}
 		return fDtos;
 	}
-	
+	// 로그인한 유저가 다른 사람을 팔로우하고 있는지 확인
 	public boolean checkIFollowU(String userid, String otherid) {
 		boolean b = false;
 		Connection conn = null;
@@ -120,7 +120,7 @@ DataSource dataSource;
 		}
 		return b;
 	}
-	
+	// 다른 사람이 로그인한 유저를 팔로우하고 있는지 확인
 	public boolean checkUFollowMe(String userid, String otherid) {
 		boolean b = false;
 		Connection conn = null;
@@ -147,7 +147,7 @@ DataSource dataSource;
 		}
 		return b;
 	}
-	
+	// 팔로우 = Insert
 	public int fInsert(String follow, String follower) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
@@ -174,7 +174,7 @@ DataSource dataSource;
 		return i;
 	}
 	
-	// non-follow
+	// 언팔로우 = Delete
 	public int followDelete (String follow, String follower) {
 		Connection conn = null;
 		PreparedStatement ptst = null;

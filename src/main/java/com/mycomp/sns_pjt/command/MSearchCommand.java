@@ -11,6 +11,7 @@ import com.mycomp.sns_pjt.dto.MDto;
 
 public class MSearchCommand implements Command {
 
+	// 검색한 단어가 포함된 아이디를 가진 사용자 Select
 	@Override
 	public void execute(Model model) {
 		

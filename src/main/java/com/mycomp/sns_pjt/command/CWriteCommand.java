@@ -11,6 +11,7 @@ import com.mycomp.sns_pjt.dao.CDao;
 
 public class CWriteCommand implements Command {
 
+	// 댓글 작성 (댓글을 남길 글의 bdKey, 댓글 내용, 유저의 ID 수신) 
 	@Override
 	public void execute(Model model) {
 		

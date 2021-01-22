@@ -14,6 +14,7 @@ import com.mycomp.sns_pjt.dto.CDto;
 
 public class BoardPostedCommand implements Command {
 
+	// 작성된 글 전체보기 (글의 bdKey, 작성자 ID, 글 내용, 해당 bdKey에 적힌 댓글들 전송) 
 	@Override
 	public void execute(Model model) {
 		

@@ -26,7 +26,7 @@ DataSource dataSource;
 			e.printStackTrace();
 		}
 	}
-	
+	// 해당 유저가 작성한 글 목록 반환
 	public ArrayList<BDto> bSelect(String id) {
 		ArrayList<BDto> bDtos = new ArrayList<BDto>();
 		Connection conn = null;
@@ -60,7 +60,7 @@ DataSource dataSource;
 		}
 		return bDtos;
 	}
-	
+	// bdKey를 통해 글 목록 Select 후 반환
 	public ArrayList<BDto> bSelectAsKey(int bdKey) {
 		ArrayList<BDto> bDtos = new ArrayList<BDto>();
 		Connection conn = null;
@@ -94,7 +94,7 @@ DataSource dataSource;
 		}
 		return bDtos;
 	}
-	
+	// 메인화면 타임라인 목록 (로그인한 유저가 팔로우한 유저의 글목록 반환)
 	public ArrayList<BDto> timelineSelect(String id) {
 		ArrayList<BDto> bDtos = new ArrayList<BDto>();
 		Connection conn = null;
@@ -128,7 +128,7 @@ DataSource dataSource;
 		}
 		return bDtos;
 	}
-	
+	// 해당 유저가 좋아요를 누른 글 목록 반환
 	public ArrayList<BDto> likePageTL(String id) {
 		ArrayList<BDto> bDtos = new ArrayList<BDto>();
 		Connection conn = null;
@@ -162,7 +162,7 @@ DataSource dataSource;
 		}
 		return bDtos;
 	}
-	
+	// 글 작성하기 (ID와 글 내용만 필요, bdKey는 auto_increase)
 	public void bInsert(String memid, String content) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
@@ -186,7 +186,7 @@ DataSource dataSource;
 			}
 		}
 	}
-	
+	// 해당 유저의 해당 bdKey 글 삭제
 	public void bDelete (String memid, int bdkey) {
 		Connection conn = null;
 		PreparedStatement ptst = null;
@@ -210,7 +210,7 @@ DataSource dataSource;
 			}
 		}
 	}
-	
+	// 해당 bdKey의 글 내용 수정
 	public void bUpdate (int bdkey, String content) {
 		Connection conn = null;
 		PreparedStatement ptst = null;

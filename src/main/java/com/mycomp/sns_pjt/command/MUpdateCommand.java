@@ -11,6 +11,7 @@ import com.mycomp.sns_pjt.dao.MDao;
 
 public class MUpdateCommand implements Command {
 
+	// 회원정보 수정 (수정할 수 있는 사항은 비밀번호, 이름, 휴대폰번호)
 	@Override
 	public void execute(Model model) {
 		

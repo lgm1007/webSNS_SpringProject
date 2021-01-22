@@ -11,6 +11,7 @@ import com.mycomp.sns_pjt.dao.BDao;
 
 public class BDeleteCommand implements Command {
 
+	// 세션 유저의 선택한 bdKey의 글 삭제
 	@Override
 	public void execute(Model model) {
 		

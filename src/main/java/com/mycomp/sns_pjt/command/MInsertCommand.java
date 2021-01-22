@@ -10,6 +10,7 @@ import com.mycomp.sns_pjt.dao.MDao;
 
 public class MInsertCommand implements Command {
 
+	// 회원가입 (회원 가입에 필요한 내용 수신 후 Member Insert)
 	@Override
 	public void execute(Model model) {
 		

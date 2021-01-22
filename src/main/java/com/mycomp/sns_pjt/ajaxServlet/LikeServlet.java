@@ -22,7 +22,7 @@ public class LikeServlet extends HttpServlet {
 		
 		response.getWriter().write(likeFunction(mem_id, bd_key) + "");
 	}
-	
+	// 글 좋아요 (Like insert)
 	public int likeFunction(String mem_id, int bd_key) {
 		LDao lDao = new LDao();
 		int reI = lDao.lInsert(bd_key, mem_id);

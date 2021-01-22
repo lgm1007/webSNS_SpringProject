@@ -11,6 +11,7 @@ import com.mycomp.sns_pjt.dao.CDao;
 
 public class CDeleteCommand implements Command {
 
+	// 세션 유저가 쓴 댓글 지우기 (한 유저가 여러 댓글을 쓸 수 있으므로 commKey도 쿼리문의 Where문에 추가)
 	@Override
 	public void execute(Model model) {
 		

@@ -17,6 +17,9 @@ import com.mycomp.sns_pjt.dto.BDto;
 
 public class BIWriteClass {
 
+	/* 글쓰기 메서드
+	 * 파일, 내용, 아이디를 BDao를 통해 Insert
+	 * 이미지파일은 중복 파일명을 고려해 밀리시간을 파일명 앞에 붙여 저장 후 해당 파일명 DB에 저장 */
 	public void write(Model model, HttpSession session) {
 		
 		Map<String, Object> map = model.asMap();

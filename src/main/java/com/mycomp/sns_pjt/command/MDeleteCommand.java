@@ -11,6 +11,7 @@ import com.mycomp.sns_pjt.dao.MDao;
 
 public class MDeleteCommand implements Command {
 
+	// È¸¿ø Å»Åð (Member Delete)
 	@Override
 	public void execute(Model model) {
 		
