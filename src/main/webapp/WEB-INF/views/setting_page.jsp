@@ -80,11 +80,11 @@
     <div id="header">
         <div class="headbar_div">
             <ul class="headbar">
-                <li class="head_logo"><a href="home_page"><img src="img/sol_logo_40px.png" alt="logo" /></a></li>
+                <li class="head_logo"><a href="home_page"><img src="/sns_pjt/resources/img/sol_logo_40px.png" alt="logo" /></a></li>
                 <li class="head_icon">
                     <a href="like_page" class="icon_like"><img src="/sns_pjt/resources/img/like.png" alt="like" /></a>
-                    <a href="profile_page" class="icon_me"><img src="/sns_pjt/resources/img/me.png" alt="me" /></a>
-                    <a href="post_page" class="icon_pic"><img src="/sns_pjt/resources/img/pic.png" alt="pic" /></a>
+                    <a href="profile_page" class="icon_me"><img src="/sns_pjt/resources/img/me.PNG" alt="me" /></a>
+                    <a href="post_page" class="icon_pic"><img src="/sns_pjt/resources/img/pic.PNG" alt="pic" /></a>
                 </li>
             </ul>
             <div class="head_input">

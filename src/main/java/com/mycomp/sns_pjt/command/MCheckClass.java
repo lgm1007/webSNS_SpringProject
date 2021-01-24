@@ -88,7 +88,7 @@ public class MCheckClass {
 		MDao mDao = new MDao();
 		ArrayList<MDto> mDtos = mDao.mSelect(sid);
 		
-		if((mDtos.get(0).getPw()).equals(pw) || pw.equals(pw_chk)) {
+		if((mDtos.get(0).getPw()).equals(pw) && pw.equals(pw_chk)) {
 			return true;
 		} else {
 			return false;
