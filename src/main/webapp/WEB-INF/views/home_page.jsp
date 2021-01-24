@@ -371,9 +371,9 @@
 						<script type="text/javascript" charset="utf-8">
 							var likerequest = new XMLHttpRequest();
             				var Unlikerequest = new XMLHttpRequest();
-            				var countArray = [];
+            				var countVar<%=bDto.getBd_key()%> = 0;
             				
-            				countArray[<%=bDto.getBd_key()%>] = <%=countLk%>;
+            				countVar<%=bDto.getBd_key()%> = <%=countLk%>;
             				
             				function insertLike<%=bDto.getBd_key()%>() {
             					likerequest.open("Post","./LikeServlet?mem_id="+ encodeURIComponent(document.getElementById("sessionID").value) + 
@@ -388,8 +388,8 @@
                     				if(getWrite == 0) {
                     					alert("좋아요를 실패했습니다. (DB에러)");
                     				} else {
-                    					var c = countArray[<%=bDto.getBd_key()%>] + 1;
-                    					countArray[<%=bDto.getBd_key()%>] = c;
+                    					var c = countVar<%=bDto.getBd_key()%> + 1;
+                    					countVar<%=bDto.getBd_key()%> = c;
                     					document.getElementById("cnt_Lk<%=bDto.getBd_key()%>").innerHTML = c;
                     					document.getElementById("btnlike_empty<%=bDto.getBd_key()%>").style.display = "none";
                     	 				document.getElementById("btnlike_full<%=bDto.getBd_key()%>").style.display = "block";
@@ -410,8 +410,8 @@
                     				if(getWrite == 0) {
                     					alert("좋아요 취소를 실패했습니다. (DB에러)");
                     				} else {
-                    					var c = countArray[<%=bDto.getBd_key()%>] - 1;
-                    					countArray[<%=bDto.getBd_key()%>] = c;
+                    					var c = countVar<%=bDto.getBd_key()%> - 1;
+                    					countVar<%=bDto.getBd_key()%> = c;
                     					document.getElementById("cnt_Lk<%=bDto.getBd_key()%>").innerHTML = c;
                     					document.getElementById("btnlike_full<%=bDto.getBd_key()%>").style.display = "none";
                     					document.getElementById("btnlike_empty<%=bDto.getBd_key()%>").style.display = "block";
