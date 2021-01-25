@@ -22,23 +22,24 @@ Instagram 사이트의 기능 및 동작들을 참고하여 view 페이지간 �
 ## Table of Contents
 
 - [회원가입](#회원가입)
-- [로그인 및 회원가입 시 오류 처리](#로그인 및 회원가입 시 오류 처리)
-- [유저 검색 및 팔로우](#유저 검색 및 팔로우)
-- [유저 언팔로우](#유저 언팔로우)
-- [좋아요 및 좋아요 페이지](#좋아요 및 좋아요 페이지)
-- [작성된 게시글 보기 & 댓글 달기](#작성된 게시글 보기 & 댓글 달기)
-- [댓글 삭제](#댓글 삭제)
-- [다른 유저의 프로필](#다른 유저의 프로필)
-- [게시글 작성](#게시글 작성)
-- [게시글 내용 수정](#게시글 내용 수정)
-- [게시글 삭제](#게시글 삭제)
-- [회원정보 변경](#회원정보 변경)
-- [회원 탈퇴](#회원 탈퇴)
-- [데이터 접근 객체 및 전송 객체](#데이터 접근 객체 및 전송 객체)
+- [로그인 및 회원가입 시 오류 처리](#로그인-및-회원가입-시-오류-처리)
+- [유저 검색 및 팔로우](#유저-검색-및-팔로우)
+- [유저 언팔로우](#유저-언팔로우)
+- [좋아요 및 좋아요 페이지](#좋아요-및-좋아요-페이지)
+- [작성된 게시글 보기 & 댓글 달기](#작성된-게시글-보기-&-댓글-달기)
+- [댓글 삭제](#댓글-삭제)
+- [다른 유저의 프로필](#다른-유저의-프로필)
+- [게시글 작성](#게시글-작성)
+- [게시글 내용 수정](#게시글-내용-수정)
+- [게시글 삭제](#게시글-삭제)
+- [회원정보 변경](#회원정보-변경)
+- [회원 탈퇴](#회원-탈퇴)
+- [데이터 접근 객체 및 전송 객체](#데이터-접근-객체-및-전송-객체)
+- [에러페이지](#에러페이지)
 
 ## 회원가입
 
-<img src="https://i.imgur.com/SXOjzwF.gif" height="480px" width="1000px"> 
+<img src="https://i.imgur.com/SXOjzwF.gif" width="823px"> 
 
 [![](https://img.shields.io/badge/controller-MController-blue)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/controller/MController.java) [![](https://img.shields.io/badge/view-join%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/join_page.jsp) [![](https://img.shields.io/badge/view-login%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/login_page.jsp) 
 
@@ -50,7 +51,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 로그인 및 회원가입 시 오류 처리
 
-<img src="https://i.imgur.com/wXgUqlf.gif" height="480px" width="1000px"> 
+<img src="https://i.imgur.com/wXgUqlf.gif" width="823px"> 
 
 [![](https://img.shields.io/badge/class-MCheckClass-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/MCheckClass.java) 
 
@@ -60,7 +61,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 유저 검색 및 팔로우
 
-<img src="https://i.imgur.com/lW1MDhC.gif" height="480px" width="1000px">  
+<img src="https://i.imgur.com/lW1MDhC.gif" width="823px">  
 
 [![](https://img.shields.io/badge/view-main%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/home_page.jsp) [![](https://img.shields.io/badge/view-search%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/search_page.jsp) [![](https://img.shields.io/badge/class-MSearchCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/MSearchCommand.java) [![](https://img.shields.io/badge/servlet%20class-ajaxServlet-yellowgreen)](https://github.com/lgm1007/webSNS_SpringProject/tree/master/src/main/java/com/mycomp/sns_pjt/ajaxServlet) [![](https://img.shields.io/badge/dispatcherServlet-web.xml-blueviolet)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/web.xml) 
 
@@ -74,7 +75,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 유저 언팔로우
 
-<img src="https://i.imgur.com/G8lZWa0.gif" height="480px" width="1000px">
+<img src="https://i.imgur.com/G8lZWa0.gif" width="823px">
 
 팔로우하고 있는 유저를 언팔로우하기 <br/>
 
@@ -82,7 +83,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 좋아요 및 좋아요 페이지
 
-<img src="https://i.imgur.com/pkWJPAa.gif" height="480px" width="1000px">
+<img src="https://i.imgur.com/pkWJPAa.gif" width="823px">
 
 [![](https://img.shields.io/badge/controller-BController-blue)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/controller/BController.java) [![](https://img.shields.io/badge/view-like%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/like_page.jsp) 
 
@@ -94,7 +95,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 작성된 게시글 보기 & 댓글 달기
 
-<img src="https://i.imgur.com/57XnYy9.gif" height="480px" width="1000px">
+<img src="https://i.imgur.com/57XnYy9.gif" width="823px">
 
 [![](https://img.shields.io/badge/view-posted_board%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/posted_board.jsp) [![](https://img.shields.io/badge/class-CWriteCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/CWriteCommand.java) 
 
@@ -104,7 +105,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 댓글 삭제
 
-<img src="https://i.imgur.com/0tfdPlN.gif" height="480px" width="1000px">
+<img src="https://i.imgur.com/0tfdPlN.gif" width="823px">
 
 [![](https://img.shields.io/badge/class-CDeleteCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/CDeleteCommand.java) 
 
@@ -114,7 +115,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 다른 유저의 프로필
 
-<img src="https://i.imgur.com/NybM4Lc.gif" height="480px" width="1000px">
+<img src="https://i.imgur.com/NybM4Lc.gif" width="823px">
 
 [![](https://img.shields.io/badge/view-othersProfile%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/others_page.jsp) [![](https://img.shields.io/badge/class-OtherProfileCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/OtherProfileCommand.java) 
 
@@ -124,11 +125,11 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 게시글 작성
 
-<img src="https://i.imgur.com/A5g0HMI.gif" height="480px" width="1000px">
+<img src="https://i.imgur.com/A5g0HMI.gif" width="823px">
 
 <br/>
 
-<img src="https://i.imgur.com/C5InyUn.gif" height="480px" width="1000px">
+<img src="https://i.imgur.com/C5InyUn.gif" width="823px">
 
 [![](https://img.shields.io/badge/view-profile%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/profile_page.jsp) [![](https://img.shields.io/badge/view-posting%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/post_page.jsp) [![](https://img.shields.io/badge/class-BIWriteClass-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/BIWriteClass.java) [![](https://img.shields.io/badge/dependency-pom.xml-blueviolet)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/pom.xml) [![](https://img.shields.io/badge/bean-servlet%20context.xml-blueviolet)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml) 
 
@@ -144,7 +145,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 게시글 내용 수정
 
-<img src="https://i.imgur.com/yrKmh76.gif" height="480px" width="1000px">
+<img src="https://i.imgur.com/yrKmh76.gif" width="823px">
 
 [![](https://img.shields.io/badge/view-edit%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/edit_page.jsp) [![](https://img.shields.io/badge/class-BUpdateCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/BUpdateCommand.java) 
 
@@ -154,7 +155,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 게시글 삭제
 
-<img src="https://i.imgur.com/TSIOiV8.gif" height="480px" width="1000px">
+<img src="https://i.imgur.com/TSIOiV8.gif" width="823px">
 
 [![](https://img.shields.io/badge/class-BDeleteCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/BDeleteCommand.java) 
 
@@ -164,7 +165,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 회원정보 변경
 
-<img src="https://i.imgur.com/6jgwrRN.gif" height="480px" width="1000px">
+<img src="https://i.imgur.com/6jgwrRN.gif" width="823px">
 
 [![](https://img.shields.io/badge/view-user_setting%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/setting_page.jsp) [![](https://img.shields.io/badge/class-MUpdateCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/MUpdateCommand.java) 
 
@@ -174,7 +175,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 회원 탈퇴
 
-<img src="https://i.imgur.com/rquSNgS.gif" height="480px" width="1000px">
+<img src="https://i.imgur.com/rquSNgS.gif" width="823px">
 
 [![](https://img.shields.io/badge/view-withdrawal_check%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/withdrawal_check.jsp) [![](https://img.shields.io/badge/class-MDeleteCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/MDeleteCommand.java) [![](https://img.shields.io/badge/class-MCheckClass-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/MCheckClass.java) 
 
