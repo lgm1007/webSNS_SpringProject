@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,9 @@ public class MController {
 
 	Command command;
 	
+	@Autowired
+	MCheckClass mCheck;
+	
 	// 로그인 화면
 	@RequestMapping("/login_page")
 	public String login_page(Model model, HttpSession session) {
@@ -43,8 +47,7 @@ public class MController {
 	public String login(HttpServletRequest request, Model model, HttpSession session) {
 		
 		model.addAttribute("request", request);
-		MCheckClass Checkin = new MCheckClass();
-		Checkin.loginCheck(model, session);
+		mCheck.loginCheck(model, session);
 		
 		if(session.getAttribute("sid") != null) { 
 			return "home_page"; 
@@ -67,8 +70,7 @@ public class MController {
 	@RequestMapping(value = "/join", method=RequestMethod.POST)
 	public String join(HttpServletRequest request, Model model, HttpSession session) {
 		
-		MCheckClass Checkin = new MCheckClass();
-		boolean bool = Checkin.joinCheck(request);
+		boolean bool = mCheck.joinCheck(request);
 		
 		if(bool == false) {
 			model.addAttribute("warn", "같은 아이디가 존재합니다");
@@ -109,9 +111,8 @@ public class MController {
 	public String checkUSession(HttpServletRequest request, Model model, HttpSession session) {
 		
 		String memID = request.getParameter("userId");
-		MCheckClass checkClass = new MCheckClass();
 		
-		boolean bool = checkClass.areUSession(memID, session);
+		boolean bool = mCheck.areUSession(memID, session);
 		
 		if(bool == true) {
 			return "profile_page";
@@ -175,8 +176,7 @@ public class MController {
 	public String delete(HttpServletRequest request, Model model, HttpSession session) {
 		
 		model.addAttribute("request", request);
-		MCheckClass Checkin = new MCheckClass();
-		boolean b = Checkin.withdrawalCheck(model, session);
+		boolean b = mCheck.withdrawalCheck(model, session);
 		
 		if(b) {
 			model.addAttribute("session", session);

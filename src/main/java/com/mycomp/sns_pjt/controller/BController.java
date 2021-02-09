@@ -2,6 +2,8 @@ package com.mycomp.sns_pjt.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,13 +25,18 @@ public class BController {
 
 	Command command;
 	
+	@Autowired
+	TimelineSelect timelineSelect;
+	
+	@Autowired
+	BIWriteClass writeClass;
+	
 	//메인페이지 이동
 	@RequestMapping(value = "/home_page")
 	public String home_page(Model model, HttpSession session) {
 		
 		if(session.getAttribute("sid") != null) {
 			model.addAttribute("session", session);
-			TimelineSelect timelineSelect = new TimelineSelect();
 			timelineSelect.timeLine(model);
 		
 			return "home_page";
@@ -49,7 +56,6 @@ public class BController {
 		
 		if(session.getAttribute("sid") != null) {
 			model.addAttribute("session", session);
-			TimelineSelect timelineSelect = new TimelineSelect();
 			timelineSelect.likePageTimeLine(model);
 			
 			return "like_page";
@@ -79,12 +85,10 @@ public class BController {
 	public String post_writing(MultipartHttpServletRequest mtpRequest , Model model, HttpSession session) {
 		
 		model.addAttribute("mtprequest", mtpRequest);
-		BIWriteClass writeClass = new BIWriteClass();
 		writeClass.write(model, session);
 		
 		if(session.getAttribute("sid") != null) {
 			model.addAttribute("session", session);
-			TimelineSelect timelineSelect = new TimelineSelect();
 			timelineSelect.timeLine(model);
 		
 			return "home_page";

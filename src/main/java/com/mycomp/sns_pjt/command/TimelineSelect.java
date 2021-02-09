@@ -5,11 +5,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 import com.mycomp.sns_pjt.dao.BDao;
 import com.mycomp.sns_pjt.dto.BDto;
 
+@Component
 public class TimelineSelect {
 	
 	// 메인 페이지 타임라인

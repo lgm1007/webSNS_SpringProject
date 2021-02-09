@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -15,6 +17,7 @@ import com.mycomp.sns_pjt.dao.BDao;
 import com.mycomp.sns_pjt.dao.IDao;
 import com.mycomp.sns_pjt.dto.BDto;
 
+@Component
 public class BIWriteClass {
 
 	/* 글쓰기 메서드

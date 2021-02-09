@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 import com.mycomp.sns_pjt.dao.BDao;
@@ -15,6 +16,7 @@ import com.mycomp.sns_pjt.dto.BDto;
 import com.mycomp.sns_pjt.dto.FDto;
 import com.mycomp.sns_pjt.dto.MDto;
 
+@Component
 public class MCheckClass {
 
 	// Login Check
