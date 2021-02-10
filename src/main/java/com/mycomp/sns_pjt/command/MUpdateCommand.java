@@ -5,12 +5,16 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 import com.mycomp.sns_pjt.dao.MDao;
 
 public class MUpdateCommand implements Command {
 
+	@Autowired
+	MSha256 sha256;
+	
 	// 회원정보 수정 (수정할 수 있는 사항은 비밀번호, 이름, 휴대폰번호)
 	@Override
 	public void execute(Model model) {
@@ -26,8 +30,10 @@ public class MUpdateCommand implements Command {
 		int tel2 = Integer.parseInt(request.getParameter("tel2"));
 		int tel3 = Integer.parseInt(request.getParameter("tel3"));
 		
+		String encPw = sha256.encrypt(update_pw);
+		
 		MDao mDao = new MDao();
-		mDao.mUpdate(user_id, update_pw, update_name, tel1, tel2, tel3);
+		mDao.mUpdate(user_id, encPw, update_name, tel1, tel2, tel3);
 		
 		model.addAttribute("update_name", update_name);
 		
