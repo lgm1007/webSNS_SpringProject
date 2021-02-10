@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
@@ -18,6 +19,9 @@ import com.mycomp.sns_pjt.dto.MDto;
 
 @Component
 public class MCheckClass {
+	
+	@Autowired
+	MSha256 sha256;
 
 	// Login Check
 	public void loginCheck(Model model, HttpSession session) {
@@ -27,6 +31,7 @@ public class MCheckClass {
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
+		String encPw = sha256.encrypt(pw);
 		
 		BDao bDao = new BDao();
 		MDao mDao = new MDao();
@@ -36,7 +41,7 @@ public class MCheckClass {
 		
 		// mDtos.size 값이 0 이하이면 존재하지 않는 아이디, equals가 false이면 비밀번호가 틀렸음
 		if(mDtos.size() > 0) {
-			if(mDtos.get(0).getPw().equals(pw)) {
+			if(mDtos.get(0).getPw().equals(encPw)) {
 				session.setAttribute("sid", id);
 				session.setAttribute("sname", mDtos.get(0).getName());
 				
@@ -87,10 +92,12 @@ public class MCheckClass {
 		String pw_chk = request.getParameter("re_pw_chk");
 		String sid = (String) session.getAttribute("sid");
 		
+		String encPw = sha256.encrypt(pw);
+		
 		MDao mDao = new MDao();
 		ArrayList<MDto> mDtos = mDao.mSelect(sid);
 		
-		if((mDtos.get(0).getPw()).equals(pw) && pw.equals(pw_chk)) {
+		if((mDtos.get(0).getPw()).equals(encPw) && pw.equals(pw_chk)) {
 			return true;
 		} else {
 			return false;

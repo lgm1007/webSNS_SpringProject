@@ -4,12 +4,16 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 import com.mycomp.sns_pjt.dao.MDao;
 
 public class MInsertCommand implements Command {
 
+	@Autowired
+	MSha256 sha256;
+	
 	// 회원가입 (회원 가입에 필요한 내용 수신 후 Member Insert)
 	@Override
 	public void execute(Model model) {
@@ -24,8 +28,10 @@ public class MInsertCommand implements Command {
 		int tel2 = Integer.parseInt(request.getParameter("tel2"));
 		int tel3 = Integer.parseInt(request.getParameter("tel3"));
 		
+		String encPw = sha256.encrypt(pw);
+		
 		MDao mDao = new MDao();
-		mDao.mInsert(id, pw, name, tel1, tel2, tel3);
+		mDao.mInsert(id, encPw, name, tel1, tel2, tel3);
 		
 	}
 

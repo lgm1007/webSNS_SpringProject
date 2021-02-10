@@ -29,6 +29,9 @@ public class MController {
 	@Autowired
 	MCheckClass mCheck;
 	
+	@Autowired
+	TimelineSelect timelineSelect;
+	
 	// 로그인 화면
 	@RequestMapping("/login_page")
 	public String login_page(Model model, HttpSession session) {
@@ -86,7 +89,6 @@ public class MController {
 			session.setAttribute("sname", request.getParameter("name"));
 			
 			model.addAttribute("session", session);
-			TimelineSelect timelineSelect = new TimelineSelect();
 			timelineSelect.timeLine(model);
 			
 			return "home_page";
