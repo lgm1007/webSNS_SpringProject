@@ -37,6 +37,7 @@ public class BController {
 		
 		if(session.getAttribute("sid") != null) {
 			model.addAttribute("session", session);
+			// 타임라인 보여주기 위한 정보 가져오기
 			timelineSelect.timeLine(model);
 		
 			return "home_page";
@@ -80,7 +81,7 @@ public class BController {
 		}
 	}
 	
-	//포스트 작성 기능
+	//포스트 작성 수행
 	@RequestMapping(value = "/post_writing", method=RequestMethod.POST)
 	public String post_writing(MultipartHttpServletRequest mtpRequest , Model model, HttpSession session) {
 		
@@ -89,9 +90,11 @@ public class BController {
 		
 		if(session.getAttribute("sid") != null) {
 			model.addAttribute("session", session);
-			timelineSelect.timeLine(model);
-		
-			return "home_page";
+
+			// 프로필 페이지로 이동하기 위한 Command
+			command = new MyProfileCommand();
+			command.execute(model);
+			return "profile_page";
 			
 		} else {
 			

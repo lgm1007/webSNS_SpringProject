@@ -23,7 +23,6 @@ public class TimelineSelect {
 		String sid = (String) session.getAttribute("sid");
 		
 		BDao bDao = new BDao();
-		
 		ArrayList<BDto> bDtos = bDao.timelineSelect(sid);
 		
 		model.addAttribute("boardList", bDtos);
@@ -39,7 +38,6 @@ public class TimelineSelect {
 		String sid = (String) session.getAttribute("sid");
 		
 		BDao bDao = new BDao();
-		
 		ArrayList<BDto> bDtos = bDao.likePageTL(sid);
 		
 		model.addAttribute("boardList", bDtos);
