@@ -26,7 +26,7 @@ DataSource dataSource;
 			e.printStackTrace();
 		}
 	}
-	// 해당 유저가 작성한 글 목록 반환
+	// 해당 유저가 작성한 글 목록 반환 (
 	public ArrayList<BDto> bSelect(String id) {
 		ArrayList<BDto> bDtos = new ArrayList<BDto>();
 		Connection conn = null;
@@ -35,7 +35,7 @@ DataSource dataSource;
 		
 		try {
 			conn = dataSource.getConnection();
-			String selQuery = "SELECT * FROM board WHERE mem_id ='"+id+"'";
+			String selQuery = "SELECT * FROM board WHERE mem_id ='"+id+"' ORDER BY bd_key DESC";
 			ptst = conn.prepareStatement(selQuery);
 			rs = ptst.executeQuery();
 			
