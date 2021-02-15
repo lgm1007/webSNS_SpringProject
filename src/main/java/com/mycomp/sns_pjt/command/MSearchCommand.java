@@ -1,6 +1,6 @@
 package com.mycomp.sns_pjt.command;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +21,7 @@ public class MSearchCommand implements Command {
 		String word = request.getParameter("srch");
 		
 		MDao mDao = new MDao();
-		ArrayList<MDto> mDtos = mDao.mSearch(word);
+		List<MDto> mDtos = mDao.mSearch(word);
 
 		model.addAttribute("memberSearch", mDtos);
 		

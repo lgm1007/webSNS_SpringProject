@@ -1,5 +1,6 @@
 package com.mycomp.sns_pjt.command;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -22,6 +23,9 @@ public class MCheckClass {
 	
 	@Autowired
 	MSha256 sha256;
+	
+	@Autowired
+	MDao mDao;
 
 	// Login Check
 	public void loginCheck(Model model, HttpSession session) {
@@ -34,12 +38,11 @@ public class MCheckClass {
 		String encPw = sha256.encrypt(pw);
 		
 		BDao bDao = new BDao();
-		MDao mDao = new MDao();
 		FDao fDao = new FDao();
 		
-		ArrayList<MDto> mDtos = mDao.mSelect(id);
+		List<MDto> mDtos = mDao.mSelect(id);
 		
-		// mDtos.size 값이 0 이하이면 존재하지 않는 아이디, equals가 false이면 비밀번호가 틀렸음
+		// size가 0 이하이면 존재하지 않는 아이디, equals가 false이면 비밀번호가 틀렸음
 		if(mDtos.size() > 0) {
 			if(mDtos.get(0).getPw().equals(encPw)) {
 				session.setAttribute("sid", id);
@@ -59,9 +62,8 @@ public class MCheckClass {
 		
 		String create_id = request.getParameter("id");
 		
-		MDao mDao = new MDao();
-		ArrayList<MDto> mDtos = mDao.mSelect(create_id);
-		// mDtos 사이즈 0 이상이면 같은 아이디가 존재함
+		List<MDto> mDtos = mDao.mSelect(create_id);
+		// size가 0 이상이면 같은 아이디가 존재함
 		if(mDtos.size() > 0) {
 			return false;
 		} else {
@@ -94,8 +96,7 @@ public class MCheckClass {
 		
 		String encPw = sha256.encrypt(pw);
 		
-		MDao mDao = new MDao();
-		ArrayList<MDto> mDtos = mDao.mSelect(sid);
+		List<MDto> mDtos = mDao.mSelect(sid);
 		
 		if((mDtos.get(0).getPw()).equals(encPw) && pw.equals(pw_chk)) {
 			return true;

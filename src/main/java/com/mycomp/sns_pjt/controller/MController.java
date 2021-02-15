@@ -1,10 +1,13 @@
 package com.mycomp.sns_pjt.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +23,7 @@ import com.mycomp.sns_pjt.command.MInsertCommand;
 import com.mycomp.sns_pjt.command.MSearchCommand;
 import com.mycomp.sns_pjt.command.MUpdateCommand;
 import com.mycomp.sns_pjt.command.TimelineSelect;
+import com.mycomp.sns_pjt.dto.MDto;
 
 @Controller
 public class MController {
@@ -37,6 +41,7 @@ public class MController {
 	public String login_page(Model model, HttpSession session) {
 		
 		if(session.getAttribute("sid") == null) {
+			
 			return "login_page";
 		} else {
 			model.addAttribute("warn", "현재 로그인 중입니다");

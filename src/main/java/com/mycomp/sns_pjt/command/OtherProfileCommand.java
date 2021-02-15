@@ -1,6 +1,7 @@
 package com.mycomp.sns_pjt.command;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
@@ -26,7 +27,7 @@ public class OtherProfileCommand implements Command {
 		BDao bDao = new BDao();
 		FDao fDao = new FDao();
 		
-		ArrayList<MDto> mdtos = mDao.mSelect(uid);
+		List<MDto> mdtos = mDao.mSelect(uid);
 		ArrayList<BDto> bdtos = bDao.bSelect(uid);
 		ArrayList<FDto> follows = fDao.selectFollow(uid);
 		ArrayList<FDto> followers = fDao.selectFollower(uid);
