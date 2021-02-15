@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 import com.mycomp.sns_pjt.dao.BDao;
@@ -15,6 +17,9 @@ import com.mycomp.sns_pjt.dto.MDto;
 
 public class OtherProfileCommand implements Command {
 
+	@Autowired
+	MDao mDao;
+	
 	// 타 유저의 프로필 (해당 유저의 ID, 이름, 작성한 글, 팔로우 및 팔로워 수 전송)
 	@Override
 	public void execute(Model model) {
@@ -23,7 +28,6 @@ public class OtherProfileCommand implements Command {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		String uid = request.getParameter("userId");
 		
-		MDao mDao = new MDao();
 		BDao bDao = new BDao();
 		FDao fDao = new FDao();
 		

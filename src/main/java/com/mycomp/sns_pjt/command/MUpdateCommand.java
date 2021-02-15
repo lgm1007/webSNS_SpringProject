@@ -15,6 +15,9 @@ public class MUpdateCommand implements Command {
 	@Autowired
 	MSha256 sha256;
 	
+	@Autowired
+	MDao mDao;
+	
 	// 회원정보 수정 (수정할 수 있는 사항은 비밀번호, 이름, 휴대폰번호)
 	@Override
 	public void execute(Model model) {
@@ -32,7 +35,6 @@ public class MUpdateCommand implements Command {
 		
 		String encPw = sha256.encrypt(update_pw);
 		
-		MDao mDao = new MDao();
 		mDao.mUpdate(user_id, encPw, update_name, tel1, tel2, tel3);
 		
 		model.addAttribute("update_name", update_name);

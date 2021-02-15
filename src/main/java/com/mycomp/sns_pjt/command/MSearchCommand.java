@@ -5,12 +5,16 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import com.mycomp.sns_pjt.dao.MDao;
 import com.mycomp.sns_pjt.dto.MDto;
 
 public class MSearchCommand implements Command {
 
+	@Autowired
+	MDao mDao;
+	
 	// 검색한 단어가 포함된 아이디를 가진 사용자 Select
 	@Override
 	public void execute(Model model) {
@@ -20,7 +24,6 @@ public class MSearchCommand implements Command {
 		
 		String word = request.getParameter("srch");
 		
-		MDao mDao = new MDao();
 		List<MDto> mDtos = mDao.mSearch(word);
 
 		model.addAttribute("memberSearch", mDtos);

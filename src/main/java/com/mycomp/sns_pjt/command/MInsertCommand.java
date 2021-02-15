@@ -14,6 +14,9 @@ public class MInsertCommand implements Command {
 	@Autowired
 	MSha256 sha256;
 	
+	@Autowired
+	MDao mDao;
+	
 	// 회원가입 (회원 가입에 필요한 내용 수신 후 Member Insert)
 	@Override
 	public void execute(Model model) {
@@ -30,7 +33,6 @@ public class MInsertCommand implements Command {
 		
 		String encPw = sha256.encrypt(pw);
 		
-		MDao mDao = new MDao();
 		mDao.mInsert(id, encPw, name, tel1, tel2, tel3);
 		
 	}
