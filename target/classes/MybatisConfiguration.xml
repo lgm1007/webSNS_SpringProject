@@ -2,6 +2,8 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
 
-<configuration> 
-
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.mycomp.sns_pjt.dto.MDto" alias="MDto"/>
+	</typeAliases>
 </configuration>
