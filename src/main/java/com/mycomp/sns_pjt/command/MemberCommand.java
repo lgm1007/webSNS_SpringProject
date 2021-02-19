@@ -78,7 +78,6 @@ public class MemberCommand {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
 		String word = request.getParameter("srch");
-		System.out.println(word);
 		List<MDto> mDtos = mDao.mSearch(word);
 
 		model.addAttribute("memberSearch", mDtos);
