@@ -10,7 +10,7 @@
 	
 	<!-- 유저 검색 -->
 	<select id="searchMember" parameterType="string" resultType="MDto">
-		SELECT * FROM member WHERE id like '%'||#{value}||'%'
+		SELECT * FROM member WHERE id like CONCAT('%',#{value},'%')
 	</select> 
 	
 	<!-- 회원가입 (유저 추가) -->

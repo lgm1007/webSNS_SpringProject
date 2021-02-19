@@ -16,14 +16,17 @@ import com.mycomp.sns_pjt.command.BUpdateCommand;
 import com.mycomp.sns_pjt.command.BoardPostedCommand;
 import com.mycomp.sns_pjt.command.CDeleteCommand;
 import com.mycomp.sns_pjt.command.CWriteCommand;
-import com.mycomp.sns_pjt.command.MyProfileCommand;
 import com.mycomp.sns_pjt.command.Command;
+import com.mycomp.sns_pjt.command.MemberCommand;
 import com.mycomp.sns_pjt.command.TimelineSelect;
 
 @Controller
 public class BController {
 
 	Command command;
+	
+	@Autowired
+	MemberCommand mCommand;
 	
 	@Autowired
 	TimelineSelect timelineSelect;
@@ -91,9 +94,8 @@ public class BController {
 		if(session.getAttribute("sid") != null) {
 			model.addAttribute("session", session);
 
-			// 프로필 페이지로 이동하기 위한 Command
-			command = new MyProfileCommand();
-			command.execute(model);
+			// 게시물 작성 후 프로필 페이지로 이동하기
+			mCommand.getMyProfile(model);
 			return "profile_page";
 			
 		} else {

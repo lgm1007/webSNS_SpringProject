@@ -1,6 +1,5 @@
 <%@page import="com.mycomp.sns_pjt.dto.MDto"%>
 <%@page import="com.mycomp.sns_pjt.dao.FDao"%>
-<%@page import="com.mycomp.sns_pjt.dao.MDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -20,7 +19,6 @@
 	<%
 		String sid = (String)session.getAttribute("sid");
 		String sname = (String)session.getAttribute("sname");
-		MDao mDao = new MDao();
 		FDao fDao = new FDao();
 	%>
 	

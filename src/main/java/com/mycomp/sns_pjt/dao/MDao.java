@@ -3,7 +3,7 @@ package com.mycomp.sns_pjt.dao;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +27,7 @@ public class MDao {
 		} finally {
 			sqlSession.close();
 		}
+		
 	}
 	
 	// 해당 word가 포함된 아이디를 가진 유저들 검색
@@ -40,6 +41,7 @@ public class MDao {
 		} finally {
 			sqlSession.close();
 		}
+		
 	}
 	
 	// 회원 가입 (Insert)
@@ -78,5 +80,4 @@ public class MDao {
 			sqlSession.close();
 		}
 	}
-	
 }

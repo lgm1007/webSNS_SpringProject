@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mycomp.sns_pjt.command.MyProfileCommand;
-import com.mycomp.sns_pjt.command.OtherProfileCommand;
 import com.mycomp.sns_pjt.command.Command;
-import com.mycomp.sns_pjt.command.MCheckClass;
-import com.mycomp.sns_pjt.command.MDeleteCommand;
-import com.mycomp.sns_pjt.command.MInsertCommand;
-import com.mycomp.sns_pjt.command.MSearchCommand;
-import com.mycomp.sns_pjt.command.MUpdateCommand;
+import com.mycomp.sns_pjt.command.MemberCommand;
+
 import com.mycomp.sns_pjt.command.TimelineSelect;
 import com.mycomp.sns_pjt.dto.MDto;
 
@@ -31,7 +25,7 @@ public class MController {
 	Command command;
 	
 	@Autowired
-	MCheckClass mCheck;
+	MemberCommand mCommand;
 	
 	@Autowired
 	TimelineSelect timelineSelect;
@@ -55,7 +49,7 @@ public class MController {
 	public String login(HttpServletRequest request, Model model, HttpSession session) {
 		
 		model.addAttribute("request", request);
-		mCheck.loginCheck(model, session);
+		mCommand.loginCheck(model, session);
 		
 		if(session.getAttribute("sid") != null) { 
 			return "home_page"; 
@@ -78,7 +72,7 @@ public class MController {
 	@RequestMapping(value = "/join", method=RequestMethod.POST)
 	public String join(HttpServletRequest request, Model model, HttpSession session) {
 		
-		boolean bool = mCheck.joinCheck(request);
+		boolean bool = mCommand.joinCheck(request);
 		
 		if(bool == false) {
 			model.addAttribute("warn", "같은 아이디가 존재합니다");
@@ -87,8 +81,7 @@ public class MController {
 		} else {
 			
 			model.addAttribute("request", request);
-			command = new MInsertCommand();
-			command.execute(model);
+			mCommand.insertExecute(model);
 			
 			session.setAttribute("sid", request.getParameter("id"));
 			session.setAttribute("sname", request.getParameter("name"));
@@ -106,41 +99,38 @@ public class MController {
 	public String select(HttpServletRequest request, Model model) {
 		
 		model.addAttribute("request", request);
-		command = new MSearchCommand();
-		command.execute(model);
+		mCommand.searchExecute(model);
 		
 		return "search_page";
 		
 	}
 	
-	// 게시글 작성이가 세션(본인)인지 확인
+	// 게시글 작성이가 세션(본인)인지 확인 후 다른 사람 프로필페이지로 이동
 	@RequestMapping(value = "/areUSession", method=RequestMethod.POST)
 	public String checkUSession(HttpServletRequest request, Model model, HttpSession session) {
 		
 		String memID = request.getParameter("userId");
 		
-		boolean bool = mCheck.areUSession(memID, session);
+		boolean bool = mCommand.areUSession(memID, session);
 		
 		if(bool == true) {
 			return "profile_page";
 		} else {
 			model.addAttribute("request", request);
-			command = new OtherProfileCommand();
-			command.execute(model);
+			mCommand.getOtherProfile(model);
 			
 			return "others_page";
 		}
 		
 	}
 	
-	// 현재 유저 프로필 페이지
+	// 현재 유저 프로필 페이지 (MyProfile)
 	@RequestMapping("/profile_page")
 	public String profile_page(Model model, HttpSession session) {
 		
 		if(session.getAttribute("sid") != null) {
 			model.addAttribute("session", session);
-			command = new MyProfileCommand();
-			command.execute(model);
+			mCommand.getMyProfile(model);
 			return "profile_page";
 			
 		} else {
@@ -161,8 +151,7 @@ public class MController {
 		
 		model.addAttribute("request", request);
 		model.addAttribute("session", session);
-		command = new MUpdateCommand();
-		command.execute(model);
+		mCommand.updateExecute(model);
 		
 		Map<String, Object> map = model.asMap();
 		String updated_name = (String) map.get("update_name");
@@ -183,12 +172,11 @@ public class MController {
 	public String delete(HttpServletRequest request, Model model, HttpSession session) {
 		
 		model.addAttribute("request", request);
-		boolean b = mCheck.withdrawalCheck(model, session);
+		boolean b = mCommand.withdrawalCheck(model, session);
 		
 		if(b) {
 			model.addAttribute("session", session);
-			command = new MDeleteCommand();
-			command.execute(model);
+			mCommand.deleteExecute(model);
 			
 			session.invalidate();
 			return "login_page";
@@ -222,8 +210,7 @@ public class MController {
 		
 		if(session.getAttribute("sid") != null) {
 			model.addAttribute("request", request);
-			command = new OtherProfileCommand();
-			command.execute(model);
+			mCommand.getOtherProfile(model);
 			
 			return "others_page";
 			
