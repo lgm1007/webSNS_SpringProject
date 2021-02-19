@@ -88,7 +88,7 @@
                 </li>
             </ul>
             <div class="head_input">
-                <form action="search_page" name="hd_frm" method="get">
+                <form action="search_page" name="hd_frm" method="post">
                     <input type="search" id="keyword" placeholder="검색" onkeypress="if (event.keyCode == 13) { goSearch();}" style="text-align :center; font-size:13px; color:#cacaca; border:0.7px solid #cacaca;" />
                 </form>
             </div>

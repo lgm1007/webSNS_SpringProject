@@ -95,7 +95,7 @@ public class MController {
 	}
 	
 	// 유저 검색
-	@RequestMapping("/search_page")
+	@RequestMapping(value = "/search_page", method=RequestMethod.POST)
 	public String select(HttpServletRequest request, Model model) {
 		
 		model.addAttribute("request", request);
