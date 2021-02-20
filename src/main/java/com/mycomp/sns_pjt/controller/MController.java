@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.mycomp.sns_pjt.command.Command;
 import com.mycomp.sns_pjt.command.MemberCommand;
 
-import com.mycomp.sns_pjt.command.TimelineSelect;
+import com.mycomp.sns_pjt.command.BoardCommand;
 import com.mycomp.sns_pjt.dto.MDto;
 
 @Controller
@@ -28,7 +28,7 @@ public class MController {
 	MemberCommand mCommand;
 	
 	@Autowired
-	TimelineSelect timelineSelect;
+	BoardCommand timelineSelect;
 	
 	// 로그인 화면
 	@RequestMapping("/login_page")

@@ -10,15 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.mycomp.sns_pjt.command.BDeleteCommand;
 import com.mycomp.sns_pjt.command.BIWriteClass;
-import com.mycomp.sns_pjt.command.BUpdateCommand;
-import com.mycomp.sns_pjt.command.BoardPostedCommand;
-import com.mycomp.sns_pjt.command.CDeleteCommand;
-import com.mycomp.sns_pjt.command.CWriteCommand;
 import com.mycomp.sns_pjt.command.Command;
 import com.mycomp.sns_pjt.command.MemberCommand;
-import com.mycomp.sns_pjt.command.TimelineSelect;
+import com.mycomp.sns_pjt.command.BoardCommand;
 
 @Controller
 public class BController {
@@ -29,7 +24,7 @@ public class BController {
 	MemberCommand mCommand;
 	
 	@Autowired
-	TimelineSelect timelineSelect;
+	BoardCommand bCommand;
 	
 	@Autowired
 	BIWriteClass writeClass;
@@ -41,7 +36,7 @@ public class BController {
 		if(session.getAttribute("sid") != null) {
 			model.addAttribute("session", session);
 			// 타임라인 보여주기 위한 정보 가져오기
-			timelineSelect.timeLine(model);
+			bCommand.timeLine(model);
 		
 			return "home_page";
 			
@@ -60,7 +55,7 @@ public class BController {
 		
 		if(session.getAttribute("sid") != null) {
 			model.addAttribute("session", session);
-			timelineSelect.likePageTimeLine(model);
+			bCommand.likePageTimeLine(model);
 			
 			return "like_page";
 		} else {
@@ -112,8 +107,7 @@ public class BController {
 		
 		if(session.getAttribute("sid") != null) {
 			model.addAttribute("request", request);
-			command = new BoardPostedCommand();
-			command.execute(model);
+			bCommand.boardView(model);
 			
 			return "posted_board";
 			
@@ -148,8 +142,7 @@ public class BController {
 		
 		model.addAttribute("request", request);
 		
-		command = new BUpdateCommand();
-		command.execute(model);
+		bCommand.boardUpdate(model);
 		model.addAttribute("ok", "게시글을 수정했습니다");
 		model.addAttribute("url", "profile_page");
 		return "action/edit_post_ok";
@@ -162,8 +155,7 @@ public class BController {
 		model.addAttribute("request", request);
 		model.addAttribute("session", session);
 		
-		command = new BDeleteCommand();
-		command.execute(model);
+		bCommand.boardDelete(model);
 		model.addAttribute("ok", "게시글 삭제가 완료되었습니다");
 		model.addAttribute("url", "profile_page");
 		return "action/delete_post_ok";
@@ -179,8 +171,7 @@ public class BController {
 		model.addAttribute("session", session);
 		
 		if(session.getAttribute("sid") != null) {
-			command = new CWriteCommand();
-			command.execute(model);
+			bCommand.commentWrite(model);
 			model.addAttribute("ok", "댓글을 작성했습니다");
 			return "action/comment_write";
 			
@@ -199,8 +190,7 @@ public class BController {
 		model.addAttribute("session", session);
 		
 		if(session.getAttribute("sid") != null) {
-			command = new CDeleteCommand();
-			command.execute(model);
+			bCommand.commentDelete(model);
 			model.addAttribute("ok", "댓글을 삭제했습니다");
 			return "action/comment_delete";
 			
