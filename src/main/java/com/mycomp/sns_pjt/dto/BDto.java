@@ -6,6 +6,10 @@ public class BDto {
 	private String mem_id;
 	private String bd_cont;
 	
+	public BDto() {
+		
+	}
+	
 	public BDto(int bd_key, String mem_id, String bd_cont) {
 		this.bd_key = bd_key;
 		this.mem_id = mem_id;

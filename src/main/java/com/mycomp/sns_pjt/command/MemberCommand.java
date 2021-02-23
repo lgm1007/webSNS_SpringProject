@@ -26,6 +26,9 @@ public class MemberCommand {
 	
 	@Autowired
 	MDao mDao;
+	
+	@Autowired
+	BDao bDao;
 
 	// Login Check
 	public void loginCheck(Model model, HttpSession session) {
@@ -37,7 +40,6 @@ public class MemberCommand {
 		String pw = request.getParameter("pw");
 		String encPw = sha256.encrypt(pw);
 		
-		BDao bDao = new BDao();
 		FDao fDao = new FDao();
 		
 		List<MDto> mDtos = mDao.mSelect(id);
@@ -48,7 +50,7 @@ public class MemberCommand {
 				session.setAttribute("sid", id);
 				session.setAttribute("sname", mDtos.get(0).getName());
 				
-				ArrayList<BDto> bDtos = bDao.timelineSelect(id);
+				List<BDto> bDtos = bDao.timelineSelect(id);
 				
 				model.addAttribute("boardList", bDtos);
 				
@@ -142,9 +144,8 @@ public class MemberCommand {
 		
 		String sid = (String) session.getAttribute("sid");
 
-		BDao bDao = new BDao();
 		FDao fDao = new FDao();
-		ArrayList<BDto> bDtos = bDao.bSelect(sid);
+		List<BDto> bDtos = bDao.bSelect(sid);
 		ArrayList<FDto> follows = fDao.selectFollow(sid);
 		ArrayList<FDto> followers = fDao.selectFollower(sid);
 		
@@ -160,11 +161,10 @@ public class MemberCommand {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		String uid = request.getParameter("userId");
 		
-		BDao bDao = new BDao();
 		FDao fDao = new FDao();
 		
 		List<MDto> mdtos = mDao.mSelect(uid);
-		ArrayList<BDto> bdtos = bDao.bSelect(uid);
+		List<BDto> bdtos = bDao.bSelect(uid);
 		ArrayList<FDto> follows = fDao.selectFollow(uid);
 		ArrayList<FDto> followers = fDao.selectFollower(uid);
 		

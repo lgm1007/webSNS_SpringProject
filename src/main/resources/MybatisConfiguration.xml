@@ -5,5 +5,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.mycomp.sns_pjt.dto.MDto" alias="MDto"/>
+		<typeAlias type="com.mycomp.sns_pjt.dto.BDto" alias="BDto"/>
 	</typeAliases>
 </configuration>

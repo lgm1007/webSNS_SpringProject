@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardDB">
+
+	<!-- 유저아이디로 Board 가져오기 -->
+	<select id="selectBoard2ID" parameterType="string" resultType="BDto">
+		SELECT * FROM board WHERE mem_id=#{value} ORDER BY bd_key DESC
+	</select>
+	
+	<!-- bd_key 값으로 Board 가져오기 -->
+	<select id="selectBoard2Key" parameterType="int" resultType="BDto">
+		SELECT * FROM board WHERE bd_key=#{value} ORDER BY bd_key DESC
+	</select> 
+	
+	<!-- 메인 페이지 타임라인 가져오기 -->
+	<select id="selectTimeline" parameterType="string" resultType="BDto">
+		SELECT * FROM board WHERE mem_id in (SELECT follow FROM bfollow WHERE follower = #{value}) ORDER BY bd_key DESC
+	</select>
+	
+	<!-- 유저가 좋아요 누른 게시글 가져오기 -->
+	<select id="selectLikeBoard" parameterType="string" resultType="BDto">
+		SELECT * FROM board WHERE bd_key in (SELECT bd_key FROM blike WHERE mem_id = #{value}) ORDER BY bd_key DESC
+	</select>
+	
+	<!-- 글 작성하기 -->
+	<insert id="insertBoard" parameterType="BDto">
+		INSERT INTO board(mem_id, bd_cont) VALUES (#{mem_id}, #{bd_cont})
+	</insert>
+	
+	<!-- 글 삭제하기 -->
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM board WHERE bd_key=#{bd_key}
+	</delete>
+	
+	<!-- 글 수정하기 -->
+	<update id="updateBoard" parameterType="BDto">
+		UPDATE board SET bd_cont=#{bd_cont} WHERE bd_key=#{bd_key}
+	</update>
+</mapper>

@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +21,9 @@ import com.mycomp.sns_pjt.dto.BDto;
 @Component
 public class BIWriteClass {
 
+	@Autowired
+	BDao bDao;
+	
 	/* 글쓰기 메서드
 	 * 파일, 내용, 아이디를 BDao를 통해 Insert
 	 * 이미지파일은 중복 파일명을 고려해 밀리시간을 파일명 앞에 붙여 저장 후 해당 파일명 DB에 저장 */
@@ -33,10 +37,9 @@ public class BIWriteClass {
 		String userid = (String) session.getAttribute("sid");
 		
 		IDao iDao = new IDao();
-		BDao bDao = new BDao();
 		bDao.bInsert(userid, content);
 		
-		ArrayList<BDto> bDtos = bDao.bSelect(userid);
+		List<BDto> bDtos = bDao.bSelect(userid);
 		int bd_key = 0;
 		for(int i = 0; i < bDtos.size(); i++) {
 			if(bDtos.get(i).getBd_cont().equals(content))

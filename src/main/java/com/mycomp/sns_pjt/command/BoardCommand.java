@@ -1,11 +1,13 @@
 package com.mycomp.sns_pjt.command;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
@@ -17,6 +19,9 @@ import com.mycomp.sns_pjt.dto.CDto;
 @Component
 public class BoardCommand {
 	
+	@Autowired
+	BDao bDao;
+	
 	// 작성된 글 조회 (View Board)
 	public void boardView(Model model) {
 
@@ -26,10 +31,9 @@ public class BoardCommand {
 		int bd_key = Integer.parseInt(request.getParameter("bdKey"));
 		String memID = request.getParameter("memID");
 		
-		BDao bDao = new BDao();
 		CDao cDao = new CDao();
 		
-		ArrayList<BDto> bDtos = bDao.bSelectAsKey(bd_key);
+		List<BDto> bDtos = bDao.bSelectAsKey(bd_key);
 		ArrayList<CDto> cDtos = cDao.cSelect(bd_key);
 		
 		BDto bDto = bDtos.get(0);
@@ -47,10 +51,8 @@ public class BoardCommand {
 		HttpSession session = (HttpSession) map.get("session");
 		
 		int bdKey = Integer.parseInt(request.getParameter("bdKey"));
-		String sid = (String)session.getAttribute("sid");
 
-		BDao bDao = new BDao();
-		bDao.bDelete(sid, bdKey);
+		bDao.bDelete(bdKey);
 	}
 	
 	// 글 수정 (Board Update)
@@ -62,7 +64,6 @@ public class BoardCommand {
 		int bdKey = Integer.parseInt(request.getParameter("bdEditKey"));
 		String content = request.getParameter("content");
 		
-		BDao bDao = new BDao();
 		bDao.bUpdate(bdKey, content);
 	}
 	
@@ -74,8 +75,7 @@ public class BoardCommand {
 		
 		String sid = (String) session.getAttribute("sid");
 		
-		BDao bDao = new BDao();
-		ArrayList<BDto> bDtos = bDao.timelineSelect(sid);
+		List<BDto> bDtos = bDao.timelineSelect(sid);
 		
 		model.addAttribute("boardList", bDtos);
 		
@@ -89,8 +89,7 @@ public class BoardCommand {
 		
 		String sid = (String) session.getAttribute("sid");
 		
-		BDao bDao = new BDao();
-		ArrayList<BDto> bDtos = bDao.likePageTL(sid);
+		List<BDto> bDtos = bDao.likePageTL(sid);
 		
 		model.addAttribute("boardList", bDtos);
 		
