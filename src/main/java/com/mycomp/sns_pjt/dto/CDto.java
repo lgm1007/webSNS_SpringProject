@@ -6,6 +6,10 @@ public class CDto {
 	private int bd_key;
 	private String mem_id;
 	private String comment_cont;
+
+	public CDto() {
+		
+	}
 	
 	public CDto(int comment_key ,int bd_key, String mem_id, String comment_cont) {
 		this.comment_key = comment_key;

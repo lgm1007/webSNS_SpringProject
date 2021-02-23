@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="commentDB">
+
+	<!-- 유저아이디로 Board 가져오기 -->
+	<select id="selectComment" parameterType="int" resultType="CDto">
+		SELECT * FROM comm WHERE bd_key=#{value}
+	</select>
+	
+	<!-- 글 작성하기 -->
+	<insert id="insertComment" parameterType="CDto">
+		INSERT INTO comm(bd_key, mem_id, comment_cont) VALUES (#{bd_key}, #{mem_id}, #{comment_cont})
+	</insert>
+	
+	<!-- 글 삭제하기 -->
+	<delete id="deleteComment" parameterType="CDto">
+		DELETE FROM comm WHERE bd_key=#{bd_key} AND comment_key=#{comment_key} AND mem_id=#{mem_id}
+	</delete>
+	
+</mapper>

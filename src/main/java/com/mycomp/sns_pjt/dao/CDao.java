@@ -1,120 +1,67 @@
 package com.mycomp.sns_pjt.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
+import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.mycomp.sns_pjt.dto.BDto;
 import com.mycomp.sns_pjt.dto.CDto;
 
+@Repository
 public class CDao {
 
-	DataSource dataSource;
+	@Autowired
+	private SqlSessionFactory sqlSessionFactory;
 	
-	public CDao() {
-		try {
-			Context context = new InitialContext();
-			dataSource = (DataSource)context.lookup("java:comp/env/jdbc/mysql");
-			
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
 	// 해당 bdKey의 글에 작성된 댓글 가져오기
-	public ArrayList<CDto> cSelect(int bdKey) {
-		ArrayList<CDto> cDtos = new ArrayList<CDto>();
-		Connection conn = null;
-		PreparedStatement ptst = null;
-		ResultSet rs = null;
+	public List<CDto> cSelect(int bdKey) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
 		
 		try {
-			conn = dataSource.getConnection();
-			String selectQuery = "SELECT * FROM comm WHERE bd_key='"+bdKey+"'";
-			ptst = conn.prepareStatement(selectQuery);
-			rs = ptst.executeQuery();
+			List<CDto> clist = sqlSession.selectList("commentDB.selectComment", bdKey);
+			return clist;
 			
-			while(rs.next()) {
-				int commentKey = rs.getInt("comment_key");
-				int bKey = rs.getInt("bd_key");
-				String memID = rs.getString("mem_id");
-				String comment = rs.getString("comment_cont");
-				
-				CDto cDto = new CDto(commentKey, bKey, memID, comment);
-				cDtos.add(cDto);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
 		} finally {
-			try {
-				if(rs != null) rs.close();
-				if(ptst != null) ptst.close();
-				if(conn != null) conn.close();
-				
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			sqlSession.close();
 		}
-		return cDtos;
 	}
+	
 	// 해당 bdKey의 글에 댓글 작성
-	public int cInsert(int bdKey, String memid, String comment) {
-		Connection conn = null;
-		PreparedStatement ptst = null;
-		int i = 0;
+	public void cInsert(int bdKey, String memid, String comment) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
 		
 		try {
-			conn = dataSource.getConnection();
-			String insertQuery = "INSERT INTO comm(bd_key, mem_id, comment_cont) VALUES (?, ?, ?)";
-			ptst = conn.prepareStatement(insertQuery);
-			ptst.setInt(1, bdKey);
-			ptst.setString(2, memid);
-			ptst.setString(3, comment);
-			i = ptst.executeUpdate();
+			CDto cDto = new CDto();
+			cDto.setBd_key(bdKey);
+			cDto.setMem_id(memid);
+			cDto.setComment_cont(comment);
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+			sqlSession.insert("commentDB.insertComment", cDto);
+			
 		} finally {
-			try {
-				if(ptst != null) ptst.close();
-				if(conn != null) conn.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			sqlSession.close();
 		}
-		return i;
 	}
+	
 	// 해당 bdKey의 해당 commKey의 댓글 삭제
-	public int cDelete(int bdKey, int commKey, String memid) {
-		Connection conn = null;
-		PreparedStatement ptst = null;
-		int i = 0;
+	public void cDelete(int bdKey, int commKey, String memid) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
 		
 		try {
-			conn = dataSource.getConnection();
-			String deleteQuery = "DELETE FROM comm WHERE bd_key = ? AND comment_key = ? AND mem_id = ?";
-			ptst = conn.prepareStatement(deleteQuery);
-			ptst.setInt(1, bdKey);
-			ptst.setInt(2, commKey);
-			ptst.setString(3, memid);
-			i = ptst.executeUpdate();
+			CDto cDto = new CDto();
+			cDto.setBd_key(bdKey);
+			cDto.setMem_id(memid);
+			cDto.setComment_key(commKey);
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+			sqlSession.insert("commentDB.deleteComment", cDto);
+			
 		} finally {
-			try {
-				if(ptst != null) ptst.close();
-				if(conn != null) conn.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			sqlSession.close();
 		}
-		return i;
 	}
 	
 }

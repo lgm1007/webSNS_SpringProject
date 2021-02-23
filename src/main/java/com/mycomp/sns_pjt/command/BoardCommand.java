@@ -1,6 +1,5 @@
 package com.mycomp.sns_pjt.command;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +21,9 @@ public class BoardCommand {
 	@Autowired
 	BDao bDao;
 	
+	@Autowired
+	CDao cDao;
+	
 	// 작성된 글 조회 (View Board)
 	public void boardView(Model model) {
 
@@ -31,10 +33,8 @@ public class BoardCommand {
 		int bd_key = Integer.parseInt(request.getParameter("bdKey"));
 		String memID = request.getParameter("memID");
 		
-		CDao cDao = new CDao();
-		
 		List<BDto> bDtos = bDao.bSelectAsKey(bd_key);
-		ArrayList<CDto> cDtos = cDao.cSelect(bd_key);
+		List<CDto> cDtos = cDao.cSelect(bd_key);
 		
 		BDto bDto = bDtos.get(0);
 		model.addAttribute("bdKey", bDto.getBd_key());
@@ -106,8 +106,7 @@ public class BoardCommand {
 		String comm_text = request.getParameter("comm_text");
 		String sid = (String)session.getAttribute("sid");
 		
-		CDao cDao = new CDao();
-		int reI = cDao.cInsert(bdKey, sid, comm_text);
+		cDao.cInsert(bdKey, sid, comm_text);
 	}
 	
 	// 로그인 한 유저의 댓글 지우기 (Delete Comment)
@@ -121,8 +120,7 @@ public class BoardCommand {
 		int commKey = Integer.parseInt(request.getParameter("commentKey"));
 		String sid = (String)session.getAttribute("sid");
 		
-		CDao cDao = new CDao();
-		int reI = cDao.cDelete(bdKey, commKey, sid);
+		cDao.cDelete(bdKey, commKey, sid);
 	}
 
 }
