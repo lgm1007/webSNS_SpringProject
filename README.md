@@ -47,13 +47,11 @@ Instagram 사이트의 기능 및 동작들을 참고하여 view 페이지간 �
 
 회원가입 페이지에서는 아이디, 비밀번호, 비밀번호 확인, 이름 그리고 휴대폰 번호를 입력하는 form tag 설정하여 회원가입 시 유저 정보를 받아와 데이터베이스에 추가, 비밀번호는 암호화를 거쳐 암호화된 내용이 데이터베이스에 추가됨(복호화할 필요 없는 부분이기에 단방향 해시 암호화 방식 사용) <br/>
 
-Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페이스를 상속받은 다양한 클래스에서 여러 기능들을 Overriding하여 사용하도록 설계 
-
 ## 로그인 및 회원가입 시 오류 처리
 
 ![alert](/src/rmImg/login_and_join-wrong-alert_20210124_200004.gif)
 
-[![](https://img.shields.io/badge/class-MCheckClass-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/MCheckClass.java) 
+[![](https://img.shields.io/badge/class-MemberCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/MemberCommand.java) 
 
 로그인 시 비밀번호가 틀린 경우 로그인 처리하지 않고 alert 창 팝업 후 다시 로그인 페이지로 이동 <br/>
 
@@ -63,7 +61,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ![](/src/rmImg/search_and_follow-part_20210124_201006.gif)
 
-[![](https://img.shields.io/badge/view-main%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/home_page.jsp) [![](https://img.shields.io/badge/view-search%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/search_page.jsp) [![](https://img.shields.io/badge/class-MSearchCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/MSearchCommand.java) [![](https://img.shields.io/badge/servlet%20class-ajaxServlet-yellowgreen)](https://github.com/lgm1007/webSNS_SpringProject/tree/master/src/main/java/com/mycomp/sns_pjt/ajaxServlet) [![](https://img.shields.io/badge/dispatcherServlet-web.xml-blueviolet)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/web.xml) 
+[![](https://img.shields.io/badge/view-main%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/home_page.jsp) [![](https://img.shields.io/badge/view-search%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/search_page.jsp) [![](https://img.shields.io/badge/servlet%20class-ajaxServlet-yellowgreen)](https://github.com/lgm1007/webSNS_SpringProject/tree/master/src/main/java/com/mycomp/sns_pjt/ajaxServlet) [![](https://img.shields.io/badge/dispatcherServlet-web.xml-blueviolet)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/web.xml) 
 
 로그인 및 회원가입 후 메인 페이지로 이동 <br/>
 
@@ -85,7 +83,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ![](/src/rmImg/likeandlikepage-part_20210124_195648.gif)
 
-[![](https://img.shields.io/badge/controller-BController-blue)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/controller/BController.java) [![](https://img.shields.io/badge/view-like%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/like_page.jsp) 
+[![](https://img.shields.io/badge/controller-BController-blue)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/controller/BController.java) [![](https://img.shields.io/badge/class-BoardCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/BoardCommand.java) [![](https://img.shields.io/badge/view-like%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/like_page.jsp) 
 
 마음에 드는 게시글에 좋아요(하트)를 클릭하면 비동기 통신으로 데이터베이스에 접근하여 게시글의 좋아요와 관련된 정보를 Insert하게끔 설계 <br/>
 
@@ -97,7 +95,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ![](/src/rmImg/commentadd-part_20210124_195300.gif)
 
-[![](https://img.shields.io/badge/view-posted_board%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/posted_board.jsp) [![](https://img.shields.io/badge/class-CWriteCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/CWriteCommand.java) 
+[![](https://img.shields.io/badge/view-posted_board%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/posted_board.jsp)  
 
 작성된 게시글을 자세히 보는 페이지 <br/>
 
@@ -105,9 +103,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ## 댓글 삭제
 
-![](/src/rmImg/commentdelete-part-20210124_195429.gif)
-
-[![](https://img.shields.io/badge/class-CDeleteCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/CDeleteCommand.java) 
+![](/src/rmImg/commentdelete-part-20210124_195429.gif) 
 
 현재 로그인 중인 유저가 작성한 댓글 옆에 댓글 삭제 버튼이 보이도록 Javascript에서 구현 <br/>
 
@@ -117,7 +113,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ![](/src/rmImg/otherUserPage-part_20210124_200517.gif)
 
-[![](https://img.shields.io/badge/view-othersProfile%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/others_page.jsp) [![](https://img.shields.io/badge/class-OtherProfileCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/OtherProfileCommand.java) 
+[![](https://img.shields.io/badge/view-othersProfile%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/others_page.jsp) 
 
 게시글에서나 검색창, 팔로우 유저창에서의 유저 아이디를 클릭하면 해당 유저의 프로필로 이동하도록 설계 <br/>
 
@@ -147,7 +143,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ![](/src/rmImg/post-modify-part_20210124_200713.gif)
 
-[![](https://img.shields.io/badge/view-edit%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/edit_page.jsp) [![](https://img.shields.io/badge/class-BUpdateCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/BUpdateCommand.java) 
+[![](https://img.shields.io/badge/view-edit%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/edit_page.jsp) 
 
 자신이 게시한 글에는 편집 버튼이 보이도록 함 <br/>
 
@@ -157,7 +153,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ![](/src/rmImg/post-delete-part_20210124_200632.gif)
 
-[![](https://img.shields.io/badge/class-BDeleteCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/BDeleteCommand.java) 
+
 
 게시글 편집 페이지의 글 삭제 버튼을 클릭 시 해당 글을 삭제하도록 구현 <br/>
 
@@ -167,7 +163,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ![](/src/rmImg/name-modify-part_20210124_200315.gif)
 
-[![](https://img.shields.io/badge/view-user_setting%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/setting_page.jsp) [![](https://img.shields.io/badge/class-MUpdateCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/MUpdateCommand.java) 
+[![](https://img.shields.io/badge/view-user_setting%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/setting_page.jsp) 
 
 프로필에서 회원정보 변경 페이지로 이동할 수 있는 버튼 구현 <br/>
 
@@ -177,7 +173,7 @@ Controller 에서는 Command 인터페이스를 정의해놓고 해당 인터페
 
 ![](/src/rmImg/withdrawal-part_20210124_201119.gif)
 
-[![](https://img.shields.io/badge/view-withdrawal_check%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/withdrawal_check.jsp) [![](https://img.shields.io/badge/class-MDeleteCommand-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/MDeleteCommand.java) [![](https://img.shields.io/badge/class-MCheckClass-yellow)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/java/com/mycomp/sns_pjt/command/MCheckClass.java) 
+[![](https://img.shields.io/badge/view-withdrawal_check%20page-brightgreen)](https://github.com/lgm1007/webSNS_SpringProject/blob/master/src/main/webapp/WEB-INF/views/withdrawal_check.jsp) 
 
 회원정보 변경 페이지에서 회원탈퇴 버튼 클릭 시 회원탈퇴 확인 페이지로 이동 <br/>
 
